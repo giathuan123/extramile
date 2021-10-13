@@ -33,7 +33,7 @@ class Parser{
     this.data = [],
     this.input = input || Parser.init();
     this.input.on('line', (str) => this.parse(str)); 
-    this.input.on('close', ()=>console.log(this.data));
+    this.input.on('close', ()=>console.log(JSON.stringify(this.data)));
   }
   // string: line read from input
 }
