@@ -24,7 +24,7 @@ class SearchForm extends React.Component {
 
         }
         this.handleFormSubmit = this.handleFormSubmit.bind(this);
-
+        this.handleDate= this.handleDate.bind(this);
         this.handleStreet = this.handleStreet.bind(this);
         this.handleCity = this.handleCity.bind(this);
         this.handleState = this.handleState.bind(this);
@@ -55,6 +55,15 @@ class SearchForm extends React.Component {
                 console.log("Successful" + data);
             })
         })
+        
+    }
+    handleDate(e) {
+        let value = e.target.value;
+        this.setState( prevState => ({
+            newSearch: {
+                ...prevState.newSearch, date: value
+            }
+        }), () => console.log(this.state.newSearch))
     }
 
     handleStreet(e) {
@@ -134,8 +143,10 @@ class SearchForm extends React.Component {
         <form onSubmit={this.handleFormSubmit}>
             <p>Search Form</p>
             <Input
-                title='Enter Date'
-                type='date'
+                title={'Date'}
+                type={'date'}
+                value={this.state.newSearch.date}
+                handleChange={this.handleDate}
             />
             <Input 
                 title={'Street'}
