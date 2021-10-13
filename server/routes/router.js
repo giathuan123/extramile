@@ -20,7 +20,11 @@ router.post("/api", (req, res)=>{ console.log(req.body);
   data.push(searchQuery);
   searchObjects();
   //print the parseData that is the results of the searchObjects
-  console.log(parseData);
+  console.log(parseData.slice(0,3));
+
+  // Send data to console
+  res.send(parseData.slice(0,3));
+
   //reset parseData and data back to empty array
   parseData=[];
   data=[];

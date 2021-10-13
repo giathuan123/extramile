@@ -49,12 +49,11 @@ class SearchForm extends React.Component {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
             },
-        }).then(response => {
-            response.json()
-            .then(data => {
-                console.log("Successful" + data);
-            })
         })
+        .then ((res) => res.json())
+        .then ((data) => {
+            console.log(data)
+        });
         
     }
     handleDate(e) {
