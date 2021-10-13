@@ -1,7 +1,7 @@
 const Button = (props) => {
     return (
         <button onClick={props.action}>
-            {props.title}
+          {props.title}
         </button>
     );
 }

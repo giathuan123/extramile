@@ -42,7 +42,7 @@ class SearchForm extends React.Component {
         let data = this.state.newSearch;
 
         // Fetch request -- Change this to use an API maybe???
-        fetch('https://localhost:3031/api', {
+        fetch('https://localhost:3001/api', {
             method: "POST",
             body: JSON.stringify(data),
             headers: {
