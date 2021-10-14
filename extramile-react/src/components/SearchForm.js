@@ -21,7 +21,6 @@ class SearchForm extends React.Component {
 
             weatherOptions: ['Rain', 'Not Raining'],
             severityOptions: ['1', '2', '3', '4']
-
         }
         this.handleFormSubmit = this.handleFormSubmit.bind(this);
         this.handleDate= this.handleDate.bind(this);

@@ -1,83 +1,23 @@
 const express = require ("express");
 usersRoute = require("../controllers/usersData");
-const dummyData = require("../data/testData.json");
+const dummyData = require("../data/testData3.json");
 const router = express.Router();
-let data = [];
-let parseData = [];
-router.get("/",usersRoute.usersData);
-router.post("/api", (req, res)=>{ console.log(req.body); 
-  //store the request into a searchQuery
-  const searchQuery = {
-    Street: req.body.street,
-    City: req.body.city,
-    State: req.body.state,
-    Zip: req.body.zip,
-    Weather: req.body.weather,
-    Severity: req.body.severity,
-  }
-  //push the searchquery into an array
-  data.push(searchQuery);
-  searchObjects();
-  //print the parseData that is the results of the searchObjects
-  console.log(parseData);
-  // Send data to console
-  res.send(parseData);
 
-  //reset parseData and data back to empty array
-  parseData=[];
-  data=[];
+router.get("/",usersRoute.usersData);
+router.post("/api", (req, res)=>{ 
+  console.log("QueryData", req.body); 
+  const results = dummyData.filter(data=>query(data, req.body));
+  res.json(results);
 })
-function searchObjects(){
-  //find length of testData.csv
-  var length = Object.keys(dummyData).length;
-  var placer_i = 0;
-  //finding street
-  for(let i=0; i<length;i++){
-    //need to add more search queries here and condition
-    //but in short if the testData.csv ->severity is the same as
-    //the severity from the form which is stored in Data
-    //push that whole object into parseData
-    if(dummyData[i].Street==data[0].Street){
-      parseData.push(dummyData[i]);
-    }
-  }
-  //finding State
-  for(let i=0;i<length;i++){
-    if(dummyData[i].State==data[0].State){
-      parseData.push(dummyData[i]);
-    }
-  }
-  //finding Zip
-  for(let i=0;i<length;i++){
-    if(dummyData[i].Zip==data[0].Zip){
-      parseData.push(dummyData[i]);
-    }
-  }
-  //finding Severity
-  let not_done=false;
-  var temp_i=0;
-  var severity_index=0;
-  if(data[0].Severity.length>1){
-    while(temp_i<length && not_done == false){
-      if(dummyData[temp_i].Severity==data[0].Severity[severity_index]){
-        parseData.push(dummyData[temp_i]);
-      }
-      if(temp_i+1==length && not_done==false){
-        severity_index++;
-        temp_i=0;
-      }
-      if(severity_index==data[0].Severity.length){
-        not_done=true;
-      }
-      temp_i++;
-    }
-  }
-  else{
-    for(let i=0; i<length;i++){
-      if(dummyData[i].Severity==data[0].Severity){
-        parseData.push(dummyData[i]);
-      }
-    }
-  }
+
+function query(data, reqJson){
+  const dateMatches = reqJson.date ? data["Start_Time"].split(' ')[0] == reqJson.date : true; // true if field is empty
+  const streetMatches = reqJson.street ? data["Street"].includes(reqJson.street) : true;
+  const cityMatches = reqJson.city ? data["City"].includes(reqJson.city) : true;
+  const zipMatches = reqJson.zip ? data["Zipcode"] == reqJson.zip : true;
+  const severityMatches = reqJson.severity.lenght == 0 ? reqJson.severity.includes(data["Severity"]) : true; 
+  console.log("Matches:", data.ID);
+  
+  return dateMatches && streetMatches && cityMatches && zipMatches && severityMatches;
 }
 module.exports = router;
