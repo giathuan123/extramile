@@ -1,10 +1,9 @@
 const express = require ("express");
+usersRoute = require("../controllers/usersData");
 const dummyData = require("../data/testData.json");
 const router = express.Router();
-let data =[];
-let parseData=[];
-usersRoute = require("../controllers/usersData");
-
+let data = [];
+let parseData = [];
 router.get("/",usersRoute.usersData);
 router.post("/api", (req, res)=>{ console.log(req.body); 
   //store the request into a searchQuery
@@ -80,7 +79,5 @@ function searchObjects(){
       }
     }
   }
-  
-  
 }
 module.exports = router;
