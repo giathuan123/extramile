@@ -1,5 +1,5 @@
-class BTreeNode{
+class BTree{
   constructor(){
-    this.keys = null;
+    this.rootNode = null;
   }
 }

@@ -1,4 +1,5 @@
-const Node  = require('./ListNode.js') 
+const Node  = require("./ListNode.js");
+const util = require("util");
 
 class LinkedList{
   constructor(comparator){
@@ -8,7 +9,7 @@ class LinkedList{
     this.comparator = comparator ? comparator : (curr, next) => curr > next;
   }
   insert(newNode){
-    var currNode = this.rootNode;
+    let currNode = this.rootNode;
     // reset new node, assume that newnode pointers are null;
     newNode.prev = null;
     newNode.next = null;
@@ -41,7 +42,7 @@ class LinkedList{
   delete(key){
     if(this.size == 0)
       return null;
-    var currNode = this.rootNode;
+    let currNode = this.rootNode;
     while(currNode != null){
       if(currNode.key == key){
         // deletetion
@@ -57,6 +58,18 @@ class LinkedList{
     this.size--;
     return currNode; 
   }
+  [util.inspect.custom](){
+    let currNode = this.rootNode;
+    let str = "";
+    while(currNode){
+      str += currNode.key.toString(); 
+      currNode = currNode.next;
+      if(currNode)
+        str += ("->");
+    }
+    return str;
+  }
+  
 }
 function remove(currNode){
   
@@ -80,47 +93,34 @@ function makeNode(key){
   newNode.key = key;
   return newNode;
 }
-function print(content){
-  process.stdout.write(content.toString());
-}
-function printList(list){
-  var currNode = list.rootNode;
-  while(currNode){
-    print(currNode.key);
-    currNode = currNode.next;
-    if(currNode)
-      print("->");
-  }
-  console.log(); // last new line
-}
 
 var linkList = new LinkedList();
 console.log("Inserting 5, 1, 6, 4, 3, 2")
 linkList.insert(makeNode(5));
-printList(linkList);
+console.log(linkList);
 linkList.insert(makeNode(1));
-printList(linkList);
+console.log(linkList);
 linkList.insert(makeNode(6));
-printList(linkList);
+console.log(linkList);
 linkList.insert(makeNode(4));
-printList(linkList);
+console.log(linkList);
 linkList.insert(makeNode(3));
-printList(linkList);
+console.log(linkList);
 linkList.insert(makeNode(2));
-printList(linkList);
+console.log(linkList);
 
 console.log("Deleting 5, 1, 6, 4, 3, 2")
 linkList.delete((5));
-printList(linkList);
+console.log(linkList);
 linkList.delete((1));
-printList(linkList);
+console.log(linkList);
 linkList.delete((6));
-printList(linkList);
+console.log(linkList);
 linkList.delete((4));
-printList(linkList);
+console.log(linkList);
 linkList.delete((3));
-printList(linkList);
+console.log(linkList);
 linkList.delete((2));
-printList(linkList);
+console.log(linkList);
 
 module.exports = LinkedList;
