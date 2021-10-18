@@ -1,6 +1,8 @@
 import React from 'react';
 import './Card.css'
 import {Button} from '../FormComponents';
+import ModalContainer from '../ModalContainer'
+import {EditRecordForm} from '../Forms'
 
 function Card(props) {
   return (
@@ -27,7 +29,12 @@ function Card(props) {
                 <td>{item.State}</td>
                 <td>{item.Zipcode}</td>
                 <td>{item.Severity}</td>
-                <td><Button title="Edit"/><Button title = "Delete"/></td>
+                <td>
+                  <ModalContainer triggerText="Edit">
+                    <EditRecordForm data={item} />
+                  </ModalContainer>
+                  <Button title = "Delete"/>
+                </td>
               </tr>  
             ))}
           </tbody>

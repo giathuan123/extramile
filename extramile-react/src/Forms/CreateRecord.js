@@ -27,7 +27,6 @@ class CreateRecord extends React.Component {
 
     handleFormSubmit(e) {
         e.preventDefault();
-        
         console.log(this.state.newRecord)
     }
 

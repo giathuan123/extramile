@@ -5,6 +5,7 @@ import ModalContainer from '../ModalContainer'
 
 function Search() {
     const [data, setData] = useState([])
+    
     return (
         <React.Fragment>
             <ModalContainer triggerText={'Add a Record'}>
