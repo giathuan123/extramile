@@ -1,3 +1,5 @@
+import './Modal.css'
+
 import ReactDOM from 'react-dom';
 import FocusTrap from 'focus-trap-react'
 
