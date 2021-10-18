@@ -1,14 +1,19 @@
 const express = require ("express");
 usersRoute = require("../controllers/usersData");
-const dummyData = require("../data/testData3.json");
+const dummyData = require("../data/testData.json");
 const router = express.Router();
-
+var global_results;
 router.get("/",usersRoute.usersData);
 router.post("/api", (req, res)=>{ 
   console.log("QueryData", req.body); 
   const results = dummyData.filter(data=>query(data, req.body));
   res.json(results);
+  global_results=results;
 })
+router.get("/api/endpoint",(req,res)=>{
+  res.send(global_results);
+})
+
 
 function query(data, reqJson){
   const dateMatches = reqJson.date ? data["Start_Time"].split(' ')[0] == reqJson.date : true; // true if field is empty
