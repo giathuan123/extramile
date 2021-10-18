@@ -51,7 +51,8 @@ class SearchForm extends React.Component {
         })
         .then ((res) => res.json())
         .then ((data) => {
-          this.props.renderData([data]);
+        {/*this.props.renderData([data]);*/}
+        console.log(data);
         });
         
     }
