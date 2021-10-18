@@ -1,7 +1,7 @@
 import './App.css';
 import {useState } from 'react';
 import SearchForm from './components/SearchForm';
-
+import Card from './components/Card'
 function App() {
   const [state, setState] = useState("Not successful");
   var renderData = (data)=>{
@@ -10,8 +10,10 @@ function App() {
   return (
     <div className="App">
       <h1>Extra Mile Website</h1>
-      <SearchForm renderData = {renderData}/>
-      <p>{JSON.stringify(state)}</p> 
+      {/*<SearchForm renderData = {renderData}/>*/}
+      {/*<p>{JSON.stringify(state)}</p> */}
+      <SearchForm />
+      <Card />
     </div>
   );
 }
