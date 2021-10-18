@@ -1,16 +1,17 @@
+import React, {useState} from 'react';
 import {CreateRecordForm, SearchForm} from '../Forms';
 import Card from '../components/Card';
-import React from 'react';
 import ModalContainer from '../ModalContainer'
 
 function Search() {
+    const [data, setData] = useState([])
     return (
         <React.Fragment>
             <ModalContainer triggerText={'Add a Record'}>
                 <CreateRecordForm/>
             </ModalContainer>
-            <SearchForm />
-            <Card />
+            <SearchForm setData={setData}/>
+            <Card data={data}/>
         </React.Fragment>
     );
 }
