@@ -1,5 +1,5 @@
-import SearchForm from '../components/SearchForm'
-import Card from '../components/Card'
+import {SearchForm} from '../Forms';
+import Card from '../components/Card';
 import React from 'react';
 
 function Search() {

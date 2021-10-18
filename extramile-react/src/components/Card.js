@@ -1,6 +1,6 @@
 import React from 'react';
 import './Card.css'
-import Button from './formComponents/Button';
+import {Button} from '../FormComponents';
 class Card extends React.Component{
    
     // Constructor 
