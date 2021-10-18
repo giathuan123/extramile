@@ -1,20 +1,38 @@
 import './App.css';
-import {useState } from 'react';
-import SearchForm from './components/SearchForm';
-import Card from './components/Card'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom"
+
+import {SearchPage, HomePage} from './Pages'
+
 function App() {
-  const [state, setState] = useState("Not successful");
-  var renderData = (data)=>{
-    setState(data);
-  }
   return (
-    <div className="App">
-      <h1>Extra Mile Website</h1>
-      {/*<SearchForm renderData = {renderData}/>*/}
-      {/*<p>{JSON.stringify(state)}</p> */}
-      <SearchForm />
-      <Card />
-    </div>
+    <Router>
+      <div className="App">
+        <nav>
+          <ul>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/search">Search Data</Link>
+            </li>
+          </ul>
+        </nav>
+
+        <Switch>
+          <Route path="/search">
+            <SearchPage />
+          </Route>
+          <Route path="/">
+            <HomePage />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
   );
 }
 
