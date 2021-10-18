@@ -1,5 +1,6 @@
 import React from 'react';
 import './Card.css'
+import Button from './formComponents/Button';
 class Card extends React.Component{
    
     // Constructor 
@@ -30,7 +31,7 @@ class Card extends React.Component{
           <h1> Pleses wait some time.... </h1> </div> ;
  
       return (
-      <div className = "Accidents">
+      <div className = "app-container">
           <h1> Accident Report </h1>  
           <table>
             <thead>
@@ -41,6 +42,7 @@ class Card extends React.Component{
                 <td>State</td>
                 <td>Zip-Code</td>
                 <td>Severity</td>
+                <td>Actions</td>
               </tr>
             </thead>
             <tbody>
@@ -52,6 +54,8 @@ class Card extends React.Component{
                   <td>{item.State}</td>
                   <td>{item.Zipcode}</td>
                   <td>{item.Severity}</td>
+                  <td><Button title="Edit"/><Button title = "Delete"/></td>
+                  
                 </tr>
                 
               ))}
