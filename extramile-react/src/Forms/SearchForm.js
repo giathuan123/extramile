@@ -1,8 +1,6 @@
 import React from 'react';
 
-import Input from './formComponents/Input';
-import CheckBox from './formComponents/CheckBox'
-import Button from './formComponents/Button';
+import {Input, CheckBox, Button} from '../FormComponents'
 
 class SearchForm extends React.Component {
     constructor(props) {
@@ -51,7 +49,8 @@ class SearchForm extends React.Component {
         })
         .then ((res) => res.json())
         .then ((data) => {
-          this.props.renderData([data]);
+            this.props.setData(data);
+            console.log(data);
         });
         
     }
