@@ -8,7 +8,20 @@ router.post("/api", (req, res)=>{
   console.log("QueryData", req.body); 
   const results = dummyData.filter(data=>query(data, req.body));
   res.json(results);
-})
+});
+
+router.post("/delete", (req, res)=>{
+  const deleteArray = req.body;
+  deleteArray.forEach(data=>{
+    let index = dummyData.findIndex(object=>object.ID == data);
+    if(index == -1){
+      res.send("invalid record ID");
+      return;
+    }
+    dummyData.split(index, 1);
+    res.send("Deleted" + JSON.stringify(req.body));
+  });
+});
 
 function query(data, reqJson){
   const dateMatches = reqJson.date ? data["Start_Time"].split(' ')[0] == reqJson.date : true; // true if field is empty
