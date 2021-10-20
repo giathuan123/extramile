@@ -15,13 +15,14 @@ router.get("/api/endpoint",(req,res)=>{
 })
 router.post("/delete", (req, res)=>{
   const deleteArray = req.body;
+  console.log(req.body);
   deleteArray.forEach(data=>{
     let index = dummyData.findIndex(object=>object.ID == data);
     if(index == -1){
       res.send("invalid record ID");
       return;
     }
-    dummyData.split(index, 1);
+    dummyData.splice(index, 1);
     res.send("Deleted" + JSON.stringify(req.body));
   });
 });
