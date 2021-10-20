@@ -3,6 +3,7 @@ const { Parser } = require("./Parser.js");
 const fs = require('fs');
 const SEGMENT_SIZE = 300000;
 const readline = require("readline");
+
 var filename = "outFile";
 var index = 1;
 var outFile = fs.createWriteStream(filename + index + ".json");
