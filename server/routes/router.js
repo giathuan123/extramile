@@ -37,11 +37,11 @@ router.post("/create", (req, res)=>{
   }, 0);
   var newAccident = {
     "ID": "A-" + (newId + 1),
-    "Street": req.body.Street,
-    "City": req.body.City,
-    "State": req.body.State,
-    "Severity": req.body.Severity,
-    "Zipcode": req.body.Zipcode
+    "Street": req.body.street,
+    "City": req.body.city,
+    "State": req.body.state,
+    "Severity": req.body.severity,
+    "Zipcode": req.body.zip
   }
   dummyData.push(newAccident);
   console.log("Adding to dummyData", newAccident);
