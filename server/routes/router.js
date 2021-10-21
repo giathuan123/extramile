@@ -9,7 +9,6 @@ router.get("/",usersRoute.usersData);
 router.post("/api", (req, res)=>{ 
   console.log("QueryData", req.body); 
   const results = dummyData.filter(data=>query(data, req.body));
-  console.log(results)
   res.json(results);
   global_results=results;
 })
@@ -28,6 +27,24 @@ router.post("/delete", (req, res)=>{
     dummyData.splice(index, 1);
     res.send("Deleted" + JSON.stringify(req.body));
   });
+});
+
+router.post("/create", (req, res)=>{
+  var newId = dummyData.reduce((prev, curr)=>{
+    currInt = parseInt(curr.ID.split('-')[1]);
+    return (currInt > prev) ? currInt : prev;
+  }, 0);
+  var newAccident = {
+    "ID": "A-" + (newId + 1),
+    "Street": req.body.Street,
+    "City": req.body.City,
+    "State": req.body.State,
+    "Severity": req.body.Severity,
+    "Zipcode": req.body.Zipcode
+  }
+  dummyData.push(newAccident);
+  console.log("Adding to dummyData", newAccident);
+  res.send("Success");
 });
 
 function query(data, reqJson){
