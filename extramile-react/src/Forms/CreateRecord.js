@@ -28,6 +28,20 @@ class CreateRecord extends React.Component {
 
     handleFormSubmit(e) {
         e.preventDefault();
+        let data = this.state.newRecord;
+        fetch('http://localhost:3001/users/create', {
+            method: "POST",
+            body: JSON.stringify(data),
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+        })
+        .then ((res) => res.json())
+        .then ((data) => {
+            //this.props.setData(data);
+            console.log(data);
+        });
         console.log(this.state.newRecord)
     }
 
@@ -43,7 +57,7 @@ class CreateRecord extends React.Component {
         let value = e.target.value;
         this.setState(prevState => ({
             newRecord: {
-                ...prevState.newRecord, State: value
+                ...prevState.newRecord, state: value
             }
         }), )
     }
