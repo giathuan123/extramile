@@ -5,7 +5,23 @@ import ModalContainer from '../ModalContainer'
 import {EditRecordForm} from '../Forms'
 
 function Card(props) {
-  
+
+  function handleSubmit(e){
+    e.preventDefault();
+    let data= props.accident_id;
+    fetch('http://localhost:3001/users/delete', {
+            method: "POST",
+            body: JSON.stringify(data),
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+    })
+    .then((res)=>res.json())
+    .then((data)=>{
+      console.log(data);
+    })
+  }
   return (
     <div className = "app-container">
         <h1> Accident Report </h1>  
