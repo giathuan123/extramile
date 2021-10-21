@@ -1,4 +1,5 @@
 const express = require ("express");
+const db = require("../db/backup");
 usersRoute = require("../controllers/usersData");
 var dummyData = require("../data/testData.json");
 
@@ -46,6 +47,8 @@ router.post("/create", (req, res)=>{
   console.log("Adding to dummyData", newAccident);
   res.send("Success");
 });
+
+setInterval(() => db.backup(dummyData), 5000);
 
 function query(data, reqJson){
   const dateMatches = reqJson.date ? data["Start_Time"].split(' ')[0] == reqJson.date : true; // true if field is empty
