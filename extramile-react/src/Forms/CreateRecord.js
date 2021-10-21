@@ -22,6 +22,7 @@ class CreateRecord extends React.Component {
         this.handleStreet = this.handleStreet.bind(this);
         this.handleCity = this.handleCity.bind(this);
         this.handleZip = this.handleZip.bind(this);
+        this.handleState = this.handleState.bind(this);
         this.handleSeverity = this.handleSeverity.bind(this);
     }
 
@@ -35,6 +36,14 @@ class CreateRecord extends React.Component {
         this.setState(prevState => ({
             newRecord: {
                 ...prevState.newRecord, street: value
+            }
+        }), )
+    }
+    handleState(e) {
+        let value = e.target.value;
+        this.setState(prevState => ({
+            newRecord: {
+                ...prevState.newRecord, State: value
             }
         }), )
     }
@@ -82,6 +91,12 @@ class CreateRecord extends React.Component {
                         type={'text'}
                         value={this.state.newRecord.city}
                         handleChange={this.handleCity}
+                    />
+                    <Input
+                        title={'State'}
+                        type={'text'}
+                        value={this.state.newRecord.state}
+                        handleChange={this.handleState}
                     />
                     <Input
                         title={'Zip Code'}
