@@ -5,6 +5,7 @@ import ModalContainer from '../ModalContainer'
 import {EditRecordForm} from '../Forms'
 
 function Card(props) {
+  
   return (
     <div className = "app-container">
         <h1> Accident Report </h1>  
@@ -33,7 +34,10 @@ function Card(props) {
                   <ModalContainer triggerText="Edit">
                     <EditRecordForm data={item} />
                   </ModalContainer>
-                  <Button title = "Delete"/>
+                  <Button action={
+                    ()=>{
+                    fetch('http://localhost:3001/users/delete', 
+                      {method: "post", headers:{"Content-Type":"application/json"}, body: JSON.stringify([item.ID])}).then(response=>console.log(response))}} title = "Delete"/>
                 </td>
               </tr>  
             ))}
