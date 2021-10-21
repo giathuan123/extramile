@@ -1,12 +1,15 @@
 const express = require ("express");
 usersRoute = require("../controllers/usersData");
 var dummyData = require("../data/testData.json");
+
 const router = express.Router();
 var global_results;
 router.get("/",usersRoute.usersData);
+
 router.post("/api", (req, res)=>{ 
   console.log("QueryData", req.body); 
   const results = dummyData.filter(data=>query(data, req.body));
+  console.log(results)
   res.json(results);
   global_results=results;
 })
@@ -33,9 +36,7 @@ function query(data, reqJson){
   const stateMatches = reqJson.state ? data["State"].includes(reqJson.state) : true;
   const cityMatches = reqJson.city ? data["City"].includes(reqJson.city) : true;
   const zipMatches = reqJson.zip ? data["Zipcode"] == reqJson.zip : true;
-  const severityMatches = reqJson.severity.lenght == 0 ? reqJson.severity.includes(data["Severity"]) : true; 
-  console.log("Matches:", data.ID);
-  
+  const severityMatches = reqJson.severity.length != 0 ? reqJson.severity.includes(data["Severity"]) : true; 
   return dateMatches && streetMatches && stateMatches && cityMatches && zipMatches && severityMatches;
 }
 module.exports = router;
