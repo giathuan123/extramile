@@ -8,6 +8,7 @@ function setup() {
     const currData = getMostRecentBackup(dirname);
     
     if ( typeof currData !== 'undefined' && currData) {
+        // check if file is valid json, if not warn the user and exit
         // load data from file
     }
     else {
