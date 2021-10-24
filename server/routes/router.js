@@ -11,11 +11,17 @@ router.post("/api", (req, res)=>{
   const results = dummyData.filter(data=>query(data, req.body));
   res.json(results);
 })
-
+//Feature 2 get request for most Accidental cities
 router.get("/barinfo",(req,res)=>{
   const results = tenAccCities();
   res.send(JSON.stringify(results));
 })
+//Feature 1 get request for most Accidental states
+router.get("/mostaccstates",(req,res)=>{
+  const results = MostAccStates();
+  res.send(JSON.stringify(results));
+})
+
 router.post("/delete", (req, res)=>{
   const deleteArray = req.body;
   console.log(req.body);
@@ -81,5 +87,27 @@ function tenAccCities(){
   const obj = Object.fromEntries(new_array);*/
   return new_array;
 }
+
+function MostAccStates(){
+  let data = dummyData;
+  var arr = [];
+  const map1 = new Map();
+  data.filter(function (item){
+    arr.push(item.State);
+  });
+  arr.forEach(function (x) { 
+    if(!map1.has(x)){
+      map1.set(x,1);
+    }
+    else{
+      map1.set(x,(map1.get(x)??0)+1);
+    }
+  });
+  var new_map = new Map([...map1.entries()].sort((a,b)=> b[1]-a[1]));
+  var new_array = Array.from(new_map,([name,accidents])=>({name,accidents}));
+  //console.log(new_array);
+  return new_array;
+}
+
 
 module.exports = router;
