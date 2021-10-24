@@ -11,6 +11,7 @@ import {
   HomePage, 
   BarPage,
   MapsPage,
+  CalendarPage,
 } from './Pages'
 
 function App() {
@@ -31,6 +32,9 @@ function App() {
             <li>
               <Link to="/maps">Maps</Link>
             </li>
+            <li>
+              <Link to="calendar">Calendar</Link>
+            </li>
           </ul>
         </nav>
 
@@ -43,6 +47,9 @@ function App() {
           </Route>
           <Route path="/maps">
             <MapsPage />
+          </Route>
+          <Route path="/calendar">
+            <CalendarPage />
           </Route>
           <Route path="/">
             <HomePage />
