@@ -22,6 +22,20 @@ router.get("/mostaccstates",(req,res)=>{
   res.send(JSON.stringify(results));
 })
 
+router.get("/dailystats", (req,res) => {
+  const data = [
+    {
+      "value": 335,
+      "day": "2016-01-06"
+    },
+    {
+      "value": 25,
+      "day": "2017-08-14"
+    },
+  ];
+  res.json(data);
+});
+
 router.post("/delete", (req, res)=>{
   const deleteArray = req.body;
   console.log(req.body);
