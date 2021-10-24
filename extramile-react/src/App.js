@@ -6,7 +6,7 @@ import {
   Link
 } from "react-router-dom"
 
-import {SearchPage, HomePage} from './Pages'
+import {SearchPage, HomePage, BarPage} from './Pages'
 
 function App() {
   return (
@@ -20,12 +20,18 @@ function App() {
             <li>
               <Link to="/search">Search Data</Link>
             </li>
+            <li>
+              <Link to="/bar">Bar Data</Link>
+            </li>
           </ul>
         </nav>
 
         <Switch>
           <Route path="/search">
             <SearchPage />
+          </Route>
+          <Route path="/bar">
+            <BarPage />
           </Route>
           <Route path="/">
             <HomePage />
