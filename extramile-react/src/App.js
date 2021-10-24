@@ -6,7 +6,12 @@ import {
   Link
 } from "react-router-dom"
 
-import {SearchPage, HomePage, BarPage} from './Pages'
+import {
+  SearchPage, 
+  HomePage, 
+  BarPage,
+  MapsPage,
+} from './Pages'
 
 function App() {
   return (
@@ -23,6 +28,9 @@ function App() {
             <li>
               <Link to="/bar">Bar Data</Link>
             </li>
+            <li>
+              <Link to="/maps">Maps</Link>
+            </li>
           </ul>
         </nav>
 
@@ -32,6 +40,9 @@ function App() {
           </Route>
           <Route path="/bar">
             <BarPage />
+          </Route>
+          <Route path="/maps">
+            <MapsPage />
           </Route>
           <Route path="/">
             <HomePage />
