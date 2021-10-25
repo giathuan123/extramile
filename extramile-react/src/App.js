@@ -3,7 +3,6 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
 } from "react-router-dom"
 
 import {
@@ -14,47 +13,30 @@ import {
   CalendarPage,
 } from './Pages'
 
+import { NavBar } from './NavBar'
+
 function App() {
   return (
     <Router>
       <div className="App">
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/search">Search Data</Link>
-            </li>
-            <li>
-              <Link to="/bar">Bar Data</Link>
-            </li>
-            <li>
-              <Link to="/maps">Maps</Link>
-            </li>
-            <li>
-              <Link to="calendar">Calendar</Link>
-            </li>
-          </ul>
-        </nav>
-
+        <NavBar />
         <Switch>
-          <Route path="/search">
-            <SearchPage />
-          </Route>
-          <Route path="/bar">
-            <BarPage />
-          </Route>
-          <Route path="/maps">
-            <MapsPage />
-          </Route>
-          <Route path="/calendar">
-            <CalendarPage />
-          </Route>
-          <Route path="/">
-            <HomePage />
-          </Route>
-        </Switch>
+                <Route path="/search">
+                    <SearchPage />
+                </Route>
+                <Route path="/bar">
+                    <BarPage />
+                </Route>
+                <Route path="/maps">
+                    <MapsPage />
+                </Route>
+                <Route path="/calendar">
+                    <CalendarPage />
+                </Route>
+                <Route path="/">
+                    <HomePage />
+                </Route>
+            </Switch>
       </div>
     </Router>
   );

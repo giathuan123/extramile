@@ -1,0 +1,20 @@
+.burger {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 2rem;
+    height: 2rem;
+}
+
+.burger div {
+    width: 2rem;
+    height: 0.25rem;
+    background: white;
+    transition: all 0.3s linear;
+}
+
+button {
+    border: none;
+    outline: none;
+    background-color: transparent;
+}
