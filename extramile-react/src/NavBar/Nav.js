@@ -15,13 +15,17 @@ const Nav = () => {
         <nav className="nav-bar">
           <div className="nav-content">
             <div className="nav-left">
-              <Link to="/">Home</Link>
+              <Link className="nav-button" to="/">
+                <img src="/images/home.svg" alt="Home" width="30" height="30"/>
+              </Link>
             </div>
             <div className="nav-right">
-                <Link to="/search">
-                    <img src="/images/search.png" alt="Search" width="25" height="25"/>
+                <Link className="nav-button" to="/search">
+                    <img src="/images/search.png" alt="Search" width="30" height="30"/>
                 </Link>
-                <Burger onClick={toggleMenu} />
+                <a className="nav-button">
+                  <Burger onClick={toggleMenu} />
+                </a>
             </div>
           </div>
           <Menu isOpen={menuIsOpen} />

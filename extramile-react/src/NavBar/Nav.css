@@ -14,11 +14,18 @@
 .nav-bar a {
     text-decoration: none;
     color: white;
-    display: inline-block;
-    padding-left: 3px;
-    padding-right: 3px;
-    padding-top: 6px;
-    padding-bottom: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-bar a:hover {
+    background-color: #30302d;
+}
+
+.nav-button {
+    width: 3rem;
+    height: 3rem;
 }
 
 .nav-content {
