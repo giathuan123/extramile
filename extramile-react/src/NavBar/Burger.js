@@ -2,7 +2,7 @@ import './Burger.css';
 
 const Burger = (props) => {
     return (
-        <button onClick={props.onClick}>
+        <button className="burger-button" onClick={props.onClick}>
             <div className="burger">
                 <div />
                 <div />
