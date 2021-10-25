@@ -7,7 +7,21 @@ function Map() {
     const [list, setList] = useState([]);
     const [checker,setChecker] = useState(0);
 
+    if(checker !== 1){
+        fetch('http://localhost:3001/users/mostaccstates')
+        .then(response => response.json())
+        .then((json) => {
+            setList(json);
+            setChecker(1);
+        });
+    }
 
+    for (var i = 0; i < list.length; i++){
+        var row = list[i];
+        locs.push(row["name"]);
+        accidents.push(row["accidents"]);
+    }
+    
     return (
         <div style={{ width: "100%", height: "100%" }}>
             <Plot
