@@ -16,7 +16,7 @@ const Nav = () => {
           <div className="nav-content">
             <div className="nav-left">
               <Link className="nav-button" to="/">
-                <img src="/images/home.svg" alt="Home" width="30" height="30"/>
+                <h1>Extramile</h1>
               </Link>
             </div>
             <div className="nav-right">
