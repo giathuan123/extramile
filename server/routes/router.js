@@ -23,17 +23,8 @@ router.get("/mostaccstates",(req,res)=>{
 })
 
 router.get("/dailystats", (req,res) => {
-  const data = [
-    {
-      "value": 335,
-      "day": "2016-01-06"
-    },
-    {
-      "value": 25,
-      "day": "2017-08-14"
-    },
-  ];
-  res.json(data);
+  const results = getDailyAccidents();
+  res.send(JSON.stringify(results));
 });
 
 router.post("/delete", (req, res)=>{
@@ -121,6 +112,23 @@ function MostAccStates(){
   var new_array = Array.from(new_map,([name,accidents])=>({name,accidents}));
   //console.log(new_array);
   return new_array;
+}
+
+function getDailyAccidents() {
+  let data = dummyData;
+  const accidentsMap = new Map();
+
+  data.forEach( (accident) => {
+    let date = accident.Start_Time.substring(0,10);
+    if (!accidentsMap.has(date)) {
+      accidentsMap.set(date, 1);
+    }
+    else {
+      accidentsMap.set(date, (accidentsMap.get(date)??0) + 1)
+    }
+  });
+
+  return Array.from(accidentsMap, ([day, value]) => ({day, value}));
 }
 
 
