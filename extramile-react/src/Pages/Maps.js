@@ -2,7 +2,7 @@ import { MapChart } from '../Charts';
 
 function Maps() {
     return (
-        <div>
+        <div className="content-container">
             <MapChart />
         </div>
     );

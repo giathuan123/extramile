@@ -20,23 +20,25 @@ function App() {
     <Router>
       <div className="App">
         <NavBar />
-        <Switch>
-                <Route path="/search">
-                    <SearchPage />
-                </Route>
-                <Route path="/bar">
-                    <BarPage />
-                </Route>
-                <Route path="/maps">
-                    <MapsPage />
-                </Route>
-                <Route path="/calendar">
-                    <CalendarPage />
-                </Route>
-                <Route path="/">
-                    <HomePage />
-                </Route>
-            </Switch>
+        <div className="container">
+          <Switch>
+            <Route path="/search">
+                <SearchPage />
+            </Route>
+            <Route path="/bar">
+                <BarPage />
+            </Route>
+            <Route path="/maps">
+                <MapsPage />
+            </Route>
+            <Route path="/calendar">
+                <CalendarPage />
+            </Route>
+            <Route path="/">
+                <HomePage />
+            </Route>
+          </Switch>
+        </div>
       </div>
     </Router>
   );

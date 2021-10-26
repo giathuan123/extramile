@@ -16,7 +16,7 @@ function Calendar() {
     }, []);
 
     return (
-        <div className='page-container'>
+        <div className='content-container'>
             Accidents Heatmap By Month
             <CalendarChart data={data} />
         </div>

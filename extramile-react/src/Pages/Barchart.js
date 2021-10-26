@@ -3,11 +3,11 @@ import Bargraph from '../components/Bar';
 
 function Barchart() {
     return (
-        <React.Fragment>
+        <div className="content-container">
             
             <h1>Top ten most accident prone cities</h1>
             <Bargraph />
-        </React.Fragment>
+        </div>
     );
 }
 
