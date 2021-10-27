@@ -10,6 +10,7 @@ import {
   HomePage, 
   BarPage,
   MapsPage,
+  CountiesMapPage,
   CalendarPage,
 } from './Pages'
 
@@ -31,6 +32,9 @@ function App() {
             <Route path="/maps">
                 <MapsPage />
             </Route>
+            <Route path="/countiesMap">
+              <CountiesMapPage />
+              </Route>
             <Route path="/calendar">
                 <CalendarPage />
             </Route>
