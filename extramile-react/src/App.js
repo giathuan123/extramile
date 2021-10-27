@@ -9,7 +9,7 @@ import {
   SearchPage, 
   HomePage, 
   BarPage,
-  MapsPage,
+  StatesMapPage,
   CountiesMapPage,
   CalendarPage,
 } from './Pages'
@@ -29,8 +29,8 @@ function App() {
             <Route path="/bar">
                 <BarPage />
             </Route>
-            <Route path="/maps">
-                <MapsPage />
+            <Route path="/statesMap">
+                <StatesMapPage />
             </Route>
             <Route path="/countiesMap">
               <CountiesMapPage />

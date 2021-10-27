@@ -8,7 +8,7 @@ const Menu = (props) => {
         {props.isOpen &&
             <div className="menu">
                 <Link to="/bar">Bar Data</Link>
-                <Link to="/maps">Maps</Link>
+                <Link to="/statesMap">States Map</Link>
                 <Link to="/countiesMap">Counties Map</Link>
                 <Link to="calendar">Calendar</Link>
             </div>
