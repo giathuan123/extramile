@@ -1,7 +1,7 @@
 const express = require ("express");
 const db = require("../db/backup");
 usersRoute = require("../controllers/usersData");
-var dummyData = require("../data/testData.json");
+var dummyData = require("../data/testData3.json");
 
 const router = express.Router();
 router.get("/",usersRoute.usersData);
@@ -19,6 +19,11 @@ router.get("/barinfo",(req,res)=>{
 //Feature 1 get request for most Accidental states
 router.get("/mostaccstates",(req,res)=>{
   const results = MostAccStates();
+  res.send(JSON.stringify(results));
+})
+
+router.get("/data",(req,res)=>{
+  const results = dummyData;
   res.send(JSON.stringify(results));
 })
 

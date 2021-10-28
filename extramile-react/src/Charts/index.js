@@ -1,9 +1,9 @@
 import Map from './Map'
 import Calendar from './Calendar'
-import TimeChart from './Histogramchart'
+import TimeChart from './TimeChart'
 
 export {
     Map as MapChart,
     Calendar as CalendarChart,
-    TimeChart as HistogramChart
+    TimeChart as TimeChartFig
 }

@@ -1,9 +1,9 @@
-import { HistogramChart } from '../Charts';
+import { TimeChartFig } from '../Charts';
 
 function Histogram() {
     return (
         <div className="content-container">
-            <HistogramChart />
+            <TimeChartFig />
         </div>
     );
 }

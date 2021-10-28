@@ -35,7 +35,7 @@ function App() {
             <Route path="/calendar">
                 <CalendarPage />
             </Route>
-            <Route path="/histogram">
+            <Route path="/histogramchart">
                 <HistogramPage />
             </Route>
             <Route path="/">
