@@ -10,6 +10,7 @@ const Menu = (props) => {
                 <Link to="/bar">Bar Data</Link>
                 <Link to="/maps">Maps</Link>
                 <Link to="calendar">Calendar</Link>
+                <Link to = "/histogramchart">Histogram</Link>
             </div>
         }
         </>

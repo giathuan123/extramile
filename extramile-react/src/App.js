@@ -11,6 +11,7 @@ import {
   BarPage,
   MapsPage,
   CalendarPage,
+  HistogramPage
 } from './Pages'
 
 import { NavBar } from './NavBar'
@@ -33,6 +34,9 @@ function App() {
             </Route>
             <Route path="/calendar">
                 <CalendarPage />
+            </Route>
+            <Route path="/histogram">
+                <HistogramPage />
             </Route>
             <Route path="/">
                 <HomePage />
