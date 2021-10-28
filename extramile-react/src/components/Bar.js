@@ -71,8 +71,8 @@ export default function BarGraph() {
         },
       ];
     return (
-        <BarChart width={1920}
-        height={700}
+        <BarChart width={window.innerWidth}
+        height={window.innerHeight-200}
         data={list}
         margin={{
           top: 5,
