@@ -119,7 +119,11 @@ function getDailyAccidents() {
   const accidentsMap = new Map();
 
   data.forEach( (accident) => {
-    let date = accident.Start_Time.substring(0,10);
+    let date = accident.Start_Time
+    if (typeof date == "undefined") {
+      return;
+    }
+    date = date.substring(0,10);
     if (!accidentsMap.has(date)) {
       accidentsMap.set(date, 1);
     }
