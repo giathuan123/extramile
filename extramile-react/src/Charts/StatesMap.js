@@ -24,7 +24,7 @@ function StatesMap() {
     
     return (
         <>
-            <Plot
+            <Plot 
                 data= {[{
                     type: 'choropleth',
                     locationmode: 'USA-states',
@@ -35,6 +35,8 @@ function StatesMap() {
                 }]}
                 layout= { {
                     title: '2019 Car Accidents By State',
+                    width: window.innerWidth,
+                    height: window.innerHeight,
                     geo:{
                         scope: 'usa',
                         countrycolor: 'rgb(255, 255, 255)',
