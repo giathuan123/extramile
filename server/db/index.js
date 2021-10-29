@@ -6,6 +6,9 @@ class IndexContainer{
     var position = this.indexContainer.findIndex(index => index.indexName == indexName);
     this.indexContainer.splice(position, 1);
   }
+  getIndex(indexName){
+    return this.indexContainer.find(index=>index.indexName==indexName);
+  }
   removeData(data){
     this.indexContainer.forEach(index=>{
       if(index.removeData(data) == -1){
@@ -36,6 +39,9 @@ class Index{
   static setData(data){
     Index.data = data;
   }
+  get(field){
+    return this.index[field];
+  }
   constructor(indexName, fieldGetter){
     this.indexName = indexName;
     this.index = this.createIndex(fieldGetter);
@@ -54,14 +60,17 @@ class Index{
     return -1;
   }
   addData(data){
-    if(this.fieldGetter(data) == undefined){
+    let [key, value] = Object.entries(data)[0];
+    console.log(key, value);
+    if(this.fieldGetter(value) == undefined){
+      console.log("[ERROR] undefined data field " + key + " can't add to " + this.indexName);
       return -1;
     }
-    console.log($`[INFO] Adding ${Object.keys(data)[0]} to ${this.fieldGetter(data)} in ${this.indexName}`);
-    if(this.index[this.fieldGetter(data)] != undefined){
-      this.index[this.fieldGetter(data)].push(Object.keys(data)[0]);
+    console.log(`[INFO] Adding ${Object.keys(data)[0]} to ${this.fieldGetter(value)} in ${this.indexName}`);
+    if(this.index[this.fieldGetter(value)] != undefined){
+      this.index[this.fieldGetter(value)].push(key);
     }else{
-      this.index[this.fieldGetter(data)] = [Object.keys(data)[0]];
+      this.index[this.fieldGetter(data)] = [key];
     }
   }
   updateData(oldData, newData){
@@ -76,7 +85,7 @@ class Index{
       return -1;
     }
     console.log(`[INFO] Creating new index: ${this.indexName}`);
-    for(const [key, value] of Object.entries(data)){
+    for(const [key, value] of Object.entries(Index.data)){
       if(index[fieldGetter(value)] == undefined){
         index[fieldGetter(value)] = [key];
       }else{
@@ -88,8 +97,7 @@ class Index{
     return index;
   }
 }
-modules.exports = {
+module.exports = {
   Index: Index,
   IndexContainer: IndexContainer,
-}
 }

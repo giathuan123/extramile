@@ -1,45 +1,63 @@
 const fs = require('fs');
 const path = require('path');
+const { data } = require('./load.js');
+const { Index, IndexContainer } = require("./index.js");
 
-const dirname = path.resolve(__dirname, '../data/backups')
-
-function setup() {
-
-    const currData = getMostRecentBackup(dirname);
-    
-    if ( typeof currData !== 'undefined' && currData) {
-        // check if file is valid json, if not warn the user and exit
-        // load data from file
+function initIndex(){
+  var indexContainer = new IndexContainer();
+  Index.setData(data);
+  var timeIndex = new Index("TimeIndex", (data)=>{
+    if(data.Start_Time != undefined){
+      return data.Start_Time.split(" ")[0]
     }
-    else {
-        // attempt to load from csv file
-        console.log("Attempting to load data from csv file...");
-    }
+    return undefined;
+  });
+  var cityIndex = new Index("CityIndex", (data)=>data.City);
+  indexContainer.addIndex(timeIndex);
+  indexContainer.addIndex(cityIndex);
+  
+  return indexContainer;
+}
+function shutDown(server, connections) {
+  backup(data);
+  console.log('[INFO] Shutting down server...');
+  server.close(() => {
+    console.log('[INFO] Closed remaining connections');
+    process.exit(0);
+  });
 
-    // if the csv file does not exist, give an error
+  setTimeout(() => {
+    console.error('[INFO] Could not close connections in time, forcefully shutting down');
+    process.exit(1);
+  }, 10000);
+
+  connections.forEach(curr => curr.end());
+  setTimeout(() => connections.forEach(curr => curr.destroy()), 5000); 
 }
 
 function backup(newData) {
-    console.log("Backup in progress...")
+    console.log("[INFO] Backup in progress...")
     let data = JSON.stringify(newData);
-    fs.writeFileSync(path.resolve(__dirname, '../data/testData.json'), data), function(err, result) {
+    const filename = path.resolve(__dirname, './data/backup.json')
+    fs.writeFileSync(filename, data), function(err, result) {
         if(err) console.log('error', err);
     };
-    console.log("Backup successful...");
+    console.log("[INFO] Backup successful data saved to " + filename);
 }
 
-function getMostRecentBackup(dir) {
-    const files = orderBackups(dir);
-    return files.length ? files[0] : undefined;
-}
 
-function orderBackups(dir) {
-    return fs.readdirSync(dir)
-        .filter( (file) => fs.lstatSync(path.join(dir, file)).isFile())
-        .map( (file) => ({
-            file, mtime: fs.lstatSync(path.join(dir,file)).mtime
-        }))
-        .sort((a,b) => b.mtime.getTime() - a.mtime.getTime());
-}
+module.exports = {shutDown, data, indexes: initIndex()};
 
-module.exports = {backup, setup};
+// function getMostRecentBackup(dir) {
+//     const files = orderBackups(dir);
+//     return files.length ? files[0] : undefined;
+// }
+
+// function orderBackups(dir) {
+//     return fs.readdirSync(dir)
+//         .filter( (file) => fs.lstatSync(path.join(dir, file)).isFile())
+//         .map( (file) => ({
+//             file, mtime: fs.lstatSync(path.join(dir,file)).mtime
+//         }))
+//         .sort((a,b) => b.mtime.getTime() - a.mtime.getTime());
+// }

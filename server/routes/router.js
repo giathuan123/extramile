@@ -1,15 +1,42 @@
-const express = require ("express");
-usersRoute = require("../controllers/usersData");
-var dummyData = require("../data/testData.json");
-
-const router = express.Router();
-router.get("/",usersRoute.usersData);
-
+const router = require("express").Router();
+var { data, indexes } = require("../db/dbloader.js")
+var dummyData = require("../db/data/testData.json");
+var maxIdNumber = 0;
+function makeData(key, value){
+  return {
+    ID: key,
+    ...value
+  }
+}
 router.post("/api", (req, res)=>{ 
-  console.log("QueryData", req.body); 
-  const results = dummyData.filter(data=>query(data, req.body));
+  console.log("[INFO] QueryData recieved at /users/api: ", req.body); 
+  results = [];
+  var timeIndex = indexes.getIndex("TimeIndex");
+  var cityIndex = indexes.getIndex("CityIndex");
+  if(req.body.date){
+    let fromIndex = timeIndex.get(req.body.date);
+    results = fromIndex.map((id)=>{return makeData(id, data[id])});
+  }else if(req.body.city){
+    let fromIndex = cityIndex.get(req.body.city);
+    results = fromIndex.map((id)=>{return makeData(id, data[id])});
+  }else{
+    for(const [key, value] of Object.entries(data)){
+      if(query(value, req.body)){
+        results.push(makeData(key, value));
+      }
+    }
+  }
   res.json(results);
 })
+function query(data, reqJson){
+  const dateMatches = reqJson.date ? data["Start_Time"].split(' ')[0] == reqJson.date : true; // true if field is empty
+  const streetMatches = reqJson.street ? data["Street"].includes(reqJson.street) : true;
+  const stateMatches = reqJson.state ? data["State"].includes(reqJson.state) : true;
+  const cityMatches = reqJson.city ? data["City"].includes(reqJson.city) : true;
+  const zipMatches = reqJson.zip ? data["Zipcode"] == reqJson.zip : true;
+  const severityMatches = reqJson.severity.length != 0 ? reqJson.severity.includes(data["Severity"]) : true; 
+  return dateMatches && streetMatches && stateMatches && cityMatches && zipMatches && severityMatches;
+}
 //Feature 2 get request for most Accidental cities
 router.get("/barinfo",(req,res)=>{
   const results = tenAccCities();
@@ -30,42 +57,42 @@ router.post("/delete", (req, res)=>{
   const deleteArray = req.body;
   console.log(req.body);
   deleteArray.forEach(data=>{
-    let index = dummyData.findIndex(object=>object.ID == data);
-    if(index == -1){
-      res.send("invalid record ID");
-      return;
+    if(dummyData[data] != undefined){
+      delete dummyData[data];
     }
-    dummyData.splice(index, 1);
     res.send("Deleted" + JSON.stringify(req.body));
   });
 });
 
 router.post("/create", (req, res)=>{
-  var newId = dummyData.reduce((prev, curr)=>{
-    currInt = parseInt(curr.ID.split('-')[1]);
-    return (currInt > prev) ? currInt : prev;
-  }, 0);
-  var newAccident = {
-    "ID": "A-" + (newId + 1),
-    "Street": req.body.street,
-    "City": req.body.city,
-    "State": req.body.state,
-    "Severity": req.body.severity,
-    "Zipcode": req.body.zip
-  }
-  dummyData.push(newAccident);
-  console.log("Adding to dummyData", newAccident);
-  res.send("Success");
+    newId = (maxIdNumber == 0) ? getMaxId(): maxIdNumber;
+    ++newId;
+    if(data["A-" + (newId)] != undefined){
+      console.log("[ERROR] can't create new object: newId = " + newId);
+      return -1;
+    }
+    newKey = "A-" + (newId);
+    newObject = {
+      "Street": req.body.street,
+      "City": req.body.city,
+      "State": req.body.state,
+      "Date": req.body.date,
+      "Severity": req.body.severity,
+      "Zipcode": req.body.zip
+    }
+  
+    data[newKey] = newObject;
+    indexes.addData({[newKey]: newObject});
+    console.log(`[INFO] Adding to A-${newId} dummyData`, );
+    res.send("Success");
 });
-
-function query(data, reqJson){
-  const dateMatches = reqJson.date ? data["Start_Time"].split(' ')[0] == reqJson.date : true; // true if field is empty
-  const streetMatches = reqJson.street ? data["Street"].includes(reqJson.street) : true;
-  const stateMatches = reqJson.state ? data["State"].includes(reqJson.state) : true;
-  const cityMatches = reqJson.city ? data["City"].includes(reqJson.city) : true;
-  const zipMatches = reqJson.zip ? data["Zipcode"] == reqJson.zip : true;
-  const severityMatches = reqJson.severity.length != 0 ? reqJson.severity.includes(data["Severity"]) : true; 
-  return dateMatches && streetMatches && stateMatches && cityMatches && zipMatches && severityMatches;
+function getMaxId(){
+  var max = 0;
+  for(const [key,] of Object.entries(data)){
+    curr = parseInt(key.split('-')[1]);
+    max = curr > max ? curr: max;
+  }
+  return max;
 }
 
 function tenAccCities(){
