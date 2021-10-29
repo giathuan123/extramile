@@ -35,6 +35,8 @@ function Map() {
                 }]}
                 layout= { {
                     title: '2019 Car Accidents',
+                    width: window.innerWidth,
+                    height: window.innerHeight,
                     geo:{
                         scope: 'usa',
                         countrycolor: 'rgb(255, 255, 255)',
