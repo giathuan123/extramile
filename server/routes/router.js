@@ -13,12 +13,12 @@ router.post("/api", (req, res)=>{
   results = [];
   var timeIndex = indexes.getIndex("TimeIndex");
   var cityIndex = indexes.getIndex("CityIndex");
-  if(req.body.date){
+  if(timeIndex.get(req.body.date) != undefined){
     let fromIndex = timeIndex.get(req.body.date);
     results = fromIndex.map((id)=>{return makeData(id, data[id])});
-  }else if(req.body.city){
+  }else if(cityIndex.get(req.body.city) != undefined){
     let fromIndex = cityIndex.get(req.body.city);
-    results = fromIndex.map((id)=>{return makeData(id, data[id])});
+    results= fromIndex.map((id)=>{return makeData(id, data[id])});
   }else{
     for(const [key, value] of Object.entries(data)){
       if(query(value, req.body)){
@@ -65,10 +65,9 @@ router.post("/delete", (req, res)=>{
 });
 
 router.post("/create", (req, res)=>{
-    newId = (maxIdNumber == 0) ? getMaxId(): maxIdNumber;
-    ++newId;
+    newId = (maxIdNumber == 0) ? getMaxId(): ++maxIdNumber;
     if(data["A-" + (newId)] != undefined){
-      console.log("[ERROR] can't create new object: newId = " + newId);
+      console.log("[ERROR] can't create new object");
       return -1;
     }
     newKey = "A-" + (newId);
@@ -76,14 +75,13 @@ router.post("/create", (req, res)=>{
       "Street": req.body.street,
       "City": req.body.city,
       "State": req.body.state,
-      "Date": req.body.date,
       "Severity": req.body.severity,
       "Zipcode": req.body.zip
     }
   
     data[newKey] = newObject;
     indexes.addData({[newKey]: newObject});
-    console.log(`[INFO] Adding to A-${newId} dummyData`, );
+    console.log(`[INFO] Adding to A-${newID} dummyData`, );
     res.send("Success");
 });
 function getMaxId(){

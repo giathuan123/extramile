@@ -9,6 +9,24 @@ class IndexContainer{
   getIndex(indexName){
     return this.indexContainer.find(index=>index.indexName==indexName);
   }
+  // queryIndex(data){
+  //   var results = [];
+  //   var indexName = "";
+  //   for(const index of this.indexContainer){
+  //     let currResult = [];
+  //     if(index.fieldGetter(data) && (index[index.fieldGetter(data)] = currResult)){
+  //       if(currResult.length < results.length){
+  //         currResult = results;
+  //         indexName = index.indexName;
+  //       }
+  //     }
+  //   }
+  //   if(results.length != 0){
+  //     console.log(`[INFO] Found query in ${indexName} with ${results.length} records`);
+  //     return results;
+  //   }
+  //   return -1;
+  // }; 
   removeData(data){
     this.indexContainer.forEach(index=>{
       if(index.removeData(data) == -1){
