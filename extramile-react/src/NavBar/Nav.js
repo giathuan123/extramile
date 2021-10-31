@@ -23,9 +23,9 @@ const Nav = () => {
                 <Link className="nav-button" to="/search">
                     <img src="/images/search.png" alt="Search" width="30" height="30"/>
                 </Link>
-                <a className="nav-button">
+                <div className="nav-button">
                   <Burger onClick={toggleMenu} />
-                </a>
+                </div>
             </div>
           </div>
           <Menu isOpen={menuIsOpen} />

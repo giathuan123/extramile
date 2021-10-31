@@ -52,16 +52,19 @@ function query(data, reqJson){
 }
 //Feature 2 get request for most Accidental cities
 router.get("/barinfo",(req,res)=>{
+  console.log("[INFO] Get request recieved at /barinfo");
   const results = tenAccCities();
   res.send(JSON.stringify(results));
 })
 //Feature 1 get request for most Accidental states
 router.get("/mostaccstates",(req,res)=>{
+  console.log("[INFO] Get request recieved at /mostaccstates");
   const results = MostAccStates();
-  res.send(JSON.stringify(results));
+  res.json(results);
 })
 
 router.get("/dailystats", (req,res) => {
+  console.log("[INFO] Get request recieved at /dailystats");
   const results = getDailyAccidents();
   res.send(JSON.stringify(results));
 });
@@ -141,12 +144,14 @@ function tenAccCities(){
 
 function MostAccStates(){
   var statesAccidents = {};
-  for(const [key, value] of Object.entries(data)){
-    console.log(value)
-    statesAccidents[value.State] = statesAccidents[value.State]??0 + 1;
+  for(const [, value] of Object.entries(data)){
+    if(statesAccidents[value.State] == undefined){
+      statesAccidents[value.State] = 1;
+    }else{
+      statesAccidents[value.State] += 1;
+    }
   }
-  ret =  Object.entries(statesAccidents).map((state, accidents)=>{return {name: state, accidents: accidents}});
-  console.log(ret);
+  ret =  Object.entries(statesAccidents).map(([state, accidents])=>{return {name: state, accidents: accidents}});
   // let data = dummyData;
   // var arr = [];
   // const map1 = new Map();
@@ -165,27 +170,34 @@ function MostAccStates(){
   // var new_array = Array.from(new_map,([name,accidents])=>({name,accidents}));
   // console.log(new_array);
   // return new_array;
+  return ret;
 }
 
 function getDailyAccidents() {
-  let data = dummyData;
-  const accidentsMap = new Map();
-
-  data.forEach( (accident) => {
-    let date = accident.Start_Time
-    if (typeof date == "undefined") {
-      return;
-    }
-    date = date.substring(0,10);
-    if (!accidentsMap.has(date)) {
-      accidentsMap.set(date, 1);
-    }
-    else {
-      accidentsMap.set(date, (accidentsMap.get(date)??0) + 1)
-    }
+  var timeIndex = indexes.getIndex("TimeIndex");
+  var numAccPerDayArray = Object.entries(timeIndex.index).map(([day, accidents])=>[day, accidents.length]);
+  numAccPerDayArray.sort(([, currNumAccidents], [, nextNumAccidents])=>{
+    return nextNumAccidents-currNumAccidents;
   });
-
-  return Array.from(accidentsMap, ([day, value]) => ({day, value}));
+//   let data = dummyData;
+//   const accidentsMap = new Map();
+// 
+//   data.forEach( (accident) => {
+//     let date = accident.Start_Time
+//     if (typeof date == "undefined") {
+//       return;
+//     }
+//     date = date.substring(0,10);
+//     if (!accidentsMap.has(date)) {
+//       accidentsMap.set(date, 1);
+//     }
+//     else {
+//       accidentsMap.set(date, (accidentsMap.get(date)??0) + 1)
+//     }
+//   });
+// 
+//   return Array.from(accidentsMap, ([day, value]) => ({day, value}));
+  return numAccPerDayArray.map(([date, accidents])=>{return {day: date, value: accidents }});
 }
 
 
