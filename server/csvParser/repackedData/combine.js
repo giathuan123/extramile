@@ -6,7 +6,8 @@ const o4 = require("./repacked5.json");
 const o5 = require("./repacked6.json");
 
 data = [o, o1, o2, o3, o4, o5];
-
+total = {};
 data.forEach(object=>{
-  if(object[process.argv[2]] != undefined)
-    console.log(object[process.argv[2]])});
+  total = Object.assign(total, object);
+});
+console.log(JSON.stringify(total));
