@@ -3,7 +3,6 @@ const o = require('./' + process.argv[2]);
 repacked = {}
 o.map((raw)=>{
     repacked[raw.ID] = {
-      State: raw.State,
       Severity: raw.Severity,
       Start_Time: raw.Start_Time,
       Street: raw.Street,
