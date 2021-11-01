@@ -1,6 +1,8 @@
+import './FormComponent.css'
+
 const Input = (props) => {
     return (
-    <div>
+    <div className="form-group">
         <label>{props.title}</label>
         <input
             name={props.name}

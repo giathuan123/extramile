@@ -1,6 +1,8 @@
+import './SearchForm.css';
+
 import React from 'react';
 
-import {Input, CheckBox, Button} from '../FormComponents'
+import {Input, CheckBox, Button, FormHeader} from '../FormComponents'
 
 class SearchForm extends React.Component {
     constructor(props) {
@@ -137,56 +139,68 @@ class SearchForm extends React.Component {
 
     render() {
         return (
-        <form onSubmit={this.handleFormSubmit}>
-            <p>Search Form</p>
-            <Input
-                title={'Date'}
-                type={'date'}
-                value={this.state.newSearch.date}
-                handleChange={this.handleDate}
-            />
-            <Input 
-                title={'Street'}
-                type={'text'}
-                placeholder={'Enter street address'}
-                value={this.state.newSearch.street}
-                handleChange={this.handleStreet}
-            />
-            <Input
-                title={'City'}
-                type={'text'}
-                placeholder={'Enter city name'}
-                value={this.state.newSearch.city}
-                handleChange={this.handleCity}
-            />
-            <Input
-                title={'State'}
-                type={'text'}
-                placeholder={'CA'}
-                value={this.state.newSearch.state}
-                handleChange={this.handleState}
-            />
-            <Input
-                title={'Zip Code'}
-                type={'number'}
-                placeholder={'Enter zip code'}
-                value={this.state.newSearch.zip}
-                handleChange={this.handleZip}
-            />
-            <CheckBox
-                title={'Weather'}
-                name={'checkWeather'}
-                options={this.state.weatherOptions}
-                selectedOptions={this.state.newSearch.weather}
-                handleChange={this.handleRain}
-            />
-            <CheckBox
-                title={'Accident Severity'}
-                name={'checkSeverity'}
-                options={this.state.severityOptions}
-                selectedOptions={this.state.newSearch.severity}
-                handleChange={this.handleSeverity}
-            />
+        <form className="search-form" onSubmit={this.handleFormSubmit}>
+            <div className="search-form-row">
+                <FormHeader header="Search Accidents"/>
+            </div>
+            <div className="search-form-row">
+                <Input
+                    title={'Date'}
+                    type={'date'}
+                    value={this.state.newSearch.date}
+                    handleChange={this.handleDate}
+                />
+            </div>
+            <div className="search-form-row">
+                <Input 
+                    title={'Street'}
+                    type={'text'}
+                    placeholder={''}
+                    value={this.state.newSearch.street}
+                    handleChange={this.handleStreet}
+                />
+                <Input
+                    title={'City'}
+                    type={'text'}
+                    placeholder={''}
+                    value={this.state.newSearch.city}
+                    handleChange={this.handleCity}
+                />
+            </div>
+            <div className="search-form-row">
+                <Input
+                    title={'State'}
+                    type={'text'}
+                    placeholder={''}
+                    value={this.state.newSearch.state}
+                    handleChange={this.handleState}
+                />
+                <Input
+                    title={'Zip'}
+                    type={'number'}
+                    placeholder={''}
+                    value={this.state.newSearch.zip}
+                    handleChange={this.handleZip}
+                />
+            </div>
+            {/* <div className="search-form-row">
+                <CheckBox
+                    title={'Weather'}
+                    name={'checkWeather'}
+                    options={this.state.weatherOptions}
+                    selectedOptions={this.state.newSearch.weather}
+                    handleChange={this.handleRain}
+                />
+            </div> */}
+            <div className="search-form-row">
+                <CheckBox
+                    title={'Accident Severity'}
+                    name={'checkSeverity'}
+                    options={this.state.severityOptions}
+                    selectedOptions={this.state.newSearch.severity}
+                    handleChange={this.handleSeverity}
+                />
+            </div>
             <Button
                 title={'Submit'}
                 onClick={this.handleFormSubmit}

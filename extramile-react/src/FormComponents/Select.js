@@ -1,3 +1,5 @@
+import './FormComponent.css'
+
 const Select = (props) => {
     return (
         <div className='form-group'>
