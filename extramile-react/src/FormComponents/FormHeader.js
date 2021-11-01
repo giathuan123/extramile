@@ -3,7 +3,7 @@ import './FormComponent.css';
 const FormHeader = (props) => {
     return (
         <div className="form-group">
-            {props.header}
+            <h1>{props.header}</h1>
         </div>
     );
 }

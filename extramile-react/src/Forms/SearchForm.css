@@ -10,3 +10,9 @@
     justify-content: space-between;
     margin: 5px;
 }
+
+.search-form-row-header {
+    background-color: #3e3f3a;
+    margin: 10px;
+    color: #fff;
+}

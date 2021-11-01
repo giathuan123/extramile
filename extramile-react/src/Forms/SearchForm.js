@@ -140,7 +140,7 @@ class SearchForm extends React.Component {
     render() {
         return (
         <form className="search-form" onSubmit={this.handleFormSubmit}>
-            <div className="search-form-row">
+            <div className="search-form-row-header">
                 <FormHeader header="Search Accidents"/>
             </div>
             <div className="search-form-row">
