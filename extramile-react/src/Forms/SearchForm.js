@@ -201,10 +201,12 @@ class SearchForm extends React.Component {
                     handleChange={this.handleSeverity}
                 />
             </div>
-            <Button
-                title={'Submit'}
-                onClick={this.handleFormSubmit}
-            />
+            <div className="search-form-row">
+                <Button
+                    title={'Submit'}
+                    onClick={this.handleFormSubmit}
+                />
+            </div>
         </form>
         );
     }
