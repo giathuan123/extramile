@@ -15,3 +15,12 @@ html, body, #root {
     border-color: #325d88;
     max-width: 100px;
 }
+
+.form-row-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #3e3f3a;
+    margin: 10px;
+    color: #fff;
+}
