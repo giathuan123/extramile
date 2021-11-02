@@ -1,53 +1,53 @@
-import React, {useState} from 'react'
-import Plot from 'react-plotly.js';
+import React, { useState, useEffect } from "react";
+import { ComposableMap, Geographies, Geography } from "react-simple-maps";
+import { scaleQuantile } from "d3-scale";
+import { csv } from "d3-fetch";
 
-function CountiesMap() {
-    // var locs = []
-    // var accidents = []
-    // const [list, setList] = useState([]);
-    // const [checker,setChecker] = useState(0);
+const geoUrl = "https://cdn.jsdelivr.net/npm/us-atlas@3/counties-10m.json";
+//const data = []
 
-    // if(checker !== 1){
-    //     fetch('http://localhost:3001/users/mostaccstates')
-    //     .then(response => response.json())
-    //     .then((json) => {
-    //         setList(json);
-    //         setChecker(1);
-    //     });
-    // }
+const CountiesMap = () => {
+  const [data, setData] = useState([]);
 
-    // for (var i = 0; i < list.length; i++){
-    //     var row = list[i];
-    //     locs.push(row["name"]);
-    //     accidents.push(row["accidents"]);
-    // }
-    
-    return (
-        <>
-            <Plot
-                data= {[{
-                    type: 'choropleth',
-                    locationmode: 'USA-states',
-                    locations: [], //locs,
-                    z: [], //accidents, 
-                    //text: ["California", "Ohio"],
-                    autocolorscale: true
-                }]}
-                layout= { {
-                    title: '2019 Car Accidents By County',
-                    geo:{
-                        scope: 'usa',
-                        countrycolor: 'rgb(255, 255, 255)',
-                        showland: true,
-                        landcolor: 'rgb(217, 217, 217)',
-                        showlakes: true,
-                        lakecolor: 'rgb(255, 255, 255)',
-                        subunitcolor: 'rgb(255, 255, 255)',
-                    }
-                } }
-            />
-        </> 
-    );
-}
+  useEffect(() => {
+    // https://www.bls.gov/lau/
+    csv("/unemployment-by-county-2017.csv").then(counties => {
+      setData(counties);
+    });
+  }, []);
+
+  const colorScale = scaleQuantile(data)
+    .domain(data.map(d => d.unemployment_rate))
+    .range([
+      "#ffedea",
+      "#ffcec5",
+      "#ffad9f",
+      "#ff8a75",
+      "#ff5533",
+      "#e2492d",
+      "#be3d26",
+      "#9a311f",
+      "#782618"
+    ]);
+
+  return (
+    <ComposableMap projection="geoAlbersUsa">
+      <Geographies geography={geoUrl}>
+        {({ geographies }) =>
+          geographies.map(geo => {
+            const cur = data.find(s => s.id === geo.id);
+            return (
+              <Geography
+                key={geo.rsmKey}
+                geography={geo}
+                fill={cur ? colorScale(cur.unemployment_rate) : "#EEE"}
+              />
+            );
+          })
+        }
+      </Geographies>
+    </ComposableMap>
+  );
+};
 
 export default CountiesMap;
