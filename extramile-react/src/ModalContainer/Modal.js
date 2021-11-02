@@ -25,9 +25,7 @@ export const Modal = ({
                         className="modal-close-button"
                         onClick={closeModal}
                     >
-                        <span>
-                            Close
-                        </span>
+                        Close
                     </button>
                     
                     <div className="modal-body">

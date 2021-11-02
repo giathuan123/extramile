@@ -21,6 +21,7 @@ html, body, #root {
     align-items: center;
     justify-content: center;
     background-color: #3e3f3a;
+    padding: 2px;
     margin: 10px;
     color: #fff;
 }

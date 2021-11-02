@@ -13,6 +13,7 @@ function Search() {
             <ModalContainer triggerText={'Add a Record'}>
                 <CreateRecordForm/>
             </ModalContainer>
+            <div className="divider" />
             <SearchForm setData={setData}/>
             <Card data={data}/>
         </div>
