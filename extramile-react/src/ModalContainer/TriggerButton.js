@@ -1,7 +1,7 @@
 const Trigger = ({ triggerText, buttonRef, showModal }) => {
     return (
         <button
-            className="button"
+            className="btn-primary"
             ref={buttonRef}
             onClick={showModal}
         >

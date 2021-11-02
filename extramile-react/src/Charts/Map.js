@@ -2,8 +2,6 @@ import React, {useState} from 'react'
 import Plot from 'react-plotly.js';
 
 function Map() {
-    var locs = []
-    var accidents = []
     const [list, setList] = useState([]);
     const [checker,setChecker] = useState(0);
 
@@ -11,30 +9,30 @@ function Map() {
         fetch('http://localhost:3001/users/mostaccstates')
         .then(response => response.json())
         .then((json) => {
+            console.log(json);
             setList(json);
             setChecker(1);
         });
     }
 
-    for (var i = 0; i < list.length; i++){
-        var row = list[i];
-        locs.push(row["name"]);
-        accidents.push(row["accidents"]);
-    }
-    
+    function getData(key){
+      return list.map(data=>data[key]);
+    } 
     return (
         <>
             <Plot
                 data= {[{
                     type: 'choropleth',
                     locationmode: 'USA-states',
-                    locations: locs,
-                    z: accidents, 
-                    //text: ["California", "Ohio"],
+                    locations: getData('name'),
+                    z: getData('accidents'), 
+                    text: getData('name'),
                     autocolorscale: true
                 }]}
                 layout= { {
                     title: '2019 Car Accidents',
+                    width: window.innerWidth,
+                    height: window.innerHeight,
                     geo:{
                         scope: 'usa',
                         countrycolor: 'rgb(255, 255, 255)',

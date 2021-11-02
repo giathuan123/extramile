@@ -20,14 +20,12 @@ export const Modal = ({
                 onKeyDown={onKeyDown}
             >
                 <div className="modal-container" ref={modalRef}>
-                    <button
+                    <button className="btn-primary"
                         ref={buttonRef}
                         className="modal-close-button"
                         onClick={closeModal}
                     >
-                        <span>
-                            Close
-                        </span>
+                        Close
                     </button>
                     
                     <div className="modal-body">

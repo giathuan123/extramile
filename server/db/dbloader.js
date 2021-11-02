@@ -39,10 +39,12 @@ function backup(newData) {
     console.log("[INFO] Backup in progress...")
     let data = JSON.stringify(newData);
     const filename = path.resolve(__dirname, './data/backup.json')
-    fs.writeFileSync(filename, data), function(err, result) {
-        if(err) console.log('error', err);
+    fs.writeFileSync(filename, data), function(err) {
+        if(err) console.log('[ERROR] ', err)
+        else{
+          console.log("[INFO] Backup successful data saved to " + filename);
+        }
     };
-    console.log("[INFO] Backup successful data saved to " + filename);
 }
 
 

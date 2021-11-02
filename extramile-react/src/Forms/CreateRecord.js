@@ -1,3 +1,5 @@
+import './Form.css';
+
 import React from 'react';
 
 import {Input, Select, FormHeader, Button} from '../FormComponents'
@@ -91,33 +93,43 @@ class CreateRecord extends React.Component {
 
     render() {
         return (
-            <div className="form-container">
-                <form className="form" onSubmit={this.handleFormSubmit}>
+            <form className="form" onSubmit={this.handleFormSubmit}>
+                <div className="form-row-header">
                     <FormHeader header="Add Your Accident Data" />
+                </div>
+                <div className="form-row">
                     <Input
                         title={'Street'}
                         type={'text'}
                         value={this.state.newRecord.street}
                         handleChange={this.handleStreet}
                     />
+                </div>
+                <div className="form-row">
                     <Input
                         title={'City'}
                         type={'text'}
                         value={this.state.newRecord.city}
                         handleChange={this.handleCity}
                     />
+                </div>
+                <div className="form-row">
                     <Input
                         title={'State'}
                         type={'text'}
                         value={this.state.newRecord.state}
                         handleChange={this.handleState}
                     />
+                </div>
+                <div className="form-row">
                     <Input
                         title={'Zip Code'}
                         type={'number'}
                         value={this.state.newRecord.zip}
                         handleChange={this.handleZip}
                     />
+                </div>
+                <div className="form-row">
                     <Select
                         title={'Severity'}
                         name={'severity'}
@@ -126,12 +138,14 @@ class CreateRecord extends React.Component {
                         placeholder={'Accident Severity #'}
                         handleChange={this.handleSeverity}
                     />
+                </div>
+                <div className="form-row">
                     <Button 
                         title={'Submit'}
                         onClick={this.handleFormSubmit}
                     />
-                </form>
-            </div>
+                </div>
+            </form>
         );
     }
 }

@@ -1,3 +1,5 @@
+import './Pages.css';
+
 import React, {useState} from 'react';
 import {CreateRecordForm, SearchForm} from '../Forms';
 import Card from '../components/Card';
@@ -7,13 +9,14 @@ function Search() {
     const [data, setData] = useState([])
     
     return (
-        <React.Fragment>
+        <div className="content-container">
             <ModalContainer triggerText={'Add a Record'}>
                 <CreateRecordForm/>
             </ModalContainer>
+            <div className="divider" />
             <SearchForm setData={setData}/>
             <Card data={data}/>
-        </React.Fragment>
+        </div>
     );
 }
 

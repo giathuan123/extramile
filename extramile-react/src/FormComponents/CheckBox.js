@@ -1,6 +1,8 @@
+import './FormComponent.css'
+
 const CheckBox = (props) => {
     return(
-        <div>
+        <div className="form-group">
             <label htmlFor={props.name}>{props.title}</label>
             <div>
                 {props.options.map(option => {
