@@ -1,18 +1,46 @@
 import './App.css';
-import {useState } from 'react';
-import SearchForm from './components/SearchForm';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom"
+
+import {
+  SearchPage, 
+  HomePage, 
+  BarPage,
+  MapsPage,
+  CalendarPage,
+} from './Pages'
+
+import { NavBar } from './NavBar'
 
 function App() {
-  const [state, setState] = useState("Not successful");
-  var renderData = (data)=>{
-    setState(data);
-  }
   return (
-    <div className="App">
-      <h1>Extra Mile Website</h1>
-      <SearchForm renderData = {renderData}/>
-      <p>{JSON.stringify(state)}</p> 
-    </div>
+    <Router>
+      <div className="App">
+        <NavBar />
+        <div className="container">
+          <Switch>
+            <Route path="/search">
+                <SearchPage />
+            </Route>
+            <Route path="/bar">
+                <BarPage />
+            </Route>
+            <Route path="/maps">
+                <MapsPage />
+            </Route>
+            <Route path="/calendar">
+                <CalendarPage />
+            </Route>
+            <Route path="/">
+                <HomePage />
+            </Route>
+          </Switch>
+        </div>
+      </div>
+    </Router>
   );
 }
 

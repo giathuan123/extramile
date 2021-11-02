@@ -1,21 +1,65 @@
 import React from 'react';
+import './Card.css'
+import {Button} from '../FormComponents';
+import ModalContainer from '../ModalContainer'
+import {EditRecordForm} from '../Forms'
 
-class Card extends React.Component{
-  constructor(props){
-    this.data = props
-  }
+function Card(props) {
 
-  render(){
-    return (
-      <div>
-      <h1>{this.data.date}</h1> 
-      <h1>{this.data.street}</h1> 
-      <h1>{this.data.city}</h1> 
-      <h1>{this.data.state}</h1> 
-      <h1>{this.data.zip}</h1> 
-      <h1>{this.data.weather}</h1> 
-      <h1>{this.data.severity}</h1> 
-      </div>
-    )
+  function handleSubmit(e){
+    e.preventDefault();
+    let data= props.accident_id;
+    fetch('http://localhost:3001/users/delete', {
+            method: "POST",
+            body: JSON.stringify(data),
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+    })
+    .then((res)=>res.json())
+    .then((data)=>{
+      console.log(data);
+    })
   }
+  return (
+    <div className = "app-container">
+        <h1> Accident Report </h1>  
+        <table>
+          <thead>
+            <tr>
+              <td>Accidents-ID</td>
+              <td>Street</td>
+              <td>City</td>
+              <td>State</td>
+              <td>Zip-Code</td>
+              <td>Severity</td>
+              <td>Actions</td>
+            </tr>
+          </thead>
+          <tbody>
+            {props.data.map((item)=>(
+              <tr key={item.ID}>
+                <td>{item.ID}</td>
+                <td>{item.Street}</td>
+                <td>{item.City}</td>
+                <td>{item.State}</td>
+                <td>{item.Zipcode}</td>
+                <td>{item.Severity}</td>
+                <td>
+                  <ModalContainer triggerText="Edit">
+                    <EditRecordForm data={item} />
+                  </ModalContainer>
+                  <Button action={
+                    ()=>{
+                    fetch('http://localhost:3001/users/delete', 
+                      {method: "post", headers:{"Content-Type":"application/json"}, body: JSON.stringify([item.ID])}).then(response=>console.log(response))}} title = "Delete"/>
+                </td>
+              </tr>  
+            ))}
+          </tbody>
+        </table>
+    </div>
+  );
 }
+export default Card;
