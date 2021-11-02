@@ -157,7 +157,7 @@ function AccCounties(){
 
   var new_map = new Map([...map1.entries()].sort((a,b)=> b[1]-a[1]));
   var new_array = Array.from(new_map,([name,accidents])=>({name,accidents}));
-  console.log(new_array);
+  //console.log(new_array);
   return new_array;
 }
 
