@@ -22,6 +22,11 @@ router.get("/mostaccstates",(req,res)=>{
   res.send(JSON.stringify(results));
 })
 
+router.get("/acccounties",(req,res)=>{
+  const results = AccCounties();
+  res.send(JSON.stringify(results));
+})
+
 router.get("/dailystats", (req,res) => {
   const results = getDailyAccidents();
   res.send(JSON.stringify(results));
@@ -131,5 +136,29 @@ function getDailyAccidents() {
   return Array.from(accidentsMap, ([day, value]) => ({day, value}));
 }
 
+function AccCounties(){
+  let data = dummyData;
+  console.log("hello");
+  var arr = [];
+  const map1 = new Map();
+  //county :number of accidents
+  data.filter(function (item){
+    //console.log(item.County);
+    arr.push(item.County);
+  });
+  arr.forEach(function (x) { 
+    if(!map1.has(x)){
+      map1.set(x,1);
+    }
+    else{
+      map1.set(x,(map1.get(x)??0)+1);
+    }
+  });
+
+  var new_map = new Map([...map1.entries()].sort((a,b)=> b[1]-a[1]));
+  var new_array = Array.from(new_map,([name,accidents])=>({name,accidents}));
+  console.log(new_array);
+  return new_array;
+}
 
 module.exports = router;
