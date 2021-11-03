@@ -63,6 +63,12 @@ router.get("/mostaccstates",(req,res)=>{
   res.json(results);
 })
 
+router.get("/mostaccstates",(req,res)=>{
+  console.log("[INFO] Get request recieved at /acccounties");
+  const results = AccCounties();
+  res.json(results);
+})
+
 router.get("/dailystats", (req,res) => {
   console.log("[INFO] Get request recieved at /dailystats");
   const results = getDailyAccidents();
@@ -198,6 +204,33 @@ function getDailyAccidents() {
 // 
 //   return Array.from(accidentsMap, ([day, value]) => ({day, value}));
   return numAccPerDayArray.map(([date, accidents])=>{return {day: date, value: accidents }});
+}
+
+function AccCounties(){
+  var ret = []
+  var countyIndex = indexes.getIndex("CountyIndex");
+  for(const[key, value] of Object.entries(countyIndex)){
+    ret.push({[key]:value.length})
+  }
+  // let data = dummyData;
+  // var arr = [];
+  // const map1 = new Map();
+  // data.filter(function (item){
+  //   arr.push(item.State);
+  // });
+  // arr.forEach(function (x) { 
+  //   if(!map1.has(x)){
+  //     map1.set(x,1);
+  //   }
+  //   else{
+  //     map1.set(x,(map1.get(x)??0)+1);
+  //   }
+  // });
+  // var new_map = new Map([...map1.entries()].sort((a,b)=> b[1]-a[1]));
+  // var new_array = Array.from(new_map,([name,accidents])=>({name,accidents}));
+  // console.log(new_array);
+  // return new_array;
+  return ret;
 }
 
 

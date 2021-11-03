@@ -14,13 +14,16 @@ class IndexContainer{
     var indexName = "";
     for(const index of this.indexContainer){
       let currResult = [];
-      if((currResult = index.get(index.fieldGetter(data)))){
-        if(results.length == 0){
-          results = currResult;
-          indexName = index.indexName;
-        }else if(currResult.length < results.length){
-          results = currResult;
-          indexName = index.indexName;
+      let field = index.fieldGetter(data);
+      if(field){
+        if((currResult = index.get(field))){
+          if(results.length == 0){
+            results = currResult;
+            indexName = index.indexName;
+          }else if(currResult.length < results.length){
+            results = currResult;
+            indexName = index.indexName;
+          }
         }
       }
     }
