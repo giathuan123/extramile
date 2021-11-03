@@ -1,7 +1,9 @@
 import React, {useState} from 'react'
 import Plot from 'react-plotly.js';
 
-function Map() {
+function StatesMap() {
+    var locs = []
+    var accidents = []
     const [list, setList] = useState([]);
     const [checker,setChecker] = useState(0);
 
@@ -20,7 +22,7 @@ function Map() {
     } 
     return (
         <>
-            <Plot
+            <Plot 
                 data= {[{
                     type: 'choropleth',
                     locationmode: 'USA-states',
@@ -30,7 +32,7 @@ function Map() {
                     autocolorscale: true
                 }]}
                 layout= { {
-                    title: '2019 Car Accidents',
+                    title: '2019 Car Accidents By State',
                     width: window.innerWidth,
                     height: window.innerHeight,
                     geo:{
@@ -48,4 +50,4 @@ function Map() {
     );
 }
 
-export default Map;
+export default StatesMap;
