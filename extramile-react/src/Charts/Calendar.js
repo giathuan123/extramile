@@ -7,7 +7,7 @@ function Calendar(props) {
             from="2016-01-02"
             to="2020-12-31"
             emptyColor="#eeeeee"
-            colors={['#ffc352', '#e38513', '#c46619', '#a24a1a', '#803117', '#5c1b11']}
+            colors={['#ffe5b5', '#ffc352', '#e38513', '#c46619', '#a24a1a', '#803117', '#5c1b11']}
             margin={{ top: 40, right: 40, bottom: 40, left: 40 }}
             yearSpacing={60}
             monthBorderColor="#ffffff"
