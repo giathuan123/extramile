@@ -13,8 +13,10 @@ function initIndex(){
     return undefined;
   });
   var cityIndex = new Index("CityIndex", (data)=>data.City);
+  var countyIndex = new Index("CountyIndex", (data)=>data.County);
   indexContainer.addIndex(timeIndex);
   indexContainer.addIndex(cityIndex);
+  indexContainer.addIndex(countyIndex);
   
   return indexContainer;
 }
