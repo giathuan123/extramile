@@ -315,9 +315,9 @@ id,name,year,unemployment_rate,accidents
 09011,"New London ,CT",2017,4.5,0.0
 09013,"Tolland ,CT",2017,4.0,0.0
 09015,"Windham ,CT",2017,5.1,0.0
-10001,"Kent , DE",2017,4.9,0.0
-10003,"New Castle , DE",2017,4.4,0.0
-10005,"Sussex , DE",2017,4.5,0.0
+10001,"Kent ,DE",2017,4.9,0.0
+10003,"New Castle ,DE",2017,4.4,0.0
+10005,"Sussex ,DE",2017,4.5,0.0
 11001,District of Columbia,2017,6.1,0.0
 12001,"Alachua ,FL",2017,3.8,0.0
 12003,"Baker ,FL",2017,4.2,0.0
@@ -1214,7 +1214,7 @@ id,name,year,unemployment_rate,accidents
 24043,"Washington,MD",2017,4.8,0.0
 24045,"Wicomico,MD",2017,5.9,0.0
 24047,"Worcester,MD",2017,8.8,0.0
-24510,"Baltimore city, MD",2017,6.3,0.0
+24510,"Baltimore city,MD",2017,6.3,0.0
 25001,"Barnstable,MA",2017,4.7,0.0
 25003,"Berkshire,MA",2017,4.4,0.0
 25005,"Bristol,MA",2017,4.8,0.0
@@ -1224,7 +1224,7 @@ id,name,year,unemployment_rate,accidents
 25013,"Hampden,MA",2017,5.1,0.0
 25015,"Hampshire,MA",2017,3.5,0.0
 25017,"Middlesex,MA",2017,3.1,0.0
-25019,"Nantucket /town, MA",2017,4.5,0.0
+25019,"Nantucket /town,MA",2017,4.5,0.0
 25021,"Norfolk,MA",2017,3.4,0.0
 25023,"Plymouth,MA",2017,4.0,0.0
 25025,"Suffolk,MA",2017,3.4,0.0
@@ -1595,7 +1595,7 @@ id,name,year,unemployment_rate,accidents
 29225,"Webster,MO",2017,3.9,0.0
 29227,"Worth,MO",2017,2.5,0.0
 29229,"Wright,MO",2017,5.0,0.0
-29510,"St. Louis city, MO",2017,4.4,0.0
+29510,"St. Louis city,MO",2017,4.4,0.0
 30001,"Beaverhead,MT",2017,3.1,0.0
 30003,"Big Horn,MT",2017,13.2,0.0
 30005,"Blaine,MT",2017,4.0,0.0
@@ -1761,7 +1761,7 @@ id,name,year,unemployment_rate,accidents
 32029,"Storey,NV",2017,5.1,0.0
 32031,"Washoe,NV",2017,4.2,0.0
 32033,"White Pine,NV",2017,4.0,0.0
-32510,"Carson City, NV",2017,5.1,0.0
+32510,"Carson City,NV",2017,5.1,0.0
 33001,"Belknap,NH",2017,2.7,0.0
 33003,"Carroll,NH",2017,2.7,0.0
 33005,"Cheshire,NH",2017,2.6,0.0
@@ -2292,7 +2292,7 @@ id,name,year,unemployment_rate,accidents
 42095,"Northampton,PA",2017,4.9,0.0
 42097,"Northumberland,PA",2017,5.6,0.0
 42099,"Perry,PA",2017,4.3,0.0
-42101,"Philadelphia /city, PA",2017,6.2,0.0
+42101,"Philadelphia /city,PA",2017,6.2,0.0
 42103,"Pike,PA",2017,5.9,0.0
 42105,"Potter,PA",2017,6.5,0.0
 42107,"Schuylkill,PA",2017,5.8,0.0
@@ -2913,44 +2913,44 @@ id,name,year,unemployment_rate,accidents
 51195,"Wise,VA",2017,6.4,0.0
 51197,"Wythe,VA",2017,5.0,0.0
 51199,"York,VA",2017,3.5,0.0
-51510,"Alexandria city, VA",2017,2.8,0.0
-51520,"Bristol city, VA",2017,4.5,0.0
-51530,"Buena Vista city, VA",2017,4.2,0.0
-51540,"Charlottesville city, VA",2017,3.1,0.0
-51550,"Chesapeake city, VA",2017,3.8,0.0
-51570,"Colonial Heights city, VA",2017,4.0,0.0
-51580,"Covington city, VA",2017,6.0,0.0
-51590,"Danville city, VA",2017,5.6,0.0
-51595,"Emporia city, VA",2017,5.3,0.0
-51600,"Fairfax city, VA",2017,2.9,0.0
-51610,"Falls Church city, VA",2017,2.6,0.0
-51620,"Franklin city, VA",2017,5.3,0.0
-51630,"Fredericksburg city, VA",2017,4.4,0.0
-51640,"Galax city, VA",2017,4.2,0.0
-51650,"Hampton city, VA",2017,5.0,0.0
-51660,"Harrisonburg city, VA",2017,4.4,0.0
-51670,"Hopewell city, VA",2017,6.1,0.0
-51678,"Lexington city, VA",2017,6.0,0.0
-51680,"Lynchburg city, VA",2017,4.9,0.0
-51683,"Manassas city, VA",2017,3.4,0.0
-51685,"Manassas Park city, VA",2017,3.3,0.0
-51690,"Martinsville city, VA",2017,6.3,0.0
-51700,"Newport News city, VA",2017,4.6,0.0
-51710,"Norfolk city, VA",2017,4.6,0.0
-51720,"Norton city, VA",2017,5.2,0.0
-51730,"Petersburg city, VA",2017,7.3,0.0
-51735,"Poquoson city, VA",2017,3.4,0.0
-51740,"Portsmouth city, VA",2017,5.4,0.0
-51750,"Radford city, VA",2017,4.9,0.0
-51760,"Richmond city, VA",2017,4.3,0.0
-51770,"Roanoke city, VA",2017,4.1,0.0
-51775,"Salem city, VA",2017,3.7,0.0
-51790,"Staunton city, VA",2017,3.6,0.0
-51800,"Suffolk city, VA",2017,4.1,0.0
-51810,"Virginia Beach city, VA",2017,3.5,0.0
-51820,"Waynesboro city, VA",2017,4.0,0.0
-51830,"Williamsburg city, VA",2017,5.2,0.0
-51840,"Winchester city, VA",2017,3.6,0.0
+51510,"Alexandria city,VA",2017,2.8,0.0
+51520,"Bristol city,VA",2017,4.5,0.0
+51530,"Buena Vista city,VA",2017,4.2,0.0
+51540,"Charlottesville city,VA",2017,3.1,0.0
+51550,"Chesapeake city,VA",2017,3.8,0.0
+51570,"Colonial Heights city,VA",2017,4.0,0.0
+51580,"Covington city,VA",2017,6.0,0.0
+51590,"Danville city,VA",2017,5.6,0.0
+51595,"Emporia city,VA",2017,5.3,0.0
+51600,"Fairfax city,VA",2017,2.9,0.0
+51610,"Falls Church city,VA",2017,2.6,0.0
+51620,"Franklin city,VA",2017,5.3,0.0
+51630,"Fredericksburg city,VA",2017,4.4,0.0
+51640,"Galax city,VA",2017,4.2,0.0
+51650,"Hampton city,VA",2017,5.0,0.0
+51660,"Harrisonburg city,VA",2017,4.4,0.0
+51670,"Hopewell city,VA",2017,6.1,0.0
+51678,"Lexington city,VA",2017,6.0,0.0
+51680,"Lynchburg city,VA",2017,4.9,0.0
+51683,"Manassas city,VA",2017,3.4,0.0
+51685,"Manassas Park city,VA",2017,3.3,0.0
+51690,"Martinsville city,VA",2017,6.3,0.0
+51700,"Newport News city,VA",2017,4.6,0.0
+51710,"Norfolk city,VA",2017,4.6,0.0
+51720,"Norton city,VA",2017,5.2,0.0
+51730,"Petersburg city,VA",2017,7.3,0.0
+51735,"Poquoson city,VA",2017,3.4,0.0
+51740,"Portsmouth city,VA",2017,5.4,0.0
+51750,"Radford city,VA",2017,4.9,0.0
+51760,"Richmond city,VA",2017,4.3,0.0
+51770,"Roanoke city,VA",2017,4.1,0.0
+51775,"Salem city,VA",2017,3.7,0.0
+51790,"Staunton city,VA",2017,3.6,0.0
+51800,"Suffolk city,VA",2017,4.1,0.0
+51810,"Virginia Beach city,VA",2017,3.5,0.0
+51820,"Waynesboro city,VA",2017,4.0,0.0
+51830,"Williamsburg city,VA",2017,5.2,0.0
+51840,"Winchester city,VA",2017,3.6,0.0
 53001,"Adams,WA",2017,5.7,0.0
 53003,"Asotin,WA",2017,4.2,0.0
 53005,"Benton,WA",2017,5.5,0.0
