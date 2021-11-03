@@ -12,6 +12,7 @@ const CountiesMap = () => {
   useEffect(() => {
     // https://www.bls.gov/lau/
     csv("sample.csv").then(counties => {
+      console.log(counties);
       setData(counties);
     });
   }, []);
