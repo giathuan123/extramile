@@ -17,7 +17,11 @@ function Calendar() {
 
     return (
         <div className='content-container'>
-            Accidents Heatmap By Month
+            <h1>Accidents Heatmap</h1>
+            <p className="page-summary">
+                This chart shows the number of accidents that are recorded
+                on a specific date.
+            </p>
             <CalendarChart data={data} />
         </div>
     );
