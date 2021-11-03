@@ -1,6 +1,6 @@
 const router = require("express").Router();
 var { data, indexes } = require("../db/dbloader.js")
-var dummyData = require("../db/data/testData.json");
+// var dummyData = require("../db/data/testData.json");
 var maxIdNumber = 0;
 
 function makeData(key, value){
