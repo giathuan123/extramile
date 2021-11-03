@@ -11,7 +11,7 @@ const CountiesMap = () => {
 
   useEffect(() => {
     // https://www.bls.gov/lau/
-    csv("/unemployment-by-county-2017.csv").then(counties => {
+    csv("sample.csv").then(counties => {
       setData(counties);
     });
   }, []);
