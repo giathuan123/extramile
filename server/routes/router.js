@@ -1,6 +1,5 @@
 const router = require("express").Router();
 var { data, indexes } = require("../db/dbloader.js")
-var dummyData = require("../db/data/testData.json");
 var maxIdNumber = 0;
 
 function makeData(key, value){
@@ -63,7 +62,7 @@ router.get("/mostaccstates",(req,res)=>{
   res.json(results);
 })
 
-router.get("/mostaccstates",(req,res)=>{
+router.get("/mostcounty",(req,res)=>{
   console.log("[INFO] Get request recieved at /acccounties");
   const results = AccCounties();
   res.json(results);
@@ -209,7 +208,7 @@ function getDailyAccidents() {
 function AccCounties(){
   var ret = []
   var countyIndex = indexes.getIndex("CountyIndex");
-  for(const[key, value] of Object.entries(countyIndex)){
+  for(const[key, value] of Object.entries(countyIndex.index)){
     ret.push({[key]:value.length})
   }
   // let data = dummyData;
