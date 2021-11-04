@@ -1,3 +1,4 @@
+jakesprint5
 import './App.css';
 import {
   BrowserRouter as Router,
@@ -12,6 +13,8 @@ import {
   StatesMapPage,
   CountiesMapPage,
   CalendarPage,
+  HistogramPage,
+  PiePage
 } from './Pages'
 
 import { NavBar } from './NavBar'
@@ -32,12 +35,18 @@ function App() {
             <Route path="/statesMap">
                 <StatesMapPage />
             </Route>
+            <Route path="/pie">
+                <PiePage />
+            </Route>
             <Route path="/countiesMap">
               <CountiesMapPage />
               </Route>
             <Route path="/calendar">
                 <CalendarPage />
             </Route>
+            <Route path="/histogramchart">
+              <HistogramPage/>
+              </Route>
             <Route path="/">
                 <HomePage />
             </Route>
@@ -49,3 +58,5 @@ function App() {
 }
 
 export default App;
+
+

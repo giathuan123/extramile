@@ -53,7 +53,13 @@ function query(data, reqJson){
 router.get("/barinfo",(req,res)=>{
   console.log("[INFO] Get request recieved at /barinfo");
   const results = tenAccCities();
-  res.send(JSON.stringify(results));
+  res.send(results);
+})
+//Feature 4 get request for Severity
+router.get("/pieinfo",(req,res)=>{
+  console.log("[INFO] Get request recieved at /pieinfo");
+  const results = SeverityChart();
+  res.send(results);
 })
 //Feature 1 get request for most Accidental states
 router.get("/mostaccstates",(req,res)=>{
@@ -118,7 +124,19 @@ function getMaxId(){
   }
   return max;
 }
+function SeverityChart(){
+  var severityAccidents = {};
+  for(const [, value] of Object.entries(data)){
+    if(severityAccidents[value.Severity] == undefined){
+      severityAccidents[value.Severity] = 1;
+    }else{
+      severityAccidents[value.Severity] += 1;
+    }
+  }
+  ret =  Object.entries(severityAccidents).map(([severity, accidents])=>{return {name: severity, accidents: accidents}});
 
+  return ret;
+}
 function tenAccCities(){
   var cityIndex = indexes.getIndex("CityIndex");
   var numAccPerCityArray = Object.entries(cityIndex.index).map(([city, accidents])=>[city, accidents.length]);
@@ -156,6 +174,7 @@ function MostAccStates(){
       statesAccidents[value.State] += 1;
     }
   }
+
   ret =  Object.entries(statesAccidents).map(([state, accidents])=>{return {name: state, accidents: accidents}});
   // let data = dummyData;
   // var arr = [];
