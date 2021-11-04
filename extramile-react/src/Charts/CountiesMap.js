@@ -8,16 +8,43 @@ const geoUrl = "https://cdn.jsdelivr.net/npm/us-atlas@3/counties-10m.json";
 
 const CountiesMap = () => {
   const [data, setData] = useState([]);
+  const [list, setList] = useState([]);
+  const [checker,setChecker] = useState(0);
+  
+  
+  if(checker !== 1){
+    fetch('http://localhost:3001/users/acccounties')
+    .then(response => response.json())
+    .then((json) => {
+        console.log(json);
+        setList(json);
+        setChecker(1);
+    });
+  }
+
+  function getData(key){
+    return list.map(data=>data[key]);
+  }
+
 
   useEffect(() => {
     // https://www.bls.gov/lau/
-    csv("sample.csv").then(counties => {
+    csv("accidents.csv").then(counties => {
+      console.log(counties);
       setData(counties);
     });
   }, []);
 
+  // output is empty
+  var county_names = getData('name');
+  var county_accidents = getData('accidents');
+
+  console.log("heee", county_names);
+  console.log("hello", county_accidents);
+  console.log("data", data);
+  
   const colorScale = scaleQuantile(data)
-    .domain(data.map(d => d.unemployment_rate))
+    .domain(data.map(d => d.accidents))
     .range([
       "#ffedea",
       "#ffcec5",
@@ -40,7 +67,7 @@ const CountiesMap = () => {
               <Geography
                 key={geo.rsmKey}
                 geography={geo}
-                fill={cur ? colorScale(cur.unemployment_rate) : "#EEE"}
+                fill={cur ? colorScale(cur.accidents) : "#EEE"}
               />
             );
           })

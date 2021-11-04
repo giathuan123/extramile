@@ -1,6 +1,5 @@
 const router = require("express").Router();
 var { data, indexes } = require("../db/dbloader.js")
-var dummyData = require("../db/data/testData.json");
 var maxIdNumber = 0;
 
 function makeData(key, value){
@@ -63,9 +62,10 @@ router.get("/mostaccstates",(req,res)=>{
   res.json(results);
 })
 
-router.get("/acccounties",(req,res)=>{
+router.get("/mostcounty",(req,res)=>{
+  console.log("[INFO] Get request recieved at /acccounties");
   const results = AccCounties();
-  res.send(JSON.stringify(results));
+  res.json(results);
 })
 
 router.get("/dailystats", (req,res) => {
@@ -206,28 +206,31 @@ function getDailyAccidents() {
 }
 
 function AccCounties(){
-  let data = dummyData;
-  console.log("hello");
-  var arr = [];
-  const map1 = new Map();
-  //county :number of accidents
-  data.filter(function (item){
-    //console.log(item.County);
-    arr.push(item.County);
-  });
-  arr.forEach(function (x) { 
-    if(!map1.has(x)){
-      map1.set(x,1);
-    }
-    else{
-      map1.set(x,(map1.get(x)??0)+1);
-    }
-  });
-
-  var new_map = new Map([...map1.entries()].sort((a,b)=> b[1]-a[1]));
-  var new_array = Array.from(new_map,([name,accidents])=>({name,accidents}));
-  //console.log(new_array);
-  return new_array;
+  var ret = []
+  var countyIndex = indexes.getIndex("CountyIndex");
+  for(const[key, value] of Object.entries(countyIndex.index)){
+    ret.push({[key]:value.length})
+  }
+  // let data = dummyData;
+  // var arr = [];
+  // const map1 = new Map();
+  // data.filter(function (item){
+  //   arr.push(item.State);
+  // });
+  // arr.forEach(function (x) { 
+  //   if(!map1.has(x)){
+  //     map1.set(x,1);
+  //   }
+  //   else{
+  //     map1.set(x,(map1.get(x)??0)+1);
+  //   }
+  // });
+  // var new_map = new Map([...map1.entries()].sort((a,b)=> b[1]-a[1]));
+  // var new_array = Array.from(new_map,([name,accidents])=>({name,accidents}));
+  // console.log(new_array);
+  // return new_array;
+  return ret;
 }
+
 
 module.exports = router;
