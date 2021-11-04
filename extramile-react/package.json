@@ -5,6 +5,7 @@
   "dependencies": {
     "@nivo/calendar": "^0.74.0",
     "@nivo/core": "^0.74.0",
+    "@nivo/swarmplot": "^0.74.0",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",

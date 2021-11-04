@@ -12,7 +12,8 @@ import {
   StatesMapPage,
   CountiesMapPage,
   CalendarPage,
-  PiePage
+  PiePage,
+  SwarmPage
 } from './Pages'
 
 import { NavBar } from './NavBar'
@@ -41,6 +42,9 @@ function App() {
               </Route>
             <Route path="/calendar">
                 <CalendarPage />
+            </Route>
+            <Route path="/swarmplot">
+              <SwarmPage />
             </Route>
             <Route path="/">
                 <HomePage />
