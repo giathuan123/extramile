@@ -1,3 +1,4 @@
+jakesprint5
 import './App.css';
 import {
   BrowserRouter as Router,
@@ -12,6 +13,7 @@ import {
   StatesMapPage,
   CountiesMapPage,
   CalendarPage,
+  HistogramPage,
   PiePage
 } from './Pages'
 
@@ -56,3 +58,5 @@ function App() {
 }
 
 export default App;
+
+
