@@ -1,4 +1,3 @@
- jakesprint5
 import Search from './Search'
 import Home from './Home'
 import Bar from './Barchart'
