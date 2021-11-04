@@ -1,3 +1,4 @@
+jakesprint5
 import './App.css';
 import {
   BrowserRouter as Router,
@@ -12,8 +13,8 @@ import {
   StatesMapPage,
   CountiesMapPage,
   CalendarPage,
-  PiePage,
-  SwarmPage
+  HistogramPage,
+  PiePage
 } from './Pages'
 
 import { NavBar } from './NavBar'
@@ -43,9 +44,9 @@ function App() {
             <Route path="/calendar">
                 <CalendarPage />
             </Route>
-            <Route path="/swarmplot">
-              <SwarmPage />
-            </Route>
+            <Route path="/histogramchart">
+              <HistogramPage/>
+              </Route>
             <Route path="/">
                 <HomePage />
             </Route>
@@ -57,3 +58,5 @@ function App() {
 }
 
 export default App;
+
+
