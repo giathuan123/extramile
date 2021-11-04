@@ -3,9 +3,21 @@ import { ResponsiveSwarmPlot } from '@nivo/swarmplot';
 const data = [
     {
         "id": "0.0",
-        "group": "Severity 1",
+        "severity": "1",
         "visibility": 5.5,
         "volume": 18
+    },
+    {
+        "id": "0.1",
+        "severity": "4",
+        "visibility": 10.0,
+        "volume": 10
+    },
+    {
+        "id": "0.2",
+        "severity": "3",
+        "visibility": 5.5,
+        "volume": 100
     }
 ];
 
@@ -13,7 +25,9 @@ function SwarmPlot(props) {
     return (
         <ResponsiveSwarmPlot
             data={data}
-            groups={[ 'Severity 1', 'Severity 2', 'Severity 3', 'Severity 4' ]}
+            value="visibility"
+            groups={[ '1', '2', '3', '4' ]}
+            groupBy="severity"
             identity="id"
             value="visibility"
             valueFormat=".1f"
@@ -40,7 +54,7 @@ function SwarmPlot(props) {
                 tickSize: 10,
                 tickPadding: 5,
                 tickRotation: 0,
-                legend: 'group if vertical, price if horizontal',
+                legend: 'Accident Severity',
                 legendPosition: 'middle',
                 legendOffset: -46
             }}
@@ -49,7 +63,7 @@ function SwarmPlot(props) {
                 tickSize: 10,
                 tickPadding: 5,
                 tickRotation: 0,
-                legend: 'price if vertical, group if horizontal',
+                legend: 'Visibility (mi)',
                 legendPosition: 'middle',
                 legendOffset: 76
             }}
@@ -58,7 +72,7 @@ function SwarmPlot(props) {
                 tickSize: 10,
                 tickPadding: 5,
                 tickRotation: 0,
-                legend: 'group if vertical, price if horizontal',
+                legend: 'Accident Severity',
                 legendPosition: 'middle',
                 legendOffset: 46
             }}
@@ -67,7 +81,7 @@ function SwarmPlot(props) {
                 tickSize: 10,
                 tickPadding: 5,
                 tickRotation: 0,
-                legend: 'price if vertical, group if horizontal',
+                legend: 'Visibility (mi)',
                 legendPosition: 'middle',
                 legendOffset: -76
             }}
