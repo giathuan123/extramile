@@ -42,6 +42,9 @@ function App() {
             <Route path="/calendar">
                 <CalendarPage />
             </Route>
+            <Route path="/histogramchart">
+              <HistogramPage/>
+              </Route>
             <Route path="/">
                 <HomePage />
             </Route>
