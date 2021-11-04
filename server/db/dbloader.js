@@ -13,7 +13,7 @@ function initIndex(){
     return undefined;
   });
   var cityIndex = new Index("CityIndex", (data)=>data.City);
-  var countyIndex = new Index("CountyIndex", (data)=>data.County);
+  var countyIndex = new Index("CountyIndex", (data)=>{return data.County + "," + data.State;});
   indexContainer.addIndex(timeIndex);
   indexContainer.addIndex(cityIndex);
   indexContainer.addIndex(countyIndex);
