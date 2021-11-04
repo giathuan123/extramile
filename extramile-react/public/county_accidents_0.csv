@@ -1,11 +1,11 @@
 id,name,year,unemployment_rate,accidents
-01001,"Autauga,AL",2017,3.9,0.0
-01003,"Baldwin,AL",2017,4.1,0.0
+01001,"Autauga,AL",2017,3.9,120
+01003,"Baldwin,AL",2017,4.1,6
 01005,"Barbour,AL",2017,5.8,0.0
-01007,"Bibb,AL",2017,4.4,0.0
-01009,"Blount,AL",2017,4.0,0.0
-01011,"Bullock,AL",2017,4.9,0.0
-01013,"Butler,AL",2017,5.5,0.0
+01007,"Bibb,AL",2017,4.4,8
+01009,"Blount,AL",2017,4.0,20
+01011,"Bullock,AL",2017,4.9,20
+01013,"Butler,AL",2017,5.5,2
 01015,"Calhoun,AL",2017,5.0,0.0
 01017,"Chambers,AL",2017,4.1,0.0
 01019,"Cherokee,AL",2017,4.1,0.0
@@ -16,14 +16,14 @@ id,name,year,unemployment_rate,accidents
 01029,"Cleburne,AL",2017,4.5,0.0
 01031,"Coffee,AL",2017,4.4,0.0
 01033,"Colbert,AL",2017,5.2,0.0
-01035,"Conecuh,AL",2017,6.1,0.0
+01035,"Conecuh,AL",2017,6.1,34
 01037,"Coosa,AL",2017,4.7,0.0
 01039,"Covington,AL",2017,5.2,0.0
 01041,"Crenshaw,AL",2017,4.5,0.0
 01043,"Cullman,AL",2017,3.8,0.0
 01045,"Dale,AL",2017,4.5,0.0
 01047,"Dallas,AL",2017,7.5,0.0
-01049,"DeKalb,AL",2017,4.5,0.0
+01049,"DeKalb,AL",2017,4.5,1
 01051,"Elmore,AL",2017,3.7,0.0
 01053,"Escambia,AL",2017,5.0,0.0
 01055,"Etowah,AL",2017,4.6,0.0
@@ -43,7 +43,7 @@ id,name,year,unemployment_rate,accidents
 01083,"Limestone,AL",2017,4.0,0.0
 01085,"Lowndes,AL",2017,8.3,0.0
 01087,"Macon,AL",2017,5.8,0.0
-01089,"Madison,AL",2017,3.9,0.0
+01089,"Madison,AL",2017,3.9,7
 01091,"Marengo,AL",2017,5.6,0.0
 01093,"Marion,AL",2017,4.8,0.0
 01095,"Marshall,AL",2017,3.9,0.0
@@ -259,12 +259,12 @@ id,name,year,unemployment_rate,accidents
 08025,"Crowley,CO",2017,3.0,0.0
 08027,"Custer,CO",2017,2.9,0.0
 08029,"Delta,CO",2017,3.7,0.0
-08031,"Denver,CO",2017,2.6,0.0
+08031,"Denver,CO",2017,2.6,4481
 08033,"Dolores,CO",2017,2.9,0.0
 08035,"Douglas,CO",2017,2.3,0.0
 08037,"Eagle,CO",2017,2.2,0.0
 08039,"Elbert,CO",2017,2.3,0.0
-08041,"El Paso,CO",2017,3.1,0.0
+08041,"El Paso,CO",2017,3.1,4
 08043,"Fremont,CO",2017,4.1,0.0
 08045,"Garfield,CO",2017,2.8,0.0
 08047,"Gilpin,CO",2017,1.9,0.0
@@ -305,7 +305,7 @@ id,name,year,unemployment_rate,accidents
 08117,"Summit,CO",2017,1.8,0.0
 08119,"Teller,CO",2017,3.1,0.0
 08121,"Washington,CO",2017,1.9,0.0
-08123,"Weld,CO",2017,2.6,0.0
+08123,"Weld,CO",2017,2.6,820
 08125,"Yuma,CO",2017,1.5,0.0
 09001,"Fairfield,CT",2017,4.6,0.0
 09003,"Hartford,CT",2017,4.9,0.0
@@ -314,7 +314,7 @@ id,name,year,unemployment_rate,accidents
 09009,"New Haven,CT",2017,5.1,0.0
 09011,"New London,CT",2017,4.5,0.0
 09013,"Tolland,CT",2017,4.0,0.0
-09015,"Windham,CT",2017,5.1,0.0
+09015,"Windham,CT",2017,5.1,7
 10001,"Kent,DE",2017,4.9,0.0
 10003,"New Castle,DE",2017,4.4,0.0
 10005,"Sussex,DE",2017,4.5,0.0
@@ -347,7 +347,7 @@ id,name,year,unemployment_rate,accidents
 12053,"Hernando,FL",2017,5.2,0.0
 12055,"Highlands,FL",2017,5.7,0.0
 12057,"Hillsborough,FL",2017,3.9,0.0
-12059,"Holmes,FL",2017,4.7,0.0
+12059,"Holmes,FL",2017,4.7,3
 12061,"Indian River,FL",2017,5.0,0.0
 12063,"Jackson,FL",2017,4.5,0.0
 12065,"Jefferson,FL",2017,4.4,0.0
@@ -442,10 +442,10 @@ id,name,year,unemployment_rate,accidents
 13109,"Evans,GA",2017,4.3,0.0
 13111,"Fannin,GA",2017,4.7,0.0
 13113,"Fayette,GA",2017,4.0,0.0
-13115,"Floyd,GA",2017,5.2,0.0
+13115,"Floyd,GA",2017,5.2,2
 13117,"Forsyth,GA",2017,3.7,0.0
 13119,"Franklin,GA",2017,4.7,0.0
-13121,"Fulton,GA",2017,4.8,0.0
+13121,"Fulton,GA",2017,4.8,8
 13123,"Gilmer,GA",2017,5.0,0.0
 13125,"Glascock,GA",2017,4.9,0.0
 13127,"Glynn,GA",2017,4.7,0.0
@@ -453,7 +453,7 @@ id,name,year,unemployment_rate,accidents
 13131,"Grady,GA",2017,4.8,0.0
 13133,"Greene,GA",2017,5.1,0.0
 13135,"Gwinnett,GA",2017,4.2,0.0
-13137,"Habersham,GA",2017,4.5,0.0
+13137,"Habersham,GA",2017,4.5,94
 13139,"Hall,GA",2017,3.9,0.0
 13141,"Hancock,GA",2017,7.0,0.0
 13143,"Haralson,GA",2017,4.7,0.0
@@ -507,7 +507,7 @@ id,name,year,unemployment_rate,accidents
 13241,"Rabun,GA",2017,4.9,0.0
 13243,"Randolph,GA",2017,6.4,0.0
 13245,"Richmond,GA",2017,5.9,0.0
-13247,"Rockdale,GA",2017,5.2,0.0
+13247,"Rockdale,GA",2017,5.2,211
 13249,"Schley,GA",2017,5.4,0.0
 13251,"Screven,GA",2017,6.2,0.0
 13253,"Seminole,GA",2017,6.4,0.0
@@ -517,7 +517,7 @@ id,name,year,unemployment_rate,accidents
 13261,"Sumter,GA",2017,6.7,0.0
 13263,"Talbot,GA",2017,6.1,0.0
 13265,"Taliaferro,GA",2017,6.6,0.0
-13267,"Tattnall,GA",2017,4.9,0.0
+13267,"Tattnall,GA",2017,4.9,16
 13269,"Taylor,GA",2017,8.6,0.0
 13271,"Telfair,GA",2017,7.8,0.0
 13273,"Terrell,GA",2017,5.9,0.0
@@ -540,7 +540,7 @@ id,name,year,unemployment_rate,accidents
 13307,"Webster,GA",2017,7.5,0.0
 13309,"Wheeler,GA",2017,8.9,0.0
 13311,"White,GA",2017,3.8,0.0
-13313,"Whitfield,GA",2017,5.4,0.0
+13313,"Whitfield,GA",2017,5.4,129
 13315,"Wilcox,GA",2017,5.8,0.0
 13317,"Wilkes,GA",2017,5.6,0.0
 13319,"Wilkinson,GA",2017,5.6,0.0
@@ -595,8 +595,8 @@ id,name,year,unemployment_rate,accidents
 16087,"Washington,ID",2017,4.7,0.0
 17001,"Adams,IL",2017,3.9,0.0
 17003,"Alexander,IL",2017,8.4,0.0
-17005,"Bond,IL",2017,4.5,0.0
-17007,"Boone,IL",2017,6.8,0.0
+17005,"Bond,IL",2017,4.5,20
+17007,"Boone,IL",2017,6.8,1
 17009,"Brown,IL",2017,2.9,0.0
 17011,"Bureau,IL",2017,4.9,0.0
 17013,"Calhoun,IL",2017,5.5,0.0
@@ -727,12 +727,12 @@ id,name,year,unemployment_rate,accidents
 18059,"Hancock,IN",2017,3.0,0.0
 18061,"Harrison,IN",2017,3.5,0.0
 18063,"Hendricks,IN",2017,2.9,0.0
-18065,"Henry,IN",2017,3.7,0.0
+18065,"Henry,IN",2017,3.7,2
 18067,"Howard,IN",2017,3.8,0.0
-18069,"Huntington,IN",2017,3.6,0.0
+18069,"Huntington,IN",2017,3.6,29
 18071,"Jackson,IN",2017,3.0,0.0
 18073,"Jasper,IN",2017,4.3,0.0
-18075,"Jay,IN",2017,3.5,0.0
+18075,"Jay,IN",2017,3.5,12
 18077,"Jefferson,IN",2017,3.7,0.0
 18079,"Jennings,IN",2017,3.8,0.0
 18081,"Johnson,IN",2017,3.0,0.0
@@ -740,7 +740,7 @@ id,name,year,unemployment_rate,accidents
 18085,"Kosciusko,IN",2017,2.7,0.0
 18087,"LaGrange,IN",2017,2.6,0.0
 18089,"Lake,IN",2017,5.1,0.0
-18091,"LaPorte,IN",2017,4.5,0.0
+18091,"LaPorte,IN",2017,4.5,102
 18093,"Lawrence,IN",2017,4.4,0.0
 18095,"Madison,IN",2017,4.0,0.0
 18097,"Marion,IN",2017,3.6,0.0
@@ -779,7 +779,7 @@ id,name,year,unemployment_rate,accidents
 18163,"Vanderburgh,IN",2017,3.3,0.0
 18165,"Vermillion,IN",2017,5.4,0.0
 18167,"Vigo,IN",2017,4.2,0.0
-18169,"Wabash,IN",2017,3.5,0.0
+18169,"Wabash,IN",2017,3.5,33
 18171,"Warren,IN",2017,3.4,0.0
 18173,"Warrick,IN",2017,3.2,0.0
 18175,"Washington,IN",2017,3.7,0.0
@@ -988,7 +988,7 @@ id,name,year,unemployment_rate,accidents
 20199,"Wallace,KS",2017,2.6,0.0
 20201,"Washington,KS",2017,3.0,0.0
 20203,"Wichita,KS",2017,2.5,0.0
-20205,"Wilson,KS",2017,4.7,0.0
+20205,"Wilson,KS",2017,4.7,2
 20207,"Woodson,KS",2017,4.4,0.0
 20209,"Wyandotte,KS",2017,5.2,0.0
 21001,"Adair,KY",2017,6.1,0.0
@@ -1179,7 +1179,7 @@ id,name,year,unemployment_rate,accidents
 23003,"Aroostook,ME",2017,4.9,0.0
 23005,"Cumberland,ME",2017,2.6,0.0
 23007,"Franklin,ME",2017,4.2,0.0
-23009,"Hancock,ME",2017,3.9,0.0
+23009,"Hancock,ME",2017,3.9,2
 23011,"Kennebec,ME",2017,3.3,0.0
 23013,"Knox,ME",2017,3.2,0.0
 23015,"Lincoln,ME",2017,3.3,0.0
@@ -1202,11 +1202,11 @@ id,name,year,unemployment_rate,accidents
 24019,"Dorchester,MD",2017,5.9,0.0
 24021,"Frederick,MD",2017,3.7,0.0
 24023,"Garrett,MD",2017,5.3,0.0
-24025,"Harford,MD",2017,4.0,0.0
+24025,"Harford,MD",2017,4.0,1556
 24027,"Howard,MD",2017,3.2,0.0
 24029,"Kent,MD",2017,4.6,0.0
-24031,"Montgomery,MD",2017,3.4,0.0
-24033,"Prince George's,MD",2017,4.3,0.0
+24031,"Montgomery,MD",2017,3.4,1
+24033,"Prince George's,MD",2017,4.3,210
 24035,"Queen Anne's,MD",2017,3.8,0.0
 24037,"St. Mary's,MD",2017,4.1,0.0
 24039,"Somerset,MD",2017,7.0,0.0
@@ -1248,7 +1248,7 @@ id,name,year,unemployment_rate,accidents
 26033,"Chippewa,MI",2017,7.6,0.0
 26035,"Clare,MI",2017,6.9,0.0
 26037,"Clinton,MI",2017,3.6,0.0
-26039,"Crawford,MI",2017,6.9,0.0
+26039,"Crawford,MI",2017,6.9,1
 26041,"Delta,MI",2017,6.2,0.0
 26043,"Dickinson,MI",2017,4.7,0.0
 26045,"Eaton,MI",2017,4.1,0.0
@@ -1303,7 +1303,7 @@ id,name,year,unemployment_rate,accidents
 26143,"Roscommon,MI",2017,8.8,0.0
 26145,"Saginaw,MI",2017,5.4,0.0
 26147,"St. Clair,MI",2017,5.1,0.0
-26149,"St. Joseph,MI",2017,4.2,0.0
+26149,"St. Joseph,MI",2017,4.2,10
 26151,"Sanilac,MI",2017,5.8,0.0
 26153,"Schoolcraft,MI",2017,8.3,0.0
 26155,"Shiawassee,MI",2017,5.1,0.0
@@ -1338,7 +1338,7 @@ id,name,year,unemployment_rate,accidents
 27047,"Freeborn,MN",2017,3.6,0.0
 27049,"Goodhue,MN",2017,3.2,0.0
 27051,"Grant,MN",2017,4.1,0.0
-27053,"Hennepin,MN",2017,3.0,0.0
+27053,"Hennepin,MN",2017,3.0,14869
 27055,"Houston,MN",2017,3.4,0.0
 27057,"Hubbard,MN",2017,5.5,0.0
 27059,"Isanti,MN",2017,4.2,0.0
@@ -1360,7 +1360,7 @@ id,name,year,unemployment_rate,accidents
 27091,"Martin,MN",2017,3.4,0.0
 27093,"Meeker,MN",2017,4.0,0.0
 27095,"Mille Lacs,MN",2017,5.5,0.0
-27097,"Morrison,MN",2017,5.3,0.0
+27097,"Morrison,MN",2017,5.3,261
 27099,"Mower,MN",2017,2.8,0.0
 27101,"Murray,MN",2017,4.3,0.0
 27103,"Nicollet,MN",2017,2.5,0.0
@@ -1504,7 +1504,7 @@ id,name,year,unemployment_rate,accidents
 29041,"Chariton,MO",2017,3.5,0.0
 29043,"Christian,MO",2017,3.1,0.0
 29045,"Clark,MO",2017,5.6,0.0
-29047,"Clay,MO",2017,3.6,0.0
+29047,"Clay,MO",2017,3.6,2
 29049,"Clinton,MO",2017,4.0,0.0
 29051,"Cole,MO",2017,2.9,0.0
 29053,"Cooper,MO",2017,3.6,0.0
@@ -1516,7 +1516,7 @@ id,name,year,unemployment_rate,accidents
 29065,"Dent,MO",2017,4.2,0.0
 29067,"Douglas,MO",2017,4.6,0.0
 29069,"Dunklin,MO",2017,6.5,0.0
-29071,"Franklin,MO",2017,3.6,0.0
+29071,"Franklin,MO",2017,3.6,2
 29073,"Gasconade,MO",2017,3.8,0.0
 29075,"Gentry,MO",2017,2.8,0.0
 29077,"Greene,MO",2017,3.1,0.0
@@ -1572,11 +1572,11 @@ id,name,year,unemployment_rate,accidents
 29177,"Ray,MO",2017,4.8,0.0
 29179,"Reynolds,MO",2017,3.9,0.0
 29181,"Ripley,MO",2017,5.5,0.0
-29183,"St. Charles,MO",2017,2.9,0.0
+29183,"St. Charles,MO",2017,2.9,1
 29185,"St. Clair,MO",2017,5.1,0.0
 29186,"Ste. Genevieve,MO",2017,3.6,0.0
 29187,"St. Francois,MO",2017,4.4,0.0
-29189,"St. Louis,MO",2017,3.4,0.0
+29189,"St. Louis,MO",2017,3.4,4243
 29195,"Saline,MO",2017,3.6,0.0
 29197,"Schuyler,MO",2017,4.8,0.0
 29199,"Scotland,MO",2017,3.1,0.0
@@ -1770,7 +1770,7 @@ id,name,year,unemployment_rate,accidents
 33011,"Hillsborough,NH",2017,2.9,0.0
 33013,"Merrimack,NH",2017,2.4,0.0
 33015,"Rockingham,NH",2017,2.9,0.0
-33017,"Strafford,NH",2017,2.4,0.0
+33017,"Strafford,NH",2017,2.4,223
 33019,"Sullivan,NH",2017,2.2,0.0
 34001,"Atlantic,NJ",2017,7.2,0.0
 34003,"Bergen,NJ",2017,3.9,0.0
@@ -1781,8 +1781,8 @@ id,name,year,unemployment_rate,accidents
 34013,"Essex,NJ",2017,5.7,0.0
 34015,"Gloucester,NJ",2017,4.7,0.0
 34017,"Hudson,NJ",2017,4.4,0.0
-34019,"Hunterdon,NJ",2017,3.5,0.0
-34021,"Mercer,NJ",2017,4.1,0.0
+34019,"Hunterdon,NJ",2017,3.5,310
+34021,"Mercer,NJ",2017,4.1,16
 34023,"Middlesex,NJ",2017,4.1,0.0
 34025,"Monmouth,NJ",2017,4.1,0.0
 34027,"Morris,NJ",2017,3.6,0.0
@@ -1830,7 +1830,7 @@ id,name,year,unemployment_rate,accidents
 36003,"Allegany,NY",2017,6.6,0.0
 36005,"Bronx,NY",2017,6.3,0.0
 36007,"Broome,NY",2017,5.6,0.0
-36009,"Cattaraugus,NY",2017,6.2,0.0
+36009,"Cattaraugus,NY",2017,6.2,53
 36011,"Cayuga,NY",2017,5.0,0.0
 36013,"Chautauqua,NY",2017,6.0,0.0
 36015,"Chemung,NY",2017,5.5,0.0
@@ -1840,7 +1840,7 @@ id,name,year,unemployment_rate,accidents
 36023,"Cortland,NY",2017,5.8,0.0
 36025,"Delaware,NY",2017,5.5,0.0
 36027,"Dutchess,NY",2017,4.3,0.0
-36029,"Erie,NY",2017,5.1,0.0
+36029,"Erie,NY",2017,5.1,17
 36031,"Essex,NY",2017,5.5,0.0
 36033,"Franklin,NY",2017,6.0,0.0
 36035,"Fulton,NY",2017,5.8,0.0
@@ -1853,7 +1853,7 @@ id,name,year,unemployment_rate,accidents
 36049,"Lewis,NY",2017,6.6,0.0
 36051,"Livingston,NY",2017,5.0,0.0
 36053,"Madison,NY",2017,5.5,0.0
-36055,"Monroe,NY",2017,4.9,0.0
+36055,"Monroe,NY",2017,4.9,1
 36057,"Montgomery,NY",2017,5.7,0.0
 36059,"Nassau,NY",2017,4.1,0.0
 36061,"New York,NY",2017,4.1,0.0
@@ -1876,12 +1876,12 @@ id,name,year,unemployment_rate,accidents
 36095,"Schoharie,NY",2017,5.5,0.0
 36097,"Schuyler,NY",2017,5.8,0.0
 36099,"Seneca,NY",2017,4.5,0.0
-36101,"Steuben,NY",2017,5.7,0.0
+36101,"Steuben,NY",2017,5.7,4
 36103,"Suffolk,NY",2017,4.5,0.0
 36105,"Sullivan,NY",2017,4.9,0.0
 36107,"Tioga,NY",2017,5.1,0.0
 36109,"Tompkins,NY",2017,4.3,0.0
-36111,"Ulster,NY",2017,4.5,0.0
+36111,"Ulster,NY",2017,4.5,486
 36113,"Warren,NY",2017,5.3,0.0
 36115,"Washington,NY",2017,4.6,0.0
 36117,"Wayne,NY",2017,5.0,0.0
@@ -1891,7 +1891,7 @@ id,name,year,unemployment_rate,accidents
 37001,"Alamance,NC",2017,4.2,0.0
 37003,"Alexander,NC",2017,3.6,0.0
 37005,"Alleghany,NC",2017,5.0,0.0
-37007,"Anson,NC",2017,5.1,0.0
+37007,"Anson,NC",2017,5.1,20
 37009,"Ashe,NC",2017,4.1,0.0
 37011,"Avery,NC",2017,4.3,0.0
 37013,"Beaufort,NC",2017,5.0,0.0
@@ -1963,7 +1963,7 @@ id,name,year,unemployment_rate,accidents
 37145,"Person,NC",2017,4.6,0.0
 37147,"Pitt,NC",2017,4.8,0.0
 37149,"Polk,NC",2017,4.1,0.0
-37151,"Randolph,NC",2017,4.3,0.0
+37151,"Randolph,NC",2017,4.3,1
 37153,"Richmond,NC",2017,6.0,0.0
 37155,"Robeson,NC",2017,6.5,0.0
 37157,"Rockingham,NC",2017,5.1,0.0
@@ -2039,15 +2039,15 @@ id,name,year,unemployment_rate,accidents
 38097,"Traill,ND",2017,2.5,0.0
 38099,"Walsh,ND",2017,3.4,0.0
 38101,"Ward,ND",2017,3.3,0.0
-38103,"Wells,ND",2017,3.3,0.0
+38103,"Wells,ND",2017,3.3,3
 38105,"Williams,ND",2017,2.5,0.0
 39001,"Adams,OH",2017,7.1,0.0
 39003,"Allen,OH",2017,5.0,0.0
 39005,"Ashland,OH",2017,4.9,0.0
 39007,"Ashtabula,OH",2017,5.9,0.0
-39009,"Athens,OH",2017,6.0,0.0
+39009,"Athens,OH",2017,6.0,27
 39011,"Auglaize,OH",2017,3.7,0.0
-39013,"Belmont,OH",2017,6.3,0.0
+39013,"Belmont,OH",2017,6.3,90
 39015,"Brown,OH",2017,5.7,0.0
 39017,"Butler,OH",2017,4.4,0.0
 39019,"Carroll,OH",2017,5.8,0.0
@@ -2079,20 +2079,20 @@ id,name,year,unemployment_rate,accidents
 39071,"Highland,OH",2017,5.9,0.0
 39073,"Hocking,OH",2017,5.4,0.0
 39075,"Holmes,OH",2017,3.5,0.0
-39077,"Huron,OH",2017,6.4,0.0
+39077,"Huron,OH",2017,6.4,46
 39079,"Jackson,OH",2017,7.1,0.0
 39081,"Jefferson,OH",2017,7.3,0.0
 39083,"Knox,OH",2017,4.5,0.0
 39085,"Lake,OH",2017,5.1,0.0
 39087,"Lawrence,OH",2017,5.9,0.0
-39089,"Licking,OH",2017,4.2,0.0
+39089,"Licking,OH",2017,4.2,144
 39091,"Logan,OH",2017,4.1,0.0
-39093,"Lorain,OH",2017,6.1,0.0
+39093,"Lorain,OH",2017,6.1,243
 39095,"Lucas,OH",2017,5.9,0.0
 39097,"Madison,OH",2017,3.9,0.0
-39099,"Mahoning,OH",2017,6.8,0.0
+39099,"Mahoning,OH",2017,6.8,158
 39101,"Marion,OH",2017,5.0,0.0
-39103,"Medina,OH",2017,4.7,0.0
+39103,"Medina,OH",2017,4.7,10
 39105,"Meigs,OH",2017,8.1,0.0
 39107,"Mercer,OH",2017,3.1,0.0
 39109,"Miami,OH",2017,4.2,0.0
@@ -2100,7 +2100,7 @@ id,name,year,unemployment_rate,accidents
 39113,"Montgomery,OH",2017,4.9,0.0
 39115,"Morgan,OH",2017,6.7,0.0
 39117,"Morrow,OH",2017,4.9,0.0
-39119,"Muskingum,OH",2017,5.6,0.0
+39119,"Muskingum,OH",2017,5.6,59
 39121,"Noble,OH",2017,7.2,0.0
 39123,"Ottawa,OH",2017,6.7,0.0
 39125,"Paulding,OH",2017,4.4,0.0
@@ -2113,10 +2113,10 @@ id,name,year,unemployment_rate,accidents
 39139,"Richland,OH",2017,5.4,0.0
 39141,"Ross,OH",2017,5.1,0.0
 39143,"Sandusky,OH",2017,4.7,0.0
-39145,"Scioto,OH",2017,7.0,0.0
+39145,"Scioto,OH",2017,7.0,32
 39147,"Seneca,OH",2017,4.7,0.0
 39149,"Shelby,OH",2017,4.1,0.0
-39151,"Stark,OH",2017,5.2,0.0
+39151,"Stark,OH",2017,5.2,1
 39153,"Summit,OH",2017,5.0,0.0
 39155,"Trumbull,OH",2017,7.2,0.0
 39157,"Tuscarawas,OH",2017,5.0,0.0
@@ -2126,7 +2126,7 @@ id,name,year,unemployment_rate,accidents
 39165,"Warren,OH",2017,4.1,0.0
 39167,"Washington,OH",2017,6.2,0.0
 39169,"Wayne,OH",2017,3.9,0.0
-39171,"Williams,OH",2017,4.4,0.0
+39171,"Williams,OH",2017,4.4,14
 39173,"Wood,OH",2017,4.4,0.0
 39175,"Wyandot,OH",2017,3.7,0.0
 40001,"Adair,OK",2017,5.0,0.0
@@ -2180,10 +2180,10 @@ id,name,year,unemployment_rate,accidents
 40097,"Mayes,OK",2017,4.7,0.0
 40099,"Murray,OK",2017,3.7,0.0
 40101,"Muskogee,OK",2017,5.1,0.0
-40103,"Noble,OK",2017,3.3,0.0
+40103,"Noble,OK",2017,3.3,1
 40105,"Nowata,OK",2017,5.4,0.0
 40107,"Okfuskee,OK",2017,6.0,0.0
-40109,"Oklahoma,OK",2017,4.0,0.0
+40109,"Oklahoma,OK",2017,4.0,3240
 40111,"Okmulgee,OK",2017,6.3,0.0
 40113,"Osage,OK",2017,5.1,0.0
 40115,"Ottawa,OK",2017,4.3,0.0
@@ -2217,19 +2217,19 @@ id,name,year,unemployment_rate,accidents
 41017,"Deschutes,OR",2017,4.2,0.0
 41019,"Douglas,OR",2017,5.3,0.0
 41021,"Gilliam,OR",2017,4.2,0.0
-41023,"Grant,OR",2017,6.9,0.0
+41023,"Grant,OR",2017,6.9,7
 41025,"Harney,OR",2017,6.3,0.0
 41027,"Hood River,OR",2017,3.6,0.0
 41029,"Jackson,OR",2017,4.7,0.0
-41031,"Jefferson,OR",2017,5.6,0.0
+41031,"Jefferson,OR",2017,5.6,3
 41033,"Josephine,OR",2017,5.4,0.0
 41035,"Klamath,OR",2017,5.9,0.0
-41037,"Lake,OR",2017,5.7,0.0
+41037,"Lake,OR",2017,5.7,3
 41039,"Lane,OR",2017,4.4,0.0
 41041,"Lincoln,OR",2017,4.8,0.0
 41043,"Linn,OR",2017,4.7,0.0
 41045,"Malheur,OR",2017,4.6,0.0
-41047,"Marion,OR",2017,4.3,0.0
+41047,"Marion,OR",2017,4.3,9
 41049,"Morrow,OR",2017,4.4,0.0
 41051,"Multnomah,OR",2017,3.6,0.0
 41053,"Polk,OR",2017,4.3,0.0
@@ -2239,16 +2239,16 @@ id,name,year,unemployment_rate,accidents
 41061,"Union,OR",2017,5.3,0.0
 41063,"Wallowa,OR",2017,5.7,0.0
 41065,"Wasco,OR",2017,4.2,0.0
-41067,"Washington,OR",2017,3.5,0.0
+41067,"Washington,OR",2017,3.5,5
 41069,"Wheeler,OR",2017,4.0,0.0
 41071,"Yamhill,OR",2017,3.8,0.0
 42001,"Adams,PA",2017,3.7,0.0
-42003,"Allegheny,PA",2017,4.7,0.0
+42003,"Allegheny,PA",2017,4.7,2884
 42005,"Armstrong,PA",2017,6.1,0.0
 42007,"Beaver,PA",2017,5.5,0.0
 42009,"Bedford,PA",2017,5.2,0.0
 42011,"Berks,PA",2017,4.6,0.0
-42013,"Blair,PA",2017,4.8,0.0
+42013,"Blair,PA",2017,4.8,418
 42015,"Bradford,PA",2017,5.1,0.0
 42017,"Bucks,PA",2017,4.2,0.0
 42019,"Butler,PA",2017,4.6,0.0
@@ -2276,13 +2276,13 @@ id,name,year,unemployment_rate,accidents
 42063,"Indiana,PA",2017,5.8,0.0
 42065,"Jefferson,PA",2017,5.6,0.0
 42067,"Juniata,PA",2017,4.6,0.0
-42069,"Lackawanna,PA",2017,5.1,0.0
+42069,"Lackawanna,PA",2017,5.1,162
 42071,"Lancaster,PA",2017,3.8,0.0
 42073,"Lawrence,PA",2017,6.0,0.0
 42075,"Lebanon,PA",2017,4.1,0.0
 42077,"Lehigh,PA",2017,5.0,0.0
 42079,"Luzerne,PA",2017,5.9,0.0
-42081,"Lycoming,PA",2017,5.6,0.0
+42081,"Lycoming,PA",2017,5.6,668
 42083,"McKean,PA",2017,6.1,0.0
 42085,"Mercer,PA",2017,5.4,0.0
 42087,"Mifflin,PA",2017,5.3,0.0
@@ -2302,7 +2302,7 @@ id,name,year,unemployment_rate,accidents
 42115,"Susquehanna,PA",2017,4.7,0.0
 42117,"Tioga,PA",2017,5.9,0.0
 42119,"Union,PA",2017,4.3,0.0
-42121,"Venango,PA",2017,6.1,0.0
+42121,"Venango,PA",2017,6.1,60
 42123,"Warren,PA",2017,5.3,0.0
 42125,"Washington,PA",2017,5.2,0.0
 42127,"Wayne,PA",2017,5.1,0.0
@@ -2322,7 +2322,7 @@ id,name,year,unemployment_rate,accidents
 45011,"Barnwell,SC",2017,6.0,0.0
 45013,"Beaufort,SC",2017,4.1,0.0
 45015,"Berkeley,SC",2017,3.8,0.0
-45017,"Calhoun,SC",2017,5.2,0.0
+45017,"Calhoun,SC",2017,5.2,1
 45019,"Charleston,SC",2017,3.5,0.0
 45021,"Cherokee,SC",2017,5.0,0.0
 45023,"Chester,SC",2017,6.1,0.0
@@ -2334,7 +2334,7 @@ id,name,year,unemployment_rate,accidents
 45035,"Dorchester,SC",2017,3.9,0.0
 45037,"Edgefield,SC",2017,4.6,0.0
 45039,"Fairfield,SC",2017,7.4,0.0
-45041,"Florence,SC",2017,4.5,0.0
+45041,"Florence,SC",2017,4.5,43
 45043,"Georgetown,SC",2017,5.6,0.0
 45045,"Greenville,SC",2017,3.7,0.0
 45047,"Greenwood,SC",2017,4.5,0.0
@@ -2432,15 +2432,15 @@ id,name,year,unemployment_rate,accidents
 47007,"Bledsoe,TN",2017,5.9,0.0
 47009,"Blount,TN",2017,3.5,0.0
 47011,"Bradley,TN",2017,3.7,0.0
-47013,"Campbell,TN",2017,5.2,0.0
+47013,"Campbell,TN",2017,5.2,1
 47015,"Cannon,TN",2017,3.6,0.0
 47017,"Carroll,TN",2017,5.2,0.0
-47019,"Carter,TN",2017,4.6,0.0
+47019,"Carter,TN",2017,4.6,1
 47021,"Cheatham,TN",2017,3.1,0.0
 47023,"Chester,TN",2017,4.0,0.0
 47025,"Claiborne,TN",2017,4.7,0.0
 47027,"Clay,TN",2017,5.1,0.0
-47029,"Cocke,TN",2017,5.3,0.0
+47029,"Cocke,TN",2017,5.3,82
 47031,"Coffee,TN",2017,3.7,0.0
 47033,"Crockett,TN",2017,4.2,0.0
 47035,"Cumberland,TN",2017,4.7,0.0
@@ -2458,7 +2458,7 @@ id,name,year,unemployment_rate,accidents
 47059,"Greene,TN",2017,4.6,0.0
 47061,"Grundy,TN",2017,5.0,0.0
 47063,"Hamblen,TN",2017,4.1,0.0
-47065,"Hamilton,TN",2017,3.7,0.0
+47065,"Hamilton,TN",2017,3.7,3
 47067,"Hancock,TN",2017,5.8,0.0
 47069,"Hardeman,TN",2017,5.2,0.0
 47071,"Hardin,TN",2017,4.7,0.0
@@ -2535,7 +2535,7 @@ id,name,year,unemployment_rate,accidents
 48023,"Baylor,TX",2017,3.4,0.0
 48025,"Bee,TX",2017,6.5,0.0
 48027,"Bell,TX",2017,4.3,0.0
-48029,"Bexar,TX",2017,3.5,0.0
+48029,"Bexar,TX",2017,3.5,3974
 48031,"Blanco,TX",2017,2.8,0.0
 48033,"Borden,TX",2017,3.4,0.0
 48035,"Bosque,TX",2017,4.0,0.0
@@ -2563,7 +2563,7 @@ id,name,year,unemployment_rate,accidents
 48079,"Cochran,TX",2017,4.6,0.0
 48081,"Coke,TX",2017,3.7,0.0
 48083,"Coleman,TX",2017,4.5,0.0
-48085,"Collin,TX",2017,3.5,0.0
+48085,"Collin,TX",2017,3.5,1077
 48087,"Collingsworth,TX",2017,3.6,0.0
 48089,"Colorado,TX",2017,4.0,0.0
 48091,"Comal,TX",2017,3.4,0.0
@@ -2621,7 +2621,7 @@ id,name,year,unemployment_rate,accidents
 48195,"Hansford,TX",2017,2.5,0.0
 48197,"Hardeman,TX",2017,4.0,0.0
 48199,"Hardin,TX",2017,6.1,0.0
-48201,"Harris,TX",2017,5.1,0.0
+48201,"Harris,TX",2017,5.1,275
 48203,"Harrison,TX",2017,5.2,0.0
 48205,"Hartley,TX",2017,2.0,0.0
 48207,"Haskell,TX",2017,4.8,0.0
@@ -2740,7 +2740,7 @@ id,name,year,unemployment_rate,accidents
 48433,"Stonewall,TX",2017,3.4,0.0
 48435,"Sutton,TX",2017,5.1,0.0
 48437,"Swisher,TX",2017,4.1,0.0
-48439,"Tarrant,TX",2017,3.7,0.0
+48439,"Tarrant,TX",2017,3.7,6568
 48441,"Taylor,TX",2017,3.5,0.0
 48443,"Terrell,TX",2017,4.6,0.0
 48445,"Terry,TX",2017,5.0,0.0
@@ -2796,13 +2796,13 @@ id,name,year,unemployment_rate,accidents
 49037,"San Juan,UT",2017,7.0,0.0
 49039,"Sanpete,UT",2017,3.9,0.0
 49041,"Sevier,UT",2017,3.9,0.0
-49043,"Summit,UT",2017,3.1,0.0
+49043,"Summit,UT",2017,3.1,3
 49045,"Tooele,UT",2017,3.6,0.0
 49047,"Uintah,UT",2017,6.0,0.0
 49049,"Utah,UT",2017,2.9,0.0
 49051,"Wasatch,UT",2017,3.3,0.0
 49053,"Washington,UT",2017,3.5,0.0
-49055,"Wayne,UT",2017,7.4,0.0
+49055,"Wayne,UT",2017,7.4,2
 49057,"Weber,UT",2017,3.7,0.0
 50001,"Addison,VT",2017,2.8,0.0
 50003,"Bennington,VT",2017,3.6,0.0
@@ -2956,7 +2956,7 @@ id,name,year,unemployment_rate,accidents
 53005,"Benton,WA",2017,5.5,0.0
 53007,"Chelan,WA",2017,4.8,0.0
 53009,"Clallam,WA",2017,6.8,0.0
-53011,"Clark,WA",2017,5.1,0.0
+53011,"Clark,WA",2017,5.1,10
 53013,"Columbia,WA",2017,5.6,0.0
 53015,"Cowlitz,WA",2017,6.1,0.0
 53017,"Douglas,WA",2017,5.7,0.0
@@ -2993,9 +2993,9 @@ id,name,year,unemployment_rate,accidents
 54001,"Barbour,WV",2017,5.8,0.0
 54003,"Berkeley,WV",2017,3.6,0.0
 54005,"Boone,WV",2017,6.4,0.0
-54007,"Braxton,WV",2017,7.5,0.0
+54007,"Braxton,WV",2017,7.5,60
 54009,"Brooke,WV",2017,6.1,0.0
-54011,"Cabell,WV",2017,4.5,0.0
+54011,"Cabell,WV",2017,4.5,301
 54013,"Calhoun,WV",2017,10.8,0.0
 54015,"Clay,WV",2017,8.6,0.0
 54017,"Doddridge,WV",2017,4.2,0.0
@@ -3009,7 +3009,7 @@ id,name,year,unemployment_rate,accidents
 54033,"Harrison,WV",2017,4.8,0.0
 54035,"Jackson,WV",2017,5.7,0.0
 54037,"Jefferson,WV",2017,3.1,0.0
-54039,"Kanawha,WV",2017,5.1,0.0
+54039,"Kanawha,WV",2017,5.1,1126
 54041,"Lewis,WV",2017,6.6,0.0
 54043,"Lincoln,WV",2017,6.8,0.0
 54045,"Logan,WV",2017,7.4,0.0
@@ -3024,8 +3024,8 @@ id,name,year,unemployment_rate,accidents
 54063,"Monroe,WV",2017,4.4,0.0
 54065,"Morgan,WV",2017,3.9,0.0
 54067,"Nicholas,WV",2017,7.1,0.0
-54069,"Ohio,WV",2017,4.7,0.0
-54071,"Pendleton,WV",2017,3.7,0.0
+54069,"Ohio,WV",2017,4.7,46
+54071,"Pendleton,WV",2017,3.7,13
 54073,"Pleasants,WV",2017,7.0,0.0
 54075,"Pocahontas,WV",2017,5.9,0.0
 54077,"Preston,WV",2017,4.9,0.0
@@ -3038,7 +3038,7 @@ id,name,year,unemployment_rate,accidents
 54091,"Taylor,WV",2017,4.9,0.0
 54093,"Tucker,WV",2017,5.2,0.0
 54095,"Tyler,WV",2017,7.7,0.0
-54097,"Upshur,WV",2017,6.1,0.0
+54097,"Upshur,WV",2017,6.1,2
 54099,"Wayne,WV",2017,5.8,0.0
 54101,"Webster,WV",2017,6.3,0.0
 54103,"Wetzel,WV",2017,7.5,0.0
@@ -3049,7 +3049,7 @@ id,name,year,unemployment_rate,accidents
 55003,"Ashland,WI",2017,4.6,0.0
 55005,"Barron,WI",2017,3.5,0.0
 55007,"Bayfield,WI",2017,5.2,0.0
-55009,"Brown,WI",2017,2.9,0.0
+55009,"Brown,WI",2017,2.9,7
 55011,"Buffalo,WI",2017,3.8,0.0
 55013,"Burnett,WI",2017,4.8,0.0
 55015,"Calumet,WI",2017,2.8,0.0
