@@ -63,7 +63,7 @@ router.get("/mostaccstates",(req,res)=>{
 })
 
 router.get("/mostcounty",(req,res)=>{
-  console.log("[INFO] Get request recieved at /acccounties");
+  console.log("[INFO] Get request recieved at /mostcounty");
   const results = AccCounties();
   res.json(results);
 })
@@ -229,6 +229,7 @@ function AccCounties(){
   // var new_array = Array.from(new_map,([name,accidents])=>({name,accidents}));
   // console.log(new_array);
   // return new_array;
+  console.log("ret", ret);
   return ret;
 }
 

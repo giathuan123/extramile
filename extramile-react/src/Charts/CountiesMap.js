@@ -13,7 +13,7 @@ const CountiesMap = () => {
   
   
   if(checker !== 1){
-    fetch('http://localhost:3001/users/acccounties')
+    fetch('http://localhost:3001/users/mostcounty')
     .then(response => response.json())
     .then((json) => {
         console.log(json);
@@ -26,10 +26,9 @@ const CountiesMap = () => {
     return list.map(data=>data[key]);
   }
 
-
   useEffect(() => {
     // https://www.bls.gov/lau/
-    csv("accidents.csv").then(counties => {
+    csv("county_accidents_0.csv").then(counties => {
       console.log(counties);
       setData(counties);
     });

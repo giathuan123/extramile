@@ -10,3 +10,8 @@
 .divider {
     height: 10px;
 }
+
+.page-summary {
+    color: gray;
+    font-style: italic;
+}
