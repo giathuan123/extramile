@@ -12,6 +12,7 @@ import {
   StatesMapPage,
   CountiesMapPage,
   CalendarPage,
+  PiePage
 } from './Pages'
 
 import { NavBar } from './NavBar'
@@ -31,6 +32,9 @@ function App() {
             </Route>
             <Route path="/statesMap">
                 <StatesMapPage />
+            </Route>
+            <Route path="/pie">
+                <PiePage />
             </Route>
             <Route path="/countiesMap">
               <CountiesMapPage />

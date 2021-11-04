@@ -11,6 +11,7 @@ const Menu = (props) => {
                 <Link to="/statesMap">States Map</Link>
                 <Link to="/countiesMap">Counties Map</Link>
                 <Link to="calendar">Calendar</Link>
+                <Link to="/pie">Pie</Link>
             </div>
         }
         </>
