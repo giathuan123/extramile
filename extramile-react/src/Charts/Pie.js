@@ -1,6 +1,5 @@
 import React, { PureComponent, useState } from 'react';
 import { PieChart, Pie, Sector, Cell, ResponsiveContainer, Tooltip, Legend } from 'recharts';
-import './Pies.css'
 export default function PieGraph() {
     const RADIAN = Math.PI / 180;
     const [list, setList] = useState([]);
