@@ -4,7 +4,7 @@ import Bar from './Barchart'
 import StatesMap from './StatesMap'
 import CountiesMap from './CountiesMap'
 import Calendar from './Calendar'
-import Swarm from './Swarm'
+import Histogram from './Histogram'
 import Pie from './Pies'
 export {
     Search as SearchPage,
@@ -13,7 +13,7 @@ export {
     StatesMap as StatesMapPage,
     CountiesMap as CountiesMapPage,
     Calendar as CalendarPage,
-    Swarm as SwarmPlotPage,
+    Histogram as HistogramPage,
     Pie as PiePage
 }
 

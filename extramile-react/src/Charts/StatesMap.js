@@ -2,6 +2,8 @@ import React, {useState} from 'react'
 import Plot from 'react-plotly.js';
 
 function StatesMap() {
+    var locs = []
+    var accidents = []
     const [list, setList] = useState([]);
     const [checker,setChecker] = useState(0);
 

@@ -1,17 +1,38 @@
 import { ResponsiveSwarmPlot } from '@nivo/swarmplot';
 
+const data = [
+    {
+        "id": "0.0",
+        "severity": "1",
+        "visibility": 5.5,
+        "volume": 18
+    },
+    {
+        "id": "0.1",
+        "severity": "4",
+        "visibility": 10.0,
+        "volume": 10
+    },
+    {
+        "id": "0.2",
+        "severity": "3",
+        "visibility": 5.5,
+        "volume": 100
+    }
+];
+
 function SwarmPlot(props) {
     return (
         <ResponsiveSwarmPlot
-            data={props.data}
+            data={data}
             value="visibility"
             groups={[ '1', '2', '3', '4' ]}
             groupBy="severity"
             identity="id"
             value="visibility"
             valueFormat=".1f"
-            valueScale={{ type: 'linear', min: 0, max: 10, reverse: false }}
-            size={{ key: 'volume', values: [0, 6], sizes: [1, 5] }}
+            valueScale={{ type: 'linear', min: 0, max: 20, reverse: false }}
+            size={{ key: 'volume', values: [ 4, 20 ], sizes: [ 6, 20 ] }}
             forceStrength={4}
             simulationIterations={100}
             borderColor={{

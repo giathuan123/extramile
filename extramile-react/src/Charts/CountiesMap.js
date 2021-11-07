@@ -43,7 +43,7 @@ const CountiesMap = () => {
   console.log("data", data);
   
   const colorScale = scaleQuantile(data)
-    .domain(list.map(d => d.accidents))
+    .domain(data.map(d => d.accidents))
     .range([
       "#ffedea",
       "#ffcec5",
