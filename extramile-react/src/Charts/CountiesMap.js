@@ -30,7 +30,7 @@ const CountiesMap = () => {
 
   
   const colorScale = scaleQuantile(data)
-    .domain(data.map(d => d.accidents))
+    .domain(list.map(d => d.accidents))
     .range([
       "#ffedea",
       "#ffcec5",
