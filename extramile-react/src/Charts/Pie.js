@@ -1,8 +1,8 @@
-import React, { PureComponent, useState } from 'react';
-import { PieChart, Pie, Sector, Cell, ResponsiveContainer, Tooltip, Legend } from 'recharts';
+import React, { useState } from 'react';
+import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip, Legend } from 'recharts';
 export default function PieGraph() {
     const [list, setList] = useState([]);
-    const [colors, setColors] = useState(['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#AF19FF']);
+    const [colors] = useState(['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#AF19FF']);
     const [checker,setChecker] = useState(0);
     const [total,setTotal]=useState(0);
     if(checker !== 1){
@@ -46,7 +46,7 @@ export default function PieGraph() {
                     labelLine={true}
                     outerRadius={window.innerHeight/5}
                     fill="#db071f"
-                    label={true}>{list.map((entry,index)=><Cell key ={'cell-${index}'} fill={colors[index%colors.length]} />)}
+                    label={true}>{list.map((entry,index)=><Cell key ={`cell-${index}`} fill={colors[index%colors.length]} />)}
                 </Pie>
                 <Tooltip content={<CustomTooltip/>} />
                 <Legend verticalAlign ="top" align="center"/>

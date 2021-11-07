@@ -5,6 +5,7 @@ o.map((raw)=>{
     repacked[raw.ID] = {
       County: raw.County,
       State: raw.State,
+      Visibility: raw["Visibility(mi)"], 
       Severity: raw.Severity,
       Start_Time: raw.Start_Time,
       Street: raw.Street,
