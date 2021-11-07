@@ -1,4 +1,3 @@
-jakesprint5
 import './App.css';
 import {
   BrowserRouter as Router,

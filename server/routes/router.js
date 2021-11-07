@@ -1,4 +1,6 @@
 const router = require("express").Router();
+const fs = require("fs");
+const countyMap = require("./counties.json");
 var { data, indexes } = require("../db/dbloader.js")
 var maxIdNumber = 0;
 
@@ -228,7 +230,16 @@ function AccCounties(){
   var ret = []
   var countyIndex = indexes.getIndex("CountyIndex");
   for(const[key, value] of Object.entries(countyIndex.index)){
-    ret.push({[key]:value.length})
+    if(countyMap[key] == undefined){
+      fs.writeFileSync("./undefinedCounties", key.toString() + "\n", {flag: 'a'});
+    }
+    ret.push(
+     {
+        name: key,
+        accidents: value.length,
+        id: countyMap[key]
+      }
+    );
   }
   // let data = dummyData;
   // var arr = [];
@@ -248,7 +259,7 @@ function AccCounties(){
   // var new_array = Array.from(new_map,([name,accidents])=>({name,accidents}));
   // console.log(new_array);
   // return new_array;
-  console.log("ret", ret);
+  // console.log("ret", ret);
   return ret;
 }
 
