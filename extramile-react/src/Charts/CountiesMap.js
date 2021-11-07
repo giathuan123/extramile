@@ -8,6 +8,7 @@ const geoUrl = "https://cdn.jsdelivr.net/npm/us-atlas@3/counties-10m.json";
 
 const CountiesMap = () => {
   const [data, setData] = useState([]);
+  const [list, setList] = useState([]);
   const [checker,setChecker] = useState(0);
   
   
@@ -15,19 +16,31 @@ const CountiesMap = () => {
     fetch('http://localhost:3001/users/mostcounty')
     .then(response => response.json())
     .then((json) => {
-        setData(json);
+        console.log(json);
+        setList(json);
         setChecker(1);
     });
   }
 
-  // useEffect(() => {
-  //   // https://www.bls.gov/lau/
-  //   csv("county_accidents_0.csv").then(counties => {
-  //     console.log(counties);
-  //     setData(counties);
-  //   });
-  // }, []);
+  function getData(key){
+    return list.map(data=>data[key]);
+  }
 
+  useEffect(() => {
+    // https://www.bls.gov/lau/
+    csv("county_accidents_0.csv").then(counties => {
+      console.log(counties);
+      setData(counties);
+    });
+  }, []);
+
+  // output is empty
+  var county_names = getData('name');
+  var county_accidents = getData('accidents');
+
+  console.log("heee", county_names);
+  console.log("hello", county_accidents);
+  console.log("data", data);
   
   const colorScale = scaleQuantile(data)
     .domain(list.map(d => d.accidents))
@@ -48,17 +61,16 @@ const CountiesMap = () => {
       <Geographies geography={geoUrl}>
         {({ geographies }) =>
           geographies.map(geo => {
-            const cur = data.find(s => s.id == geo.id);
-            console.log(cur)
+            const cur = data.find(s => s.id === geo.id);
+            console.log(geo);
             return (
               <Geography
-                key={geo.rmsKey}
+                key={geo.rsmKey}
                 geography={geo}
-                fill={cur ? colorScale(cur.accidents) : "#AEE"}
+                fill={cur ? colorScale(cur.accidents) : "#EEE"}
               />
             );
           })
-          
         }
       </Geographies>
     </ComposableMap>
