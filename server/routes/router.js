@@ -15,13 +15,15 @@ router.post("/api", (req, res)=>{
   results = [];
   var timeIndex = indexes.getIndex("TimeIndex");
   var cityIndex = indexes.getIndex("CityIndex");
+  var stateIndex = indexes.getIndex("StateIndex");
   // saving old fieldGetters in indexes
   var prevTimeGetter = timeIndex.fieldGetter;
   var prevCityGetter = cityIndex.fieldGetter;
-  
+  var prevStateGetter = stateIndex.fieldGetter;
   // new getter for req.body(json)
   timeIndex.fieldGetter = (data)=>data.date;
   cityIndex.fieldGetter = (data)=>data.city;
+  stateIndex.fieldGetter = (data)=>data.state;
   // quering index
   indexResults = indexes.queryIndex(req.body);
   if(indexResults == -1){
@@ -38,6 +40,7 @@ router.post("/api", (req, res)=>{
   console.log(`[INFO] Responding with ${results.length} results for`, req.body);
   // restoring original getters
   timeIndex.fieldGetter = prevTimeGetter;
+  stateIndex.fieldGetter = prevStateGetter;
   cityIndex.fieldGetter = prevCityGetter;
   res.json(results);
 })
