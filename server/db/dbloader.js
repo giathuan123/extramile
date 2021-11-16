@@ -15,6 +15,8 @@ function initIndex(){
   var cityIndex = new Index("CityIndex", (data)=>data.City);
   var countyIndex = new Index("CountyIndex", (data)=>{return data.County + " County, " + data.State;});
   var stateIndex = new Index("StateIndex", (data)=>data.State);
+  var severityIndex = new Index("ServerityIndex", (data)=>data.Severity);
+  indexContainer.addIndex(severityIndex);
   indexContainer.addIndex(timeIndex);
   indexContainer.addIndex(cityIndex);
   indexContainer.addIndex(countyIndex);

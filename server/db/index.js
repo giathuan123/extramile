@@ -61,6 +61,11 @@ class Index{
     Index.data = data;
   }
   get(field){
+    if(Array.isArray(field)){
+      var results = [];
+      field.forEach(f=>results.push(...this.index[f]));
+      return results;
+    }
     return this.index[field];
   }
   constructor(indexName, fieldGetter){

@@ -16,14 +16,17 @@ router.post("/api", (req, res)=>{
   var timeIndex = indexes.getIndex("TimeIndex");
   var cityIndex = indexes.getIndex("CityIndex");
   var stateIndex = indexes.getIndex("StateIndex");
+  var serverityIndex = indexes.getIndex("ServerityIndex");
   // saving old fieldGetters in indexes
   var prevTimeGetter = timeIndex.fieldGetter;
   var prevCityGetter = cityIndex.fieldGetter;
   var prevStateGetter = stateIndex.fieldGetter;
+  var prevServerityGetter = serverityIndex.fieldGetter;
   // new getter for req.body(json)
   timeIndex.fieldGetter = (data)=>data.date;
   cityIndex.fieldGetter = (data)=>data.city;
   stateIndex.fieldGetter = (data)=>data.state;
+  serverityIndex.fieldGetter = (data)=>data.severity;
   // quering index
   indexResults = indexes.queryIndex(req.body);
   if(indexResults == -1){
@@ -42,6 +45,7 @@ router.post("/api", (req, res)=>{
   timeIndex.fieldGetter = prevTimeGetter;
   stateIndex.fieldGetter = prevStateGetter;
   cityIndex.fieldGetter = prevCityGetter;
+  serverityIndex.fieldGetter = prevServerityGetter;
   res.json(results);
 })
 
