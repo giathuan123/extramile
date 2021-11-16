@@ -1,11 +1,19 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './Card.css'
 import {Button} from '../FormComponents';
 import ModalContainer from '../ModalContainer'
 import {EditRecordForm} from '../Forms'
-
+import ReactPaginate from "react-paginate"
 function Card(props) {
-
+  const [pageNumber,setPageNumber] = useState(0);
+  const users = props.data
+  const usersPerPage=12
+  const pagesVisited = pageNumber*usersPerPage
+  console.log(users)
+  const pageCount = Math.ceil(users.length /usersPerPage);
+  const changePage = ({selected}) =>{
+    setPageNumber(selected)
+  }
   return (
     <div className = "app-container">
         <h1> Accident Report </h1>  
@@ -22,7 +30,7 @@ function Card(props) {
             </tr>
           </thead>
           <tbody>
-            {props.data.map((item)=>(
+            {users.slice(pagesVisited,pagesVisited+usersPerPage).map((item)=>(
               <tr key={item.ID}>
                 <td>{item.ID}</td>
                 <td>{item.Street}</td>
@@ -39,10 +47,20 @@ function Card(props) {
                     fetch('http://localhost:3001/users/delete', 
                       {method: "post", headers:{"Content-Type":"application/json"}, body: JSON.stringify([item.ID])}).then(response=>console.log(response))}} title = "Delete"/>
                 </td>
-              </tr>  
+              </tr> 
             ))}
           </tbody>
         </table>
+        <ReactPaginate 
+              previousLabel={"Previous"}
+              nextLabel={"Next"}
+              pageCount={pageCount}
+              onPageChange={changePage}
+              containerClassName={"paginationButton"}
+              previousLinkClassName={"previousButton"}
+              nextLinkCLassName={"nextButton"}
+              activeClassName={"paginationActive"}
+            />
     </div>
   );
 }
