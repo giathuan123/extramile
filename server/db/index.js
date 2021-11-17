@@ -63,7 +63,10 @@ class Index{
   get(field){
     if(Array.isArray(field)){
       var results = [];
-      field.forEach(f=>results.push(...this.index[f]));
+      for(const f of field){
+        for(const id of this.index[f])
+          results.push(id);
+      }
       return results;
     }
     return this.index[field];
