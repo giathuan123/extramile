@@ -181,34 +181,8 @@ function tenAccCities(){
 }
 
 function MostAccStates(){
-  var statesAccidents = {};
-  for(const [, value] of Object.entries(data)){
-    if(statesAccidents[value.State] == undefined){
-      statesAccidents[value.State] = 1;
-    }else{
-      statesAccidents[value.State] += 1;
-    }
-  }
-
-  ret =  Object.entries(statesAccidents).map(([state, accidents])=>{return {name: state, accidents: accidents}});
-  // let data = dummyData;
-  // var arr = [];
-  // const map1 = new Map();
-  // data.filter(function (item){
-  //   arr.push(item.State);
-  // });
-  // arr.forEach(function (x) { 
-  //   if(!map1.has(x)){
-  //     map1.set(x,1);
-  //   }
-  //   else{
-  //     map1.set(x,(map1.get(x)??0)+1);
-  //   }
-  // });
-  // var new_map = new Map([...map1.entries()].sort((a,b)=> b[1]-a[1]));
-  // var new_array = Array.from(new_map,([name,accidents])=>({name,accidents}));
-  // console.log(new_array);
-  // return new_array;
+  var stateIndex = indexes.getIndex("StateIndex");
+  var ret = Object.entries(stateIndex.index).map(([state, accidents])=>{return {name: state, accidents: accidents.length}});
   return ret;
 }
 
