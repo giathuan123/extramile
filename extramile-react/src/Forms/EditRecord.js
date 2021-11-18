@@ -12,7 +12,8 @@ class EditRecord extends React.Component {
                 City: this.props.data.City,
                 State: this.props.data.State,
                 Zipcode: this.props.data.Zipcode,
-                Severity: this.props.data.Severity
+                Severity: this.props.data.Severity,
+                Start_Time: this.props.data.Start_Time
             },
             severityOptions: ['1', '2', '3', '4']
         }
