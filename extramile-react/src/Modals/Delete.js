@@ -10,6 +10,8 @@ function Delete(props) {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  
+  // Handle delete request here and then close modal
   const handleDelete = () => ({
 
   });

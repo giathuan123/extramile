@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
 import './Card.css'
-import {Button} from '../FormComponents';
-import ModalContainer from '../ModalContainer'
-import {EditRecordForm} from '../Forms'
 import ReactPaginate from "react-paginate"
 import { DeleteModal } from '../Modals';
+import {
+  Table,
+} from 'react-bootstrap';
 function Card(props) {
   const [pageNumber,setPageNumber] = useState(0);
   const users = props.data
@@ -18,7 +18,7 @@ function Card(props) {
   return (
     <div className = "app-container">
         <h1> Accident Report </h1>  
-        <table>
+        <Table hover striped bordered variant='primary'>
           <thead>
             <tr>
               <td>Accidents-ID</td>
@@ -40,15 +40,12 @@ function Card(props) {
                 <td>{item.Zipcode}</td>
                 <td>{item.Severity}</td>
                 <td>
-                  <ModalContainer triggerText="Edit">
-                    <EditRecordForm data={item} />
-                  </ModalContainer>
                   <DeleteModal id={item.ID}/>
                 </td>
               </tr> 
             ))}
           </tbody>
-        </table>
+        </Table>
         <ReactPaginate 
               previousLabel={"Previous"}
               nextLabel={"Next"}
