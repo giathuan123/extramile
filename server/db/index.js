@@ -107,7 +107,18 @@ class Index{
     // }else{
     //   this.index[indexKey] = [key];
     // }
-    this.index[indexKey]?.push(key) || (this.index[indexKey] = [key]);
+    function getInt(id){
+      return parseInt(id.split('-')[1]);
+    }
+    var array = undefined;
+    if((array = this.index[indexKey]) != undefined){
+      // find correct position to be added
+      var keyInt = getInt(key);
+      var newPosition = array.findIndex((id)=> getInt(id) > keyInt );
+      array.splice(newPosition, 0, key);
+    }else{
+      this.index[indexKey] = [key];
+    }
   }
   updateData(oldData, newData){
     this.removeData(oldData);
