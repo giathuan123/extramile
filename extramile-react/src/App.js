@@ -1,4 +1,5 @@
 import './App.css';
+
 import {
   BrowserRouter as Router,
   Switch,
@@ -18,12 +19,13 @@ import {
 
 import { TopBar } from './Navigation';
 
+import { Container } from 'react-bootstrap';
+
 function App() {
   return (
     <Router>
-      <div className="App">
         <TopBar />
-        <div className="container">
+        <div className='content-container'>
           <Switch>
             <Route path="/search">
                 <SearchPage />
@@ -51,7 +53,6 @@ function App() {
             </Route>
           </Switch>
         </div>
-      </div>
     </Router>
   );
 }
