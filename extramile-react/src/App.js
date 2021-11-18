@@ -16,13 +16,13 @@ import {
   PiePage
 } from './Pages'
 
-import { NavBar } from './NavBar'
+import { TopBar } from './Navigation';
 
 function App() {
   return (
     <Router>
       <div className="App">
-        <NavBar />
+        <TopBar />
         <div className="container">
           <Switch>
             <Route path="/search">
