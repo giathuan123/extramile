@@ -5,7 +5,7 @@ import { DeleteModal } from '../Modals';
 import {
   Table,
 } from 'react-bootstrap';
-function Card(props) {
+function CardResults(props) {
   const [pageNumber,setPageNumber] = useState(0);
   const users = props.data
   const usersPerPage=12
@@ -17,7 +17,7 @@ function Card(props) {
   }
   return (
     <div className = "app-container">
-        <Table hover striped bordered variant='primary'>
+        <Table hover striped bordered>
           <thead>
             <tr>
               <td>Accidents-ID</td>
@@ -58,4 +58,4 @@ function Card(props) {
     </div>
   );
 }
-export default Card;
+export default CardResults;

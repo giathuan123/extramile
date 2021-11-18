@@ -1,5 +1,3 @@
-import './Form.css';
-
 import React from 'react';
 
 import {Input, Select, FormHeader, Button} from '../FormComponents'

@@ -54,28 +54,32 @@ function Search(props) {
         errors,
       }) => (
       <Form noValidate onSubmit={handleSubmit}>
-        <Form.Group
-          controlId="validationFormit01"
-        >
-            <Form.Label>Date</Form.Label>
-            <Form.Control 
-              type="date"
-              name="date"
-              value={values.date}
-              onChange={handleChange}
-            />
-        </Form.Group>
-        <Form.Group>
-          <Form.Label>Street Address</Form.Label>
-          <Form.Control 
-            type="input"
-            name="street"
-            value={values.street}
-            onChange={handleChange}
-            isInvalid={!!errors.street}
-          />
-        </Form.Group>
         <Row>
+          <Col>
+            <Form.Group
+              controlId="validationFormit01"
+            >
+                <Form.Label>Date</Form.Label>
+                <Form.Control 
+                  type="date"
+                  name="date"
+                  value={values.date}
+                  onChange={handleChange}
+                />
+            </Form.Group>
+          </Col>
+          <Col>
+            <Form.Group>
+              <Form.Label>Street Address</Form.Label>
+              <Form.Control 
+                type="input"
+                name="street"
+                value={values.street}
+                onChange={handleChange}
+                isInvalid={!!errors.street}
+              />
+            </Form.Group>
+          </Col>
           <Col>
             <Form.Group>
               <Form.Label>City Name</Form.Label>
@@ -87,6 +91,8 @@ function Search(props) {
               />
             </Form.Group>
           </Col>
+        </Row>
+        <Row>
           <Col>
             <Form.Group>
               <Form.Label>State Name</Form.Label>
@@ -98,8 +104,6 @@ function Search(props) {
               />
             </Form.Group>
           </Col>
-        </Row>
-        <Row>
           <Col>
             <Form.Group
               controlId="validationFormik05"
@@ -137,7 +141,7 @@ function Search(props) {
         </Row>
         <div className="divider"/>
         <Button variant="primary" type="submit">
-          Submit
+          Search
         </Button>
       </Form>
       )}

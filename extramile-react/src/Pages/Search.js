@@ -2,13 +2,13 @@ import './Pages.css';
 
 import React, {useState} from 'react';
 import {CreateRecordForm, SearchForm} from '../Forms';
-import Card from '../components/Card';
-import ModalContainer from '../ModalContainer'
+import CardResults from '../components/Card';
 
 import {
   Container,
   Row,
   Col,
+  Card,
 } from 'react-bootstrap';
 
 function Search() {
@@ -20,15 +20,28 @@ function Search() {
           <CreateRecordForm/>
       </ModalContainer> */}
       {/* <div className="divider" /> */}
-      <Container fluid>
+      <Container>
+        <div className='lg-divider' />
+        <Row><Col><h1>Search Accidents</h1></Col></Row>
+        <div className='lg-divider'/>
         <Row>
-          <Col md='auto'>
-            <h1>Search Accidents</h1>
-            <SearchForm setData={setData} />
-          </Col>
           <Col>
-          <h1>Accident Report</h1>
-          <Card data={data} />
+            <Card className='card border-light mb-3'>
+              <Card.Title className='card-header'>
+                Search
+              </Card.Title>
+              <Card.Body>
+              <SearchForm setData={setData} />
+            </Card.Body>
+            </Card>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <Card className='card border-light mb-3'>
+              <Card.Title className='card-header'>Accident Report</Card.Title>
+              <Card.Body><CardResults data={data} /></Card.Body>
+            </Card>
           </Col>
         </Row>
       </Container>
