@@ -23,9 +23,11 @@ function Search() {
       <Container fluid>
         <Row>
           <Col md='auto'>
+            <h1>Search Accidents</h1>
             <SearchForm setData={setData} />
           </Col>
           <Col>
+          <h1>Accident Report</h1>
           <Card data={data} />
           </Col>
         </Row>

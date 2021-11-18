@@ -17,7 +17,6 @@ function Card(props) {
   }
   return (
     <div className = "app-container">
-        <h1> Accident Report </h1>  
         <Table hover striped bordered variant='primary'>
           <thead>
             <tr>
