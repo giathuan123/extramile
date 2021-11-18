@@ -112,6 +112,17 @@ function getDateTime(){
   return  `${now.getFullYear()}-${now.getMonth()}-${now.getDate()} ${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`
 }
 
+router.post("/edit", (req, res)=>{
+  const newObject = req.body;
+  var key = newObject.ID;
+  delete newObject['ID'];  // remove ID entry 
+  console.log("[INFO] /edit request receive:", newObject);
+  
+  data[key] = newObject;
+  indexes.addData({[key]: newObject});
+  console.log(`[INFO] Adding to A-${key} to main data`, newObject );
+});
+
 router.post("/create", (req, res)=>{
     newId = (maxIdNumber == 0) ? getMaxId(): ++maxIdNumber;
     newId++;

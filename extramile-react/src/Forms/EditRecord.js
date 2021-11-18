@@ -7,11 +7,12 @@ class EditRecord extends React.Component {
 
         this.state = {
             newRecord: {
-                street: this.props.data.Street,
-                city: this.props.data.City,
-                state: this.props.data.State,
-                zip: this.props.data.Zipcode,
-                severity: this.props.data.Severity
+                ID: this.props.data.ID,
+                Street: this.props.data.Street,
+                City: this.props.data.City,
+                State: this.props.data.State,
+                Zipcode: this.props.data.Zipcode,
+                Severity: this.props.data.Severity
             },
             severityOptions: ['1', '2', '3', '4']
         }
@@ -23,7 +24,28 @@ class EditRecord extends React.Component {
 
     handleFormSubmit(e) {
         e.preventDefault();
-        // Send update request here
+        // DELETE RECORD   
+        fetch('http://localhost:3001/users/delete', {
+            method: "POST", 
+            body: JSON.stringify([this.state.newRecord.ID]),
+            headers:{"Content-Type" : "application/json"
+            }, 
+        })
+        .then(res=>console.log(res))
+
+        let data = this.state.newRecord;
+        fetch('http://localhost:3001/users/edit', {
+            method: "POST",
+            body: JSON.stringify(data),
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+        })
+        .then ((res) => res.json())
+        .then ((data) => {
+            console.log(data);
+        });
         console.log(this.state.newRecord)
     }
 
@@ -42,7 +64,7 @@ class EditRecord extends React.Component {
         let value = e.target.value;
         this.setState(prevState => ({
             newRecord: {
-                ...prevState.newRecord, zip: value
+                ...prevState.newRecord, Zipcode: value
             }
         }), );
     }
@@ -52,39 +74,39 @@ class EditRecord extends React.Component {
             <div className="form-container">
                 <form onSubmit={this.handleFormSubmit}>
                     <Input
-                        title={'street'}
-                        name={'street'}
+                        title={'Street'}
+                        name={'Street'}
                         type={'text'}
-                        value={this.state.newRecord.street}
+                        value={this.state.newRecord.Street}
                         handleChange={this.handleInput}
                     />
                     <Input
                         title={'City'}
-                        name={'city'}
+                        name={'City'}
                         type={'text'}
-                        value={this.state.newRecord.city}
+                        value={this.state.newRecord.City}
                         handleChange={this.handleInput}
                     />
                     <Input
                         title={'State'}
-                        name={'state'}
+                        name={'State'}
                         type={'text'}
-                        value={this.state.newRecord.state}
+                        value={this.state.newRecord.State}
                         handleChange={this.handleInput}
                     />
                     <Input
-                        title={'Zip Code'}
-                        name={'zip'}
+                        title={'Zipcode'}
+                        name={'Zipcode'}
                         type={'number'}
-                        value={this.state.newRecord.zip}
+                        value={this.state.newRecord.Zipcode}
                         handleChange={this.handleZip}
                     />
                     <Select
                         title={'Severity'}
-                        name={'severity'}
+                        name={'Severity'}
                         options={this.state.severityOptions}
-                        value={this.state.newRecord.severity}
-                        placeholder={this.state.newRecord.severity}
+                        value={this.state.newRecord.Severity}
+                        placeholder={this.state.newRecord.Severity}
                         handleChange={this.handleInput}
                     />
                     <Button
