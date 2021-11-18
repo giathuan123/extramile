@@ -14,8 +14,7 @@ function query(data, reqJson){
 }
 
 function getMaxId(){
-  var max = 0;
-  for(const [key,] of Object.entries(data)){
+  var max = 0; for(const [key,] of Object.entries(data)){
     curr = parseInt(key.split('-')[1]);
     max = curr > max ? curr: max;
   }
@@ -228,8 +227,8 @@ function createDB(data){
     indexes.addData({[newKey]: newObject});
     console.log(`[INFO] Adding to A-${newId} to main data`, newObject );
 }
-function queryDB(query){
-  console.log("[INFO] QueryData recieved at /users/api: ", query); 
+function queryDB(reqQuery){
+  console.log("[INFO] QueryData recieved at /users/api: ", reqQuery); 
   results = [];
   var timeIndex = indexes.getIndex("TimeIndex");
   var cityIndex = indexes.getIndex("CityIndex");
@@ -246,19 +245,19 @@ function queryDB(query){
   stateIndex.fieldGetter = (data)=>data.state;
   serverityIndex.fieldGetter = (data)=>data.severity;
   // quering index
-  indexResults = indexes.queryIndex(query);
+  indexResults = indexes.queryIndex(reqQuery);
   if(indexResults == -1){
     for(const [key, value] of Object.entries(data)){
-      if(query(value, query)){
+      if(query(value, reqQuery)){
         results.push(makeData(key, value));
       }
     }
   }else{
     results = indexResults
-      .filter(id=>query(data[id],query))
+      .filter(id=>query(data[id],reqQuery))
       .map(id=>makeData(id, data[id]));
   }
-  console.log(`[INFO] Responding with ${results.length} results for`, query);
+  console.log(`[INFO] Responding with ${results.length} results for`, reqQuery);
   // restoring original getters
   timeIndex.fieldGetter = prevTimeGetter;
   stateIndex.fieldGetter = prevStateGetter;
