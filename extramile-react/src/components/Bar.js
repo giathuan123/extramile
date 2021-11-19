@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend} from 'recharts';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer} from 'recharts';
 export default function BarGraph() {
     
     const [list, setList] = useState([]);
@@ -61,8 +61,10 @@ export default function BarGraph() {
         return '';
       };
     return (
-        <BarChart width={window.innerWidth}
-        height={window.innerHeight-200}
+      <ResponsiveContainer>
+        <BarChart 
+        // width={1000}
+        // height={300}
         data={list}
         margin={{
           top: 5,
@@ -75,5 +77,6 @@ export default function BarGraph() {
         <Tooltip content={<CustomTooltip />} />
         <Legend />
         <Bar dataKey="accidents" barSize={20} fill="#8884d8" /></BarChart>
+      </ResponsiveContainer>
     );
 }
