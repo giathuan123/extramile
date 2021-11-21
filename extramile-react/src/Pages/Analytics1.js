@@ -19,7 +19,7 @@ function Analytics1() {
         </Col>
         <Col style={{width: '60%'}}>
           <Card className='card border-light'>
-            <Card.Title className='card-header'>Bar Chart</Card.Title>
+            <Card.Title className='card-header d-flex justify-content-between'>Bar Chart {<ChartModal><Bargraph /></ChartModal>}</Card.Title>
             <Card.Body style={{height: "20rem"}}>
               <Bargraph />
             </Card.Body>
@@ -30,13 +30,13 @@ function Analytics1() {
       <Row>
         <Col>
           <Card className='card border-light'>
-            <Card.Title className='card-header'># of Accidents per State</Card.Title>
+            <Card.Title className='card-header d-flex justify-content-between'># of Accidents per State {<ChartModal><StatesMapChart /></ChartModal>}</Card.Title>
             <Card.Body><StatesMapChart /></Card.Body>
           </Card>
         </Col>
         <Col>
           <Card className='card border-light'>
-            <Card.Title className='card-header'>County Heatmap</Card.Title>
+            <Card.Title className='card-header d-flex justify-content-between'>County Heatmap {<ChartModal><CountiesMapChart /></ChartModal>}</Card.Title>
             <Card.Body><CountiesMapChart /></Card.Body>
           </Card>
         </Col>
