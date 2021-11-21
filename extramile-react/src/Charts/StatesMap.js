@@ -1,19 +1,17 @@
-import React, {useState} from 'react'
+import React, { useEffect, useState} from 'react'
 import Plot from 'react-plotly.js';
 
 function StatesMap() {
     const [list, setList] = useState([]);
-    const [checker,setChecker] = useState(0);
 
-    if(checker !== 1){
+    useEffect(()=>{
         fetch('http://localhost:3001/users/mostaccstates')
         .then(response => response.json())
         .then((json) => {
             console.log(json);
             setList(json);
-            setChecker(1);
         });
-    }
+    }, [])
 
     function getData(key){
       return list.map(data=>data[key]);
