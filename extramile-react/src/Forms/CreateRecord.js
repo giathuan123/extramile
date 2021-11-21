@@ -92,9 +92,6 @@ class CreateRecord extends React.Component {
     render() {
         return (
             <form className="form" onSubmit={this.handleFormSubmit}>
-                <div className="form-row-header">
-                    <FormHeader header="Add Your Accident Data" />
-                </div>
                 <div className="form-row">
                     <Input
                         title={'Street'}
