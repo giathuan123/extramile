@@ -7,7 +7,6 @@ router.post("/api", (req, res)=>{
   res.json(results);
 })
 
-console.log(Result.cache);
 //Feature 2 get request for most Accidental cities
 router.get("/barinfo",(req,res)=>{
   console.log("[INFO] Get request recieved at /barinfo");

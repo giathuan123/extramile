@@ -55,11 +55,9 @@ class Result{
   }
   setUpdate(update){
     this.update = update;
-    console.log(this.update);
   }
   getAnswer(){
     var time = 0;
-    console.log(this.answer);
     if(this.answer == null){
       [time, this.answer] = getPerformance(this.computation);
     }
@@ -73,14 +71,12 @@ class Result{
   }
 }
 function updateBarInfo([action, newData]){
-  console.log(newData);
   var city = newData["City"];
   var cityInAnswerPosition = this.answer.findIndex(entry=>entry.name == city);
   switch(action) {
     case 'INSERT':
       this.answer[cityInAnswerPosition].accidents++;
       var [{name, accidents}] = this.answer.splice(cityInAnswerPosition, 1);
-      console.log(name, accidents);
       var newPosition = this.answer.findIndex(ans=>ans.accidents < accidents);
       this.answer.splice(newPosition, 0, {name: name, accidents: accidents});
       break;
