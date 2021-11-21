@@ -1,4 +1,4 @@
-import { Navbar, Container, Nav } from 'react-bootstrap';
+import { Navbar, Container, Nav, NavDropdown } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 
 const Top = () => {
@@ -10,12 +10,11 @@ const Top = () => {
           <Navbar.Collapse>
             <Nav>
               <LinkContainer to="search"><Nav.Link>Search</Nav.Link></LinkContainer>
-              <LinkContainer to="/bar"><Nav.Link>Bar Chart</Nav.Link></LinkContainer>
-              <LinkContainer to="/pie"><Nav.Link>Pie Chart</Nav.Link></LinkContainer>
-              <LinkContainer to="/calendar"><Nav.Link>Calendar Heatmap</Nav.Link></LinkContainer>
+              <NavDropdown menuVariant="dark" title='Charts'>
+                <NavDropdown.Item href='/analytics1'>Charts 1</NavDropdown.Item>
+              </NavDropdown>
+              <LinkContainer to="/calendar"><Nav.Link>Calendar</Nav.Link></LinkContainer>
               <LinkContainer to="/swarmplot"><Nav.Link>Swarmplot</Nav.Link></LinkContainer>
-              <LinkContainer to="/statesMap"><Nav.Link>States Map</Nav.Link></LinkContainer>
-              <LinkContainer to="/countiesMap"><Nav.Link>County Map</Nav.Link></LinkContainer>
             </Nav>
           </Navbar.Collapse>
         </Container>
