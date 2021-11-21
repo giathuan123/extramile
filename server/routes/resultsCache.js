@@ -4,7 +4,7 @@ const { tenAccCities,
         AccCounties,
         getDailyAccidents,
         getSwarmPlotStats } = require("./userFunctions.js");
-
+const { data } = require("../db/dbloader.js")
 function getPerformance(computation){
   var start = Date.now();
   var answer = computation();
