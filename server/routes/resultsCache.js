@@ -4,7 +4,7 @@ const { tenAccCities,
         AccCounties,
         getDailyAccidents,
         getSwarmPlotStats } = require("./userFunctions.js");
-
+const { data } = require("../db/dbloader.js")
 function getPerformance(computation){
   var start = Date.now();
   var answer = computation();
@@ -75,10 +75,15 @@ function updateBarInfo([action, newData]){
   var cityInAnswerPosition = this.answer.findIndex(entry=>entry.name == city);
   switch(action) {
     case 'INSERT':
+      if(cityInAnswerPosition != -1){
       this.answer[cityInAnswerPosition].accidents++;
       var [{name, accidents}] = this.answer.splice(cityInAnswerPosition, 1);
       var newPosition = this.answer.findIndex(ans=>ans.accidents < accidents);
       this.answer.splice(newPosition, 0, {name: name, accidents: accidents});
+      }else{
+        var newPosition = this.answer.findIndex(ans=>ans.accidents <= 1);
+        this.answer.splice(newPosition, 0, {name: city, accidents: 1});
+      }
       break;
     case 'DELETE':
       this.answer[cityInAnswerPosition].accidents++;
