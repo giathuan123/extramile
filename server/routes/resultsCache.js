@@ -71,7 +71,7 @@ class Result{
   }
 }
 function updateBarInfo([action, newData]){
-  var city = newData["City"];
+  var city = newData.City + ", " + newData.State;
   var cityInAnswerPosition = this.answer.findIndex(entry=>entry.name == city);
   switch(action) {
     case 'INSERT':
@@ -87,11 +87,12 @@ function updateBarInfo([action, newData]){
       break;
     case 'DELETE':
       this.answer[cityInAnswerPosition].accidents--;
-      var [{key, numAccidents}] = this.answer.splice(cityInAnswerPosition, 1);
-      var newPosition = this.answer.findIndex(ans=>ans.accidents < numAccidents);
-      this.answer.findIndex.splice(newPosition, 0, {name: key, accidents: numAccidents});
+      var [{name, accidents}] = this.answer.splice(cityInAnswerPosition, 1);
+      var newPosition = this.answer.findIndex(ans=>ans.accidents < accidents);
+      this.answer.splice(newPosition, 0, {name: name, accidents: accidents});
       break;
   }
+  console.log(this.answer);
   return this.answer;
 }
 function initResults(){
