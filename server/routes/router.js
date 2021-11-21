@@ -13,7 +13,8 @@ router.get("/barinfo",(req,res)=>{
   console.log("[INFO] Get request recieved at /barinfo");
   // const results = tenAccCities();
   var results = Result.cache.getResult('/barinfo');
-  res.send(results);
+  console.log(results);
+  res.send(results.slice(0, 10));
 })
 //Feature 4 get request for Severity
 router.get("/pieinfo",(req,res)=>{
@@ -57,6 +58,7 @@ router.post("/delete", (req, res)=>{
   deleteArray.forEach(key=>{
     if(data[key]){
       indexes.removeData({[key]: data[key]});
+      Result.cache.pushChange(["DELETE", data[key]]);
       delete data[key];
       res.send("Deleted " + JSON.stringify(req.body));
     }
@@ -68,14 +70,29 @@ router.post("/edit", (req, res)=>{
   var key = newObject.ID;
   delete newObject['ID'];  // remove ID entry 
   console.log("[INFO] /edit request receive:", newObject);
-  
   data[key] = newObject;
+  Result.cache.pushChange(["INSERT", newObject]);
   indexes.addData({[key]: newObject});
   console.log(`[INFO] Adding to A-${key} to main data`, newObject );
 });
 
+function getDateTime(){
+  let now = new Date();
+  return  `${now.getFullYear()}-${now.getMonth()}-${now.getDate()} ${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`
+}
+
 router.post("/create", (req, res)=>{
-    createDB(req.body);
+    var data = req.body;
+    newObject = {
+      "Street": data.street??"",
+      "City": data.city??"",
+      "Start_Time": getDateTime(),
+      "State": data.state??"",
+      "Severity": data.severity??"",
+      "Zipcode": data.zip??""
+    }
+    Result.cache.pushChange(["INSERT", newObject]);
+    createDB(newObject);
     res.send("Success");
 });
 

@@ -5,57 +5,98 @@ const { tenAccCities,
         getDailyAccidents,
         getSwarmPlotStats } = require("./userFunctions.js");
 
+function getPerformance(computation){
+  var start = Date.now();
+  var answer = computation();
+  return [Date.now()-start ,answer];
+}
+
 class ResultCache{
   static resultsArray = [];
+  static changeArray = [];
   recalculate(data){
     ResultCache.resultsArray.forEach(result=>{
-      if(result.stale){
-        result.recalculate(data);
-      }
-    })
+          result.recalculate(data);
+      })
   }
-  setStale(){
-    ResultCache.resultsArray.forEach(result=>result.stale = true);
-  }
+  
   getResult(url){
     var result = ResultCache.resultsArray.find(result=>result.url == url);
     return result.getAnswer();
+  }
+  pushChange(data){
+    ResultCache.resultsArray.forEach(result=>result.changeArray.push(data));
   }
   push(result){
     ResultCache.resultsArray.push(result);
   }
 }
+
 class Result{
   static cache = new ResultCache();
   constructor(url, computation){
-    this.stale = false;
     this.url = url;
-    this.answer = computation();
+    this.answer = null;
     this.update = undefined;
+    this.computation = computation;
+    this.changeArray = [];
     Result.cache.push(this);
   } 
-  recalculate(data){
-    console.log("[INFO] recalculating stale result for url", this.url, "with new data", this.data);
+  recalculate(){
     if(this.update == undefined){
       console.log("[ERROR] update for result for url", this.url, "is undefined");
       return;
     }
-    this.answer = this.update(data);
-    this.stale = false;
+    for(const change of this.changeArray){
+      var answer = this.update(change);
+    }
+    this.changeArray = [];
+    return answer;
   }
   setUpdate(update){
     this.update = update;
+    console.log(this.update);
   }
   getAnswer(){
-    if(!this.stale){
-      return this.answer;
+    var time = 0;
+    console.log(this.answer);
+    if(this.answer == null){
+      [time, this.answer] = getPerformance(this.computation);
     }
-    throw '[ERROR] Getting stale result in ' + this.url;
+    else if(this.changeArray.length > 0){
+      console.log("[INFO[ recalculating with " + this.changeArray.length + "changes");
+      var recal = this.recalculate.bind(this);
+      [time,this.answer] = getPerformance(recal);
+    }
+    console.log(`[INFO] Time taken for ${this.url}: ${time} ms`);
+    return this.answer;
   }
+}
+function updateBarInfo([action, newData]){
+  console.log(newData);
+  var city = newData["City"];
+  var cityInAnswerPosition = this.answer.findIndex(entry=>entry.name == city);
+  switch(action) {
+    case 'INSERT':
+      this.answer[cityInAnswerPosition].accidents++;
+      var [{name, accidents}] = this.answer.splice(cityInAnswerPosition, 1);
+      console.log(name, accidents);
+      var newPosition = this.answer.findIndex(ans=>ans.accidents < accidents);
+      this.answer.splice(newPosition, 0, {name: name, accidents: accidents});
+      break;
+    case 'DELETE':
+      this.answer[cityInAnswerPosition].accidents++;
+      var [{key, numAccidents}] = this.answer.splice(cityInAnswerPosition, 1);
+      var newPosition = this.answer.findIndex(ans=>ans.accidents < numAccidents);
+      this.answer.findIndex.splice(newPosition, 0, {name: key, accidents: numAccidents});
+      break;
+  }
+  return this.answer;
 }
 function initResults(){
   console.log("[INFO] Generating results cache");
   var barinfo = new Result('/barinfo', tenAccCities);
+  barinfo.setUpdate(updateBarInfo);
   var pieinfo = new Result('/pieinfo', SeverityChart);
   var mostaccstateResulst = new Result('/mostaccstates', MostAccStates);
   var acccounties = new Result('/mostcounty', AccCounties);
