@@ -99,7 +99,6 @@ class Index{
   addData(data){
     let [key, value] = Object.entries(data)[0];
     let indexKey = this.fieldGetter(value);
-    console.log(indexKey);
     if(!indexKey){
       console.log("[ERROR] undefined data field " + key + " can't add to " + this.indexName);
       return -1;
@@ -129,7 +128,7 @@ class Index{
   }
   createIndex(fieldGetter){
     this.fieldGetter = fieldGetter;
-    var index = {};
+    var index = new Map();
     if(Object.keys(Index.data).length == 0){
       console.log("[ERROR] Can't create index data is not set");
       return -1;

@@ -13,7 +13,6 @@ function getPerformance(computation){
 
 class ResultCache{
   static resultsArray = [];
-  static changeArray = [];
   recalculate(data){
     ResultCache.resultsArray.forEach(result=>{
           result.recalculate(data);
@@ -60,9 +59,10 @@ class Result{
     var time = 0;
     if(this.answer == null){
       [time, this.answer] = getPerformance(this.computation);
+      this.changeArray = [];
     }
     else if(this.changeArray.length > 0){
-      console.log("[INFO[ recalculating with " + this.changeArray.length + "changes");
+      console.log("[INFO] recalculating with " + this.changeArray.length + " changes");
       var recal = this.recalculate.bind(this);
       [time,this.answer] = getPerformance(recal);
     }
@@ -75,13 +75,18 @@ function updateBarInfo([action, newData]){
   var cityInAnswerPosition = this.answer.findIndex(entry=>entry.name == city);
   switch(action) {
     case 'INSERT':
-      this.answer[cityInAnswerPosition].accidents++;
-      var [{name, accidents}] = this.answer.splice(cityInAnswerPosition, 1);
-      var newPosition = this.answer.findIndex(ans=>ans.accidents < accidents);
-      this.answer.splice(newPosition, 0, {name: name, accidents: accidents});
+      if(cityInAnswerPosition != -1){
+        this.answer[cityInAnswerPosition].accidents++;
+        var [{name, accidents}] = this.answer.splice(cityInAnswerPosition, 1);
+        var newPosition = this.answer.findIndex(ans=>ans.accidents < accidents);
+        this.answer.splice(newPosition, 0, {name: name, accidents: accidents});
+      }else{
+        var newPosition = this.answer.findIndex(ans=>ans.accidents < 1);
+        this.answer.splice(newPosition, 0, {name: city, accidents: 1});
+      }
       break;
     case 'DELETE':
-      this.answer[cityInAnswerPosition].accidents++;
+      this.answer[cityInAnswerPosition].accidents--;
       var [{key, numAccidents}] = this.answer.splice(cityInAnswerPosition, 1);
       var newPosition = this.answer.findIndex(ans=>ans.accidents < numAccidents);
       this.answer.findIndex.splice(newPosition, 0, {name: key, accidents: numAccidents});

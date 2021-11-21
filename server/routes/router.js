@@ -1,6 +1,7 @@
 const router = require("express").Router();
+const { data, indexes } = require("../db/dbloader.js"); 
 const { Result } = require("./resultsCache.js")
-const { queryDB, createDB } = require("./userFunctions.js");
+const { queryDB, deleteDB, createDB } = require("./userFunctions.js");
 
 router.post("/api", (req, res)=>{ 
   var results = queryDB(req.body);
@@ -12,7 +13,6 @@ router.get("/barinfo",(req,res)=>{
   console.log("[INFO] Get request recieved at /barinfo");
   // const results = tenAccCities();
   var results = Result.cache.getResult('/barinfo');
-  console.log(results);
   res.send(results.slice(0, 10));
 })
 //Feature 4 get request for Severity
@@ -52,16 +52,11 @@ router.get("/visibility", (req,res) => {
 });
 
 router.post("/delete", (req, res)=>{
-  const deleteArray = req.body;
   console.log("[INFO] /delete request receive:", req.body);
-  deleteArray.forEach(key=>{
-    if(data[key]){
-      indexes.removeData({[key]: data[key]});
-      Result.cache.pushChange(["DELETE", data[key]]);
-      delete data[key];
-      res.send("Deleted " + JSON.stringify(req.body));
-    }
-  });
+  const deleteArray = req.body;
+  for(const key of deleteArray)
+    Result.cache.pushChange(["DELETE", data[key]]);
+  res.send(deleteDB(deleteArray));
 });
 
 router.post("/edit", (req, res)=>{

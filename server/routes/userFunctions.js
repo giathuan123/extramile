@@ -1,8 +1,17 @@
 const countyMap = require("./counties.json");
 const fs = require("fs");
-var { data, indexes } = require("../db/dbloader.js")
-var maxIdNumber = 0;
+var { data, indexes } = require("../db/dbloader.js");
 
+var maxIdNumber = 0;
+function deleteDB(deleteArray){
+  deleteArray.forEach(key=>{
+    if(data[key]){
+      indexes.removeData({[key]: data[key]});
+      delete data[key];
+    }
+  });
+  return "Deleted " + deleteArray;
+}
 function query(data, reqJson){
   const dateMatches = reqJson.date ? data["Start_Time"].split(' ')[0] == reqJson.date : true; // true if field is empty
   const streetMatches = reqJson.street ? data["Street"].includes(reqJson.street) : true;
@@ -14,10 +23,12 @@ function query(data, reqJson){
 }
 
 function getMaxId(){
-  var max = 0; for(const [key,] of Object.entries(data)){
-    curr = parseInt(key.split('-')[1]);
-    max = curr > max ? curr: max;
-  }
+  console.log("[INFO] Getting max id");
+  max = Object.keys(data).reduce((currMax, currentKey)=>{
+    var curr = parseInt(currentKey.split('-')[1]);
+    return ((curr > currMax)? curr : currMax);
+  }, 0);
+  console.log("[INFO] Got max id");
   return max;
 }
 
@@ -194,9 +205,12 @@ function AccCounties(){
 }
 
 function createDB(newObject){
-    newId = (maxIdNumber == 0) ? getMaxId(): ++maxIdNumber;
-    newId++;
+    newId = (maxIdNumber == 0) ? getMaxId(): maxIdNumber;
+    maxIdNumber = ++newId;
     newKey = "A-" + (newId);
+    function getInt(id){
+      return parseInt(id.split('-')[1]);
+    }
     data[newKey] = newObject;
     indexes.addData({[newKey]: newObject});
     console.log(`[INFO] Adding to A-${newId} to main data`, newObject );
@@ -248,6 +262,6 @@ module.exports = {
     MostAccStates: MostAccStates,
     AccCounties: AccCounties,
     getDailyAccidents: getDailyAccidents,
-    getSwarmPlotStats: getSwarmPlotStats 
-
+    getSwarmPlotStats: getSwarmPlotStats,
+    deleteDB: deleteDB
 }
