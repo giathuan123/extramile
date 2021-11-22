@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import './Card.css'
 import ReactPaginate from "react-paginate"
-import { DeleteModal } from '../Modals';
+import { DeleteModal, EditRecordModal } from '../Modals';
 import {
   Table,
 } from 'react-bootstrap';
@@ -39,6 +39,7 @@ function CardResults(props) {
                 <td>{item.Zipcode}</td>
                 <td>{item.Severity}</td>
                 <td>
+                  <EditRecordModal data={item}/>
                   <DeleteModal id={item.ID}/>
                 </td>
               </tr> 

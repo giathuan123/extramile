@@ -18,7 +18,7 @@ function Delete(props) {
 // Idea: Confirmation alert on deletion
   return (
     <>
-      <Button variant='danger' onClick={handleShow}>
+      <Button variant='danger' onClick={handleShow} style={{marginLeft: '5px'}}>
         Delete
       </Button>
 

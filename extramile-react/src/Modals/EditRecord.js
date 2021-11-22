@@ -1,38 +1,37 @@
 import { useState, useRef } from 'react';
-import { Button, Modal } from 'react-bootstrap';
-import { CreateRecordForm } from '../Forms';
+import { Modal, Button } from "react-bootstrap";
+import { EditRecordForm } from '../Forms';
 
-function AddRecord() {
+function EditRecord(props) {
   const [show, setShow] = useState(false);
 
   const formRef = useRef();
-
+  
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  
-  const handleAdd = () => {
+
+  const handleEdit = () => {
     if (formRef.current) {
       formRef.current.handleSubmit();
     }
-    handleClose();
   }
 
   return (
     <>
-      <Button className='btn-sm' variant='primary' onClick={handleShow}>
-        Add a record
+      <Button variant='primary' onClick={handleShow}>
+        Edit
       </Button>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header>
-          <Modal.Title>Add a New Record</Modal.Title>
+          <Modal.Title>Edit Record</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <CreateRecordForm formRef={formRef} />
+          <EditRecordForm data={props.data} formRef={formRef} />
         </Modal.Body>
         <Modal.Footer>
-          <Button variant='info' onClick={handleAdd}>
-            Add Record
+          <Button variant='info' onClick={handleEdit}>
+            Update Record
           </Button>
           <Button variant='primary' onClick={handleClose}>
             Cancel
@@ -42,4 +41,4 @@ function AddRecord() {
     </>
   );
 }
-export default AddRecord;
+export default EditRecord;
