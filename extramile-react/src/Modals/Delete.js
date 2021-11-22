@@ -30,11 +30,11 @@ function Delete(props) {
           Are you sure you want to delete this record?
         </Modal.Body>
         <Modal.Footer>
-          <Button variant='primary' onClick={handleClose}>
-            Cancel
-          </Button>
           <Button variant='danger' onClick={handleDelete}>
             Delete
+          </Button>
+          <Button variant='primary' onClick={handleClose}>
+            Cancel
           </Button>
         </Modal.Footer>
       </Modal>

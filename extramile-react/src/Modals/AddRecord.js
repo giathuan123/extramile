@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { Button, Modal } from 'react-bootstrap';
 import { CreateRecordForm } from '../Forms';
 
@@ -9,8 +9,12 @@ function AddRecord() {
   const handleShow = () => setShow(true);
   
   const handleAdd = () => {
-    
+    if (formRef.current) {
+      formRef.current.handleSubmit();
+    }
   }
+  const formRef = useRef()
+
 
   return (
     <>
@@ -23,14 +27,14 @@ function AddRecord() {
           <Modal.Title>Add a New Record</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <CreateRecordForm />
+          <CreateRecordForm formRef={formRef} />
         </Modal.Body>
         <Modal.Footer>
-          <Button variant='primary' onClick={handleClose}>
-            Cancel
-          </Button>
           <Button variant='info' onClick={handleAdd}>
             Add Record
+          </Button>
+          <Button variant='primary' onClick={handleClose}>
+            Cancel
           </Button>
         </Modal.Footer>
       </Modal>
