@@ -31,8 +31,8 @@ function StatesMap() {
                 }]}
                 layout= { {
                     title: '2019 Car Accidents By State',
-                    width: window.innerWidth,
-                    height: window.innerHeight,
+                    // width: window.innerWidth,
+                    // height: window.innerHeight,
                     geo:{
                         scope: 'usa',
                         countrycolor: 'rgb(255, 255, 255)',

@@ -1,10 +1,10 @@
 import CreateRecord from './CreateRecord'
-import SearchForm from './SearchForm'
+import Search from './Search'
 import EditRecord from './EditRecord'
 
 export {
     CreateRecord as CreateRecordForm,
-    SearchForm,
+    Search as SearchForm,
     EditRecord as EditRecordForm
 }
     

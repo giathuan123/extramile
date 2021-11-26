@@ -6,6 +6,7 @@ import CountiesMap from './CountiesMap'
 import Calendar from './Calendar'
 import Swarm from './Swarm'
 import Pie from './Pies'
+import Analytics1 from './Analytics1'
 export {
     Search as SearchPage,
     Home as HomePage,
@@ -14,6 +15,7 @@ export {
     CountiesMap as CountiesMapPage,
     Calendar as CalendarPage,
     Swarm as SwarmPage,
-    Pie as PiePage
+    Pie as PiePage,
+    Analytics1 as AnalyticsPage1,
 }
 
