@@ -6,7 +6,7 @@ import { csv } from "d3-fetch";
 const geoUrl = "https://cdn.jsdelivr.net/npm/us-atlas@3/counties-10m.json";
 //const data = []
 
-const CountiesMap = () => {
+const CountiesMap = ({ setTooltipContent }) => {
   const [data, setData] = useState([]);
   const [checker,setChecker] = useState(0);
   
@@ -28,7 +28,7 @@ const CountiesMap = () => {
   //   });
   // }, []);
 
-  
+
   const colorScale = scaleQuantile(data)
     .domain(data.map(d => d.accidents))
     .range([
@@ -43,18 +43,30 @@ const CountiesMap = () => {
       "#4A235A"
     ]);
 
-  console.log(data.map(data=>data["accidents"]));
   return (
-    <ComposableMap projection="geoAlbersUsa">
+    <ComposableMap projection="geoAlbersUsa" data-tip="" projectionConfig={{ scale: 1000 }}>
       <Geographies geography={geoUrl}>
         {({ geographies }) =>
           geographies.map(geo => {
             const cur = data.find(s => s.id == geo.id);
-            console.log(cur)
+            
             return (
               <Geography
                 key={geo.rmsKey}
                 geography={geo}
+                onMouseEnter={() => {
+                  const NAME = geo.properties.name;
+                  setTooltipContent(`${NAME}`);
+                }}
+                onMouseLeave={() => {
+                  setTooltipContent("");
+                }}
+                style={{
+                  hover: {
+                    fill: "#000000",
+                    outline: "none"
+                  }
+                }}
                 fill={cur ? colorScale(cur.accidents) : "#AEE"}
               />
             );
