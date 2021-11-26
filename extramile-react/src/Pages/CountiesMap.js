@@ -1,9 +1,10 @@
 import { CountiesMapChart } from '../Charts';
+import { CountiesColorBarChart } from '../Charts';
 
 function CountiesMap() {
     return (
         <div className="content-container">
-            <h1>2019 Car Accidents By County</h1>
+            <CountiesColorBarChart />
             <CountiesMapChart />
         </div>
     );

@@ -32,17 +32,18 @@ const CountiesMap = () => {
   const colorScale = scaleQuantile(data)
     .domain(data.map(d => d.accidents))
     .range([
-      "#ffedea",
-      "#ffcec5",
-      "#ffad9f",
-      "#ff8a75",
-      "#ff5533",
-      "#e2492d",
-      "#be3d26",
-      "#9a311f",
-      "#782618"
+      "#E8DAEF",
+      "#D2B4DE",
+      "#BB8FCE",
+      "#A569BD",
+      "#8E44AD",
+      "#7D3C98",
+      "#6C3483",
+      "#5B2C6F",
+      "#4A235A"
     ]);
 
+  console.log(data.map(data=>data["accidents"]));
   return (
     <ComposableMap projection="geoAlbersUsa">
       <Geographies geography={geoUrl}>
