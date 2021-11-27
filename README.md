@@ -16,7 +16,7 @@ to repackage each segment to the desired data representation.
 
 Lastly, you must combine back all the segments.
 
-``` mv repacked*.json repackData ```\
+``` mv repacked*.json repackedData ```\
 ``` node combine.js  > data.json ```\
 
 ` data.json ` is the final data file.\

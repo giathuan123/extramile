@@ -16,7 +16,7 @@ function Delete(props) {
   fetch('http://localhost:3001/users/delete', 
   {method: "post", headers:{"Content-Type":"application/json"}, 
     body: JSON.stringify([item])}).then(response=>console.log(response))
-};// Idea: Confirmation alert on deletion
+  };// Idea: Confirmation alert on deletion
   return (
     <>
       <Button variant='danger' onClick={handleShow} style={{marginLeft: '5px'}}>
@@ -43,9 +43,12 @@ function Delete(props) {
   );
 }
 export default Delete;
-
 // /* <Button action={
 // ()=>{
 // fetch('http://localhost:3001/users/delete', 
 // {method: "post", headers:{"Content-Type":"application/json"}, body: 
+<<<<<<< HEAD
 // JSON.stringify([item.ID])}).then(response=>console.log(response))}} title = "Delete"/> */
+=======
+// JSON.stringify([item.ID])}).then(response=>console.log(response))}} title = "Delete"/> */
+>>>>>>> main

@@ -1,10 +1,11 @@
 import React, {useState} from 'react';
 import './Card.css'
-import {Button} from '../FormComponents';
-import ModalContainer from '../ModalContainer'
-import {EditRecordForm} from '../Forms'
 import ReactPaginate from "react-paginate"
-function Card(props) {
+import { DeleteModal, EditRecordModal } from '../Modals';
+import {
+  Table,
+} from 'react-bootstrap';
+function CardResults(props) {
   const [pageNumber,setPageNumber] = useState(0);
   const users = props.data
   const usersPerPage=12
@@ -16,8 +17,7 @@ function Card(props) {
   }
   return (
     <div className = "app-container">
-        <h1> Accident Report </h1>  
-        <table>
+        <Table hover striped bordered>
           <thead>
             <tr>
               <td>Accidents-ID</td>
@@ -39,18 +39,13 @@ function Card(props) {
                 <td>{item.Zipcode}</td>
                 <td>{item.Severity}</td>
                 <td>
-                  <ModalContainer triggerText="Edit">
-                    <EditRecordForm data={item} />
-                  </ModalContainer>
-                  <Button action={
-                    ()=>{
-                    fetch('http://localhost:3001/users/delete', 
-                      {method: "post", headers:{"Content-Type":"application/json"}, body: JSON.stringify([item.ID])}).then(response=>console.log(response))}} title = "Delete"/>
+                  <EditRecordModal data={item}/>
+                  <DeleteModal id={item.ID}/>
                 </td>
               </tr> 
             ))}
           </tbody>
-        </table>
+        </Table>
         <ReactPaginate 
               previousLabel={"Previous"}
               nextLabel={"Next"}
@@ -64,4 +59,4 @@ function Card(props) {
     </div>
   );
 }
-export default Card;
+export default CardResults;

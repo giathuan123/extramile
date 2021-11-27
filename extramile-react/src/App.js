@@ -1,4 +1,5 @@
 import './App.css';
+
 import {
   BrowserRouter as Router,
   Switch,
@@ -13,17 +14,19 @@ import {
   CountiesMapPage,
   CalendarPage,
   SwarmPage,
-  PiePage
+  PiePage,
+  AnalyticsPage1,
 } from './Pages'
 
-import { NavBar } from './NavBar'
+import { TopBar } from './Navigation';
+
+import { Container } from 'react-bootstrap';
 
 function App() {
   return (
     <Router>
-      <div className="App">
-        <NavBar />
-        <div className="container">
+        <TopBar />
+        <div className='content-container'>
           <Switch>
             <Route path="/search">
                 <SearchPage />
@@ -45,13 +48,15 @@ function App() {
             </Route>
             <Route path="/swarmplot">
               <SwarmPage />
-              </Route>
+            </Route>
+            <Route path="/analytics1">
+              <AnalyticsPage1 />
+            </Route>
             <Route path="/">
                 <HomePage />
             </Route>
           </Switch>
         </div>
-      </div>
     </Router>
   );
 }

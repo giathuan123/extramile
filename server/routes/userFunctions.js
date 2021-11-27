@@ -26,8 +26,7 @@ function deleteDB(deleteArray){
   });
 }
 function getMaxId(){
-  var max = 0;
-  for(const [key,] of Object.entries(data)){
+  var max = 0; for(const [key,] of Object.entries(data)){
     curr = parseInt(key.split('-')[1]);
     max = curr > max ? curr: max;
   }
