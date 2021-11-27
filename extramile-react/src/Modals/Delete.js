@@ -12,9 +12,16 @@ function Delete(props) {
   const handleShow = () => setShow(true);
   
   // Handle delete request here and then close modal
-  const handleDelete = () => ({
-
-  });
+  const handleDelete = () => {
+    fetch('http://localhost:3001/users/delete', {
+      method: "POST", 
+      body: JSON.stringify([props.id]),
+      headers:{"Content-Type" : "application/json"
+      }, 
+    })
+    .then(res=>console.log(res));
+    setShow(false);
+  }
 // Idea: Confirmation alert on deletion
   return (
     <>
