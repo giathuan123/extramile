@@ -1,13 +1,6 @@
 const router = require("express").Router();
-
-const { queryDB, 
-        tenAccCities, 
-        SeverityChart, 
-        createDB,
-        MostAccStates,
-        AccCounties,
-        getDailyAccidents,
-        getSwarmPlotStats } = require("./userFunctions.js");
+const { Result } = require("./resultsCache.js")
+const { queryDB, createDB, deleteDB, updateDB } = require("./userFunctions.js");
 
 router.post("/api", (req, res)=>{ 
   var results = queryDB(req.body);
@@ -54,15 +47,17 @@ router.get("/visibility", (req,res) => {
 router.post("/delete", (req, res)=>{
   const deleteArray = req.body;
   console.log("[INFO] /delete request receive:", req.body);
-  deleteArray.forEach(key=>{
-    if(data[key]){
-      indexes.removeData({[key]: data[key]});
-      delete data[key];
-      res.send("Deleted " + JSON.stringify(req.body));
-    }
-  });
+  deleteDB(deleteArray);
+  res.send("Deleted " + JSON.stringify(req.body));
 });
 
+router.post("/edit", (req, res)=>{
+  const newObject = req.body;
+  var key = newObject.ID;
+  delete newObject['ID'];  // remove ID entry 
+  console.log("[INFO] /edit request receive:", newObject);
+  updateDB(key, newObject);
+});
 
 router.post("/create", (req, res)=>{
     createDB(req.body);

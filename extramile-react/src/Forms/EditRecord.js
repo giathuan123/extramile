@@ -89,7 +89,6 @@ class EditRecord extends React.Component {
                     />
                     <Button
                         title={'Submit'}
-                        onClick={this.handleFormSubmit}
                     />
                 </form>
             </div>

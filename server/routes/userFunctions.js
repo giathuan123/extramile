@@ -1,6 +1,6 @@
 const countyMap = require("./counties.json");
 const fs = require("fs");
-var { data, indexes } = require("../db/dbloader.js")
+var { data, indexes } = require("../db/dbloader.js");
 var maxIdNumber = 0;
 
 function query(data, reqJson){
@@ -12,7 +12,19 @@ function query(data, reqJson){
   const severityMatches = reqJson.severity.length != 0 ? reqJson.severity.includes(data["Severity"]) : true; 
   return dateMatches && streetMatches && stateMatches && cityMatches && zipMatches && severityMatches;
 }
-
+function updateDB(key,updateObject){
+  data[key] = updateObject;
+  indexes.addData({[key]: updateObject});
+  console.log(`[INFO] Updating A-${key} main data`, updateObject);
+}
+function deleteDB(deleteArray){
+  deleteArray.forEach(key=>{
+    if(data[key]){
+      indexes.removeData({[key]: data[key]});
+      delete data[key];
+    }
+  });
+}
 function getMaxId(){
   var max = 0;
   for(const [key,] of Object.entries(data)){
@@ -228,8 +240,8 @@ function createDB(data){
     indexes.addData({[newKey]: newObject});
     console.log(`[INFO] Adding to A-${newId} to main data`, newObject );
 }
-function queryDB(query){
-  console.log("[INFO] QueryData recieved at /users/api: ", query); 
+function queryDB(reqQuery){
+  console.log("[INFO] QueryData recieved at /users/api: ", reqQuery); 
   results = [];
   var timeIndex = indexes.getIndex("TimeIndex");
   var cityIndex = indexes.getIndex("CityIndex");
@@ -246,19 +258,19 @@ function queryDB(query){
   stateIndex.fieldGetter = (data)=>data.state;
   serverityIndex.fieldGetter = (data)=>data.severity;
   // quering index
-  indexResults = indexes.queryIndex(query);
+  indexResults = indexes.queryIndex(reqQuery);
   if(indexResults == -1){
     for(const [key, value] of Object.entries(data)){
-      if(query(value, query)){
+      if(query(value, reqQuery)){
         results.push(makeData(key, value));
       }
     }
   }else{
     results = indexResults
-      .filter(id=>query(data[id],query))
+      .filter(id=>query(data[id],reqQuery))
       .map(id=>makeData(id, data[id]));
   }
-  console.log(`[INFO] Responding with ${results.length} results for`, query);
+  console.log(`[INFO] Responding with ${results.length} results for`, reqQuery);
   // restoring original getters
   timeIndex.fieldGetter = prevTimeGetter;
   stateIndex.fieldGetter = prevStateGetter;
@@ -266,15 +278,16 @@ function queryDB(query){
   serverityIndex.fieldGetter = prevServerityGetter;
   return results;
 } 
-
 module.exports = {
-    queryDB: queryDB,
-    createDB: createDB,
-    tenAccCities: tenAccCities,
-    SeverityChart: SeverityChart,
-    MostAccStates: MostAccStates,
-    AccCounties: AccCounties,
-    getDailyAccidents: getDailyAccidents,
-    getSwarmPlotStats: getSwarmPlotStats 
-
+  createDB: createDB,
+  queryDB: queryDB,
+  deleteDB: deleteDB,
+  updateDB: updateDB,
+  AccCounties: AccCounties,
+  getDailyAccidents: getDailyAccidents,
+  getSwarmPlotStats: getSwarmPlotStats,
+  SeverityChart: SeverityChart,
+  MostAccStates: MostAccStates,
+  tenAccCities: tenAccCities 
 }
+
