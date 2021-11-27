@@ -63,14 +63,7 @@ router.post("/edit", (req, res)=>{
   var key = newObject.ID;
   delete newObject['ID'];  // remove ID entry 
   console.log("[INFO] /edit request receive:", newObject);
-<<<<<<< HEAD
   updateDB(key, newObject);
-=======
-  
-  data[key] = newObject;
-  indexes.addData({[key]: newObject});
-  console.log(`[INFO] Adding to A-${key} to main data`, newObject );
->>>>>>> main
 });
 
 router.post("/create", (req, res)=>{

@@ -47,8 +47,4 @@ export default Delete;
 // ()=>{
 // fetch('http://localhost:3001/users/delete', 
 // {method: "post", headers:{"Content-Type":"application/json"}, body: 
-<<<<<<< HEAD
 // JSON.stringify([item.ID])}).then(response=>console.log(response))}} title = "Delete"/> */
-=======
-// JSON.stringify([item.ID])}).then(response=>console.log(response))}} title = "Delete"/> */
->>>>>>> main
