@@ -130,6 +130,7 @@ function initResults(){
   var acccounties = new Result('/mostcounty', AccCounties);
   var getdailyacc = new Result('/dailystats', getDailyAccidents);
   var visgraph = new Result('/visibility', getSwarmPlotStats);
+  var severityChart = new Result('/pieinfo', SeverityChart);
   // update feature to do next
 }
 
