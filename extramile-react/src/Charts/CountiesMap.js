@@ -8,17 +8,14 @@ const geoUrl = "https://cdn.jsdelivr.net/npm/us-atlas@3/counties-10m.json";
 
 const CountiesMap = () => {
   const [data, setData] = useState([]);
-  const [checker,setChecker] = useState(0);
   
-  
-  if(checker !== 1){
+  useEffect(()=>{
     fetch('http://localhost:3001/users/mostcounty')
     .then(response => response.json())
     .then((json) => {
         setData(json);
-        setChecker(1);
     });
-  }
+  },[]);
 
   // useEffect(() => {
   //   // https://www.bls.gov/lau/

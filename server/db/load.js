@@ -5,7 +5,6 @@ function load(){
   return data;
 }
 
-
 module.exports = {
   data: load(),
 }

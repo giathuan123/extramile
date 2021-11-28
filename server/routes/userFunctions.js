@@ -1,8 +1,17 @@
 const countyMap = require("./counties.json");
 const fs = require("fs");
 var { data, indexes } = require("../db/dbloader.js");
-var maxIdNumber = 0;
 
+var maxIdNumber = 0;
+function deleteDB(deleteArray){
+  deleteArray.forEach(key=>{
+    if(data[key]){
+      indexes.removeData({[key]: data[key]});
+      delete data[key];
+    }
+  });
+  return "Deleted " + deleteArray;
+}
 function query(data, reqJson){
   const dateMatches = reqJson.date ? data["Start_Time"].split(' ')[0] == reqJson.date : true; // true if field is empty
   const streetMatches = reqJson.street ? data["Street"].includes(reqJson.street) : true;
@@ -26,25 +35,21 @@ function deleteDB(deleteArray){
   });
 }
 function getMaxId(){
-  var max = 0; for(const [key,] of Object.entries(data)){
-    curr = parseInt(key.split('-')[1]);
-    max = curr > max ? curr: max;
-  }
+  console.log("[INFO] Getting max id");
+  max = Object.keys(data).reduce((currMax, currentKey)=>{
+    var curr = parseInt(currentKey.split('-')[1]);
+    return ((curr > currMax)? curr : currMax);
+  }, 0);
+  console.log("[INFO] Got max id");
   return max;
 }
 
 function SeverityChart(){
-  var severityAccidents = {};
-  for(const [, value] of Object.entries(data)){
-    if(severityAccidents[value.Severity] == undefined){
-      severityAccidents[value.Severity] = 1;
-    }else{
-      severityAccidents[value.Severity] += 1;
-    }
-  }
-  ret =  Object.entries(severityAccidents).map(([severity, accidents])=>{return {name: severity, accidents: accidents}});
-
-  return ret;
+  var severityIndex = indexes.getIndex("ServerityIndex");
+  var numAccPerSeverity = Object.entries(severityIndex.index).map(
+    ([severity, accidents])=>{return{name: severity, accidents: accidents.length}}
+  );
+  return numAccPerSeverity;
 }
 function tenAccCities(){
   var cityIndex = indexes.getIndex("CityIndex");
@@ -52,19 +57,12 @@ function tenAccCities(){
   numAccPerCityArray.sort(([, currNumAccidents], [, nextNumAccidents])=>{
     return nextNumAccidents-currNumAccidents;
   });
-  return numAccPerCityArray.splice(0, 10).map(([city, accidents])=>{return {name: city, accidents: accidents}});
+  return numAccPerCityArray.map(([city, accidents])=>{return {name: city, accidents: accidents}});
 }
 
 function MostAccStates(){
-  var statesAccidents = {};
-  for(const [, value] of Object.entries(data)){
-    if(statesAccidents[value.State] == undefined){
-      statesAccidents[value.State] = 1;
-    }else{
-      statesAccidents[value.State] += 1;
-    }
-  }
-  ret =  Object.entries(statesAccidents).map(([state, accidents])=>{return {name: state, accidents: accidents}});
+  var stateIndex = indexes.getIndex("StateIndex");
+  ret =  Object.entries(stateIndex.index).map(([state, accidents])=>{return {name: state, accidents: accidents.length}});
   return ret;
 }
 
@@ -217,24 +215,14 @@ function AccCounties(){
   }
   return ret;
 }
-function getDateTime(){
-  let now = new Date();
-  return  `${now.getFullYear()}-${now.getMonth()}-${now.getDate()} ${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`
-}
 
-function createDB(data){
-    newId = (maxIdNumber == 0) ? getMaxId(): ++maxIdNumber;
-    newId++;
+function createDB(newObject){
+    newId = (maxIdNumber == 0) ? getMaxId(): maxIdNumber;
+    maxIdNumber = ++newId;
     newKey = "A-" + (newId);
-    newObject = {
-      "Street": data.street??"",
-      "City": data.city??"",
-      "Start_Time": getDateTime(),
-      "State": data.state??"",
-      "Severity": data.severity??"",
-      "Zipcode": data.zip??""
+    function getInt(id){
+      return parseInt(id.split('-')[1]);
     }
-  
     data[newKey] = newObject;
     indexes.addData({[newKey]: newObject});
     console.log(`[INFO] Adding to A-${newId} to main data`, newObject );

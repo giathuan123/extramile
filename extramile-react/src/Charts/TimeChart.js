@@ -19,7 +19,6 @@ function TimeChart() {
         .catch(err => {
             console.log(err);
         })
-
     })
 
 
@@ -121,14 +120,12 @@ freq = [count0,count5,count6,count8]
           {
               //start times of accidents within the hour
             x: set,
-
             y: freq,
             type: 'bar',
             mode: 'none',
           },
         ]}
         layout={ {width: 500, height: 500, title: 'Time of Accidents'},
-
         {xaxis: 
             {
                 title:

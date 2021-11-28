@@ -12,7 +12,7 @@ function initIndex(){
     }
     return undefined;
   });
-  var cityIndex = new Index("CityIndex", (data)=>data.City);
+  var cityIndex = new Index("CityIndex", (data)=>data.City + ", " + data.State);
   var countyIndex = new Index("CountyIndex", (data)=>{return data.County + " County, " + data.State;});
   var stateIndex = new Index("StateIndex", (data)=>data.State);
   var severityIndex = new Index("ServerityIndex", (data)=>data.Severity);

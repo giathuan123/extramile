@@ -1,25 +1,23 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip, Legend } from 'recharts';
 export default function PieGraph() {
     const RADIAN = Math.PI / 180;
     const [list, setList] = useState([]);
     const [colors] = useState(['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#AF19FF']);
-    const [checker,setChecker] = useState(0);
     const [total,setTotal]=useState(0);
-    if(checker !== 1){
+    useEffect(()=>{
         fetch('http://localhost:3001/users/pieinfo')
         .then(response => response.json())
         .then((json) => {
             setList(json);
             console.log(json);
-            setChecker(1);
             var temp =0;
             list.forEach(function (element){
                 temp +=element.accidents;
             })
             setTotal(temp);
         });
-    }
+    }, []);
 
     const CustomTooltip = ({ active, payload, label }) => {
         if (active && payload && payload.length) {
