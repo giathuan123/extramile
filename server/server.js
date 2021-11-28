@@ -9,7 +9,7 @@ app.use(express.json());
 app.use("/users", route);
 
 const server = app.listen(3001, () => {
-  console.log("Server running on port 3001")
+  console.log("[INFO] Server running on port 3001")
 });
 
 process.on('SIGINT', ()=>shutDown(server, connections));

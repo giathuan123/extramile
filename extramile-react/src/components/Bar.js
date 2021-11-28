@@ -1,19 +1,16 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer} from 'recharts';
 export default function BarGraph() {
     
     const [list, setList] = useState([]);
-    const [checker,setChecker] = useState(0);
 
-    if(checker !== 1){
+    useEffect(()=>{ 
         fetch('http://localhost:3001/users/barinfo')
         .then(response => response.json())
         .then((json) => {
             setList(json);
-            console.log(json);
-            setChecker(1);
         });
-    }
+    }, []);
     const CustomTooltip = ({ active, payload, label }) => {
         if (active && payload && payload.length) {
           return (

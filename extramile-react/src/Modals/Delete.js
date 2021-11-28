@@ -12,10 +12,11 @@ function Delete(props) {
   const handleShow = () => setShow(true);
   
   // Handle delete request here and then close modal
-  const handleDelete = () => ({
-
-  });
-// Idea: Confirmation alert on deletion
+  const handleDelete = (item) => {
+  fetch('http://localhost:3001/users/delete', 
+  {method: "post", headers:{"Content-Type":"application/json"}, 
+    body: JSON.stringify([item])}).then(response=>console.log(response))
+  };// Idea: Confirmation alert on deletion
   return (
     <>
       <Button variant='danger' onClick={handleShow} style={{marginLeft: '5px'}}>
@@ -30,7 +31,7 @@ function Delete(props) {
           Are you sure you want to delete this record?
         </Modal.Body>
         <Modal.Footer>
-          <Button variant='danger' onClick={handleDelete}>
+          <Button variant='danger' onClick={()=>handleDelete(props.id)}>
             Delete
           </Button>
           <Button variant='primary' onClick={handleClose}>
@@ -42,7 +43,6 @@ function Delete(props) {
   );
 }
 export default Delete;
-
 // /* <Button action={
 // ()=>{
 // fetch('http://localhost:3001/users/delete', 

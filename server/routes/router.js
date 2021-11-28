@@ -1,19 +1,19 @@
 const router = require("express").Router();
+const { data } = require("../db/dbloader.js"); 
 const { Result } = require("./resultsCache.js")
-const { queryDB, createDB } = require("./userFunctions.js");
+const { queryDB, createDB, deleteDB, updateDB } = require("./userFunctions.js");
 
 router.post("/api", (req, res)=>{ 
   var results = queryDB(req.body);
   res.json(results);
 })
 
-console.log(Result.cache);
 //Feature 2 get request for most Accidental cities
 router.get("/barinfo",(req,res)=>{
   console.log("[INFO] Get request recieved at /barinfo");
   // const results = tenAccCities();
   var results = Result.cache.getResult('/barinfo');
-  res.send(results);
+  res.send(results.slice(0, 10));
 })
 //Feature 4 get request for Severity
 router.get("/pieinfo",(req,res)=>{
@@ -52,30 +52,40 @@ router.get("/visibility", (req,res) => {
 });
 
 router.post("/delete", (req, res)=>{
-  const deleteArray = req.body;
   console.log("[INFO] /delete request receive:", req.body);
-  deleteArray.forEach(key=>{
-    if(data[key]){
-      indexes.removeData({[key]: data[key]});
-      delete data[key];
-      res.send("Deleted " + JSON.stringify(req.body));
-    }
-  });
+  const deleteArray = req.body;
+  for(const key of deleteArray)
+    Result.cache.pushChange(["DELETE", data[key]]);
+  res.send(deleteDB(deleteArray));
 });
 
 router.post("/edit", (req, res)=>{
   const newObject = req.body;
   var key = newObject.ID;
   delete newObject['ID'];  // remove ID entry 
-  console.log("[INFO] /edit request receive:", newObject);
-  
-  data[key] = newObject;
-  indexes.addData({[key]: newObject});
-  console.log(`[INFO] Adding to A-${key} to main data`, newObject );
+  console.log("[INFO] /edit request receive:", { ['A'+key]: newObject});
+  updateDB(key, newObject);
+  Result.cache.pushChange(["INSERT", newObject]);
+  console.log(`[INFO] Updating to A-${key} to main data`, { ['A'+key]: newObject} );
 });
 
+function getDateTime(){
+  let now = new Date();
+  return  `${now.getFullYear()}-${now.getMonth()}-${now.getDate()} ${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`
+}
+
 router.post("/create", (req, res)=>{
-    createDB(req.body);
+    var data = req.body;
+    newObject = {
+      "Street": data.street??"",
+      "City": data.city??"",
+      "Start_Time": getDateTime(),
+      "State": data.state??"",
+      "Severity": data.severity??"",
+      "Zipcode": data.zip??""
+    }
+    Result.cache.pushChange(["INSERT", newObject]);
+    createDB(newObject);
     res.send("Success");
 });
 

@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import ReactTooltip from "react-tooltip";
 import { ComposableMap, Geographies, Geography } from "react-simple-maps";
 import { scaleQuantile } from "d3-scale";
-import { csv } from "d3-fetch";
 
 const geoUrl = "https://cdn.jsdelivr.net/npm/us-atlas@3/counties-10m.json";
 //const data = []
@@ -10,26 +9,14 @@ const geoUrl = "https://cdn.jsdelivr.net/npm/us-atlas@3/counties-10m.json";
 function CountiesMap() {
   const [tooltipContent, setTooltipContent] = useState("");
   const [data, setData] = useState([]);
-  const [checker,setChecker] = useState(0);
   
-  
-  if(checker !== 1){
+  useEffect(()=>{
     fetch('http://localhost:3001/users/mostcounty')
     .then(response => response.json())
     .then((json) => {
         setData(json);
-        setChecker(1);
     });
-  }
-
-  // useEffect(() => {
-  //   // https://www.bls.gov/lau/
-  //   csv("county_accidents_0.csv").then(counties => {
-  //     console.log(counties);
-  //     setData(counties);
-  //   });
-  // }, []);
-
+  },[]);
 
   const colorScale = scaleQuantile(data)
     .domain(data.map(d => d.accidents))
