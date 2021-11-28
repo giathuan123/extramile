@@ -24,7 +24,6 @@ function query(data, reqJson){
 function updateDB(key,updateObject){
   data[key] = updateObject;
   indexes.addData({[key]: updateObject});
-  console.log(`[INFO] Updating A-${key} main data`, updateObject);
 }
 function deleteDB(deleteArray){
   deleteArray.forEach(key=>{

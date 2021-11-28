@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { ComposableMap, Geographies, Geography } from "react-simple-maps";
 import { scaleQuantile } from "d3-scale";
-import { csv } from "d3-fetch";
 
 const geoUrl = "https://cdn.jsdelivr.net/npm/us-atlas@3/counties-10m.json";
 //const data = []
@@ -17,15 +16,6 @@ const CountiesMap = () => {
     });
   },[]);
 
-  // useEffect(() => {
-  //   // https://www.bls.gov/lau/
-  //   csv("county_accidents_0.csv").then(counties => {
-  //     console.log(counties);
-  //     setData(counties);
-  //   });
-  // }, []);
-
-  
   const colorScale = scaleQuantile(data)
     .domain(data.map(d => d.accidents))
     .range([

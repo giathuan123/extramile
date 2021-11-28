@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { data, indexes } = require("../db/dbloader.js"); 
+const { data } = require("../db/dbloader.js"); 
 const { Result } = require("./resultsCache.js")
 const { queryDB, createDB, deleteDB, updateDB } = require("./userFunctions.js");
 
@@ -63,10 +63,10 @@ router.post("/edit", (req, res)=>{
   const newObject = req.body;
   var key = newObject.ID;
   delete newObject['ID'];  // remove ID entry 
-  console.log("[INFO] /edit request receive:", newObject);
+  console.log("[INFO] /edit request receive:", { ['A'+key]: newObject});
   updateDB(key, newObject);
   Result.cache.pushChange(["INSERT", newObject]);
-  console.log(`[INFO] Adding to A-${key} to main data`, newObject );
+  console.log(`[INFO] Updating to A-${key} to main data`, { ['A'+key]: newObject} );
 });
 
 function getDateTime(){

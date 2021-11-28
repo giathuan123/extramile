@@ -4,7 +4,7 @@ const { tenAccCities,
         AccCounties,
         getDailyAccidents,
         getSwarmPlotStats } = require("./userFunctions.js");
-const { data } = require("../db/dbloader.js")
+
 function getPerformance(computation){
   var start = Date.now();
   var answer = computation();
@@ -93,7 +93,6 @@ function updateStateInfo([action, newData]){
       this.answer.splice(newPosition, 0, {name: name, accidents: accidents});
       break;
   }
-  console.log(this.answer);
   return this.answer;
 }
 function updateBarInfo([action, newData]){
