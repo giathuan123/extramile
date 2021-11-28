@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import ReactTooltip from "react-tooltip";
 import { ComposableMap, Geographies, Geography } from "react-simple-maps";
 import { scaleQuantile } from "d3-scale";
 import { csv } from "d3-fetch";
@@ -6,7 +7,8 @@ import { csv } from "d3-fetch";
 const geoUrl = "https://cdn.jsdelivr.net/npm/us-atlas@3/counties-10m.json";
 //const data = []
 
-const CountiesMap = ({ setTooltipContent }) => {
+function CountiesMap() {
+  const [tooltipContent, setTooltipContent] = useState("");
   const [data, setData] = useState([]);
   const [checker,setChecker] = useState(0);
   
@@ -42,8 +44,21 @@ const CountiesMap = ({ setTooltipContent }) => {
       "#9a311f",
       "#782618"
     ]);
+  
+  const onMouseEnter = (geo = { value: "NA" }) => {
+    return () => {
+      const NAME = geo.properties.name;
+      setTooltipContent(`${NAME}`);
+    };
+  };
+  
+  const onMouseLeave = () => {
+    setTooltipContent("");
+  };
 
   return (
+    <div>
+    <ReactTooltip>{tooltipContent}</ReactTooltip>
     <ComposableMap projection="geoAlbersUsa" data-tip="" projectionConfig={{ scale: 1000 }}>
       <Geographies geography={geoUrl}>
         {({ geographies }) =>
@@ -54,13 +69,8 @@ const CountiesMap = ({ setTooltipContent }) => {
               <Geography
                 key={geo.rmsKey}
                 geography={geo}
-                onMouseEnter={() => {
-                  const NAME = geo.properties.name;
-                  setTooltipContent(`${NAME}`);
-                }}
-                onMouseLeave={() => {
-                  setTooltipContent("");
-                }}
+                onMouseEnter={onMouseEnter(geo)}
+                onMouseLeave={onMouseLeave}
                 style={{
                   hover: {
                     fill: "#000000",
@@ -75,6 +85,7 @@ const CountiesMap = ({ setTooltipContent }) => {
         }
       </Geographies>
     </ComposableMap>
+    </div>
   );
 };
 

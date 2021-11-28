@@ -1,4 +1,6 @@
 import ColorBar from "./ColorBar.tsx";
+import './colorBarStyles.css';
+
 // Author: Junyuan Guo
 // Date Accessed: Nov 26, 2021
 // Source: https://github.com/joyjoy993/react-color-bar
@@ -108,7 +110,7 @@ function CountiesColorBar() {
 
   return (
     <div className="ColorBarContainer">
-      <h1>2019 Car Accidents By County</h1>
+      <h1>2019 Accidents By County</h1>
       <ColorBar data={data} />
     </div>
   );
