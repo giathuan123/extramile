@@ -1,7 +1,8 @@
+import { useState } from "react";
 import { Container, Card, Col, Row } from 'react-bootstrap';
 import PieGraph from '../Charts/Pie'
 import Bargraph from '../components/Bar';
-import { StatesMapChart, CountiesMapChart } from '../Charts';
+import { StatesMapChart, CountiesMapChart, CountiesColorBarChart } from '../Charts';
 import { ChartModal } from '../Modals';
 
 function Analytics1() {
@@ -36,8 +37,11 @@ function Analytics1() {
         </Col>
         <Col>
           <Card className='card border-light'>
-            <Card.Title className='card-header d-flex justify-content-between'>County Heatmap {<ChartModal><CountiesMapChart /></ChartModal>}</Card.Title>
-            <Card.Body><CountiesMapChart /></Card.Body>
+            <Card.Title className='card-header d-flex justify-content-between'>County Heatmap {<ChartModal> <CountiesColorBarChart /><CountiesMapChart /></ChartModal>}</Card.Title>
+            <Card.Body>
+              <CountiesColorBarChart />
+              <CountiesMapChart/>
+              </Card.Body>
           </Card>
         </Col>
       </Row>

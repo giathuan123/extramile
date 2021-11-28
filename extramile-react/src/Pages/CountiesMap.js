@@ -1,10 +1,16 @@
+import { useState } from "react";
+import ReactTooltip from "react-tooltip";
 import { CountiesMapChart } from '../Charts';
+import { CountiesColorBarChart } from '../Charts';
+
 
 function CountiesMap() {
+    const [content, setContent] = useState("");
     return (
         <div className="content-container">
-            <h1>2019 Car Accidents By County</h1>
-            <CountiesMapChart />
+            <CountiesColorBarChart />
+            <CountiesMapChart setTooltipContent={setContent} />
+            <ReactTooltip>{content}</ReactTooltip>
         </div>
     );
 }
