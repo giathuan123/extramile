@@ -47,8 +47,9 @@ export default function PieGraph() {
         )
       };
     return (
-        <ResponsiveContainer width="100%" height="50%">
-            <PieChart width={500} height={500} >
+        <ResponsiveContainer>
+            {/* <PieChart width={300} height={250}> */}
+            <PieChart>
                 <Pie 
                     data={list} 
                     dataKey="accidents"
@@ -58,7 +59,7 @@ export default function PieGraph() {
                     cy="50%" 
                     labelLine={true}
                     label={renderLabel}
-                    outerRadius={window.innerHeight/5}
+                    // outerRadius={100}
                     fill="#db071f"
                    >{list.map((entry,index)=><Cell key ={`cell-${index}`} fill={colors[index%colors.length]} />)}
                 </Pie>
