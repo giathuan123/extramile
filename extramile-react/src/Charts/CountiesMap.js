@@ -32,15 +32,15 @@ const CountiesMap = ({ setTooltipContent }) => {
   const colorScale = scaleQuantile(data)
     .domain(data.map(d => d.accidents))
     .range([
-      "#E8DAEF",
-      "#D2B4DE",
-      "#BB8FCE",
-      "#A569BD",
-      "#8E44AD",
-      "#7D3C98",
-      "#6C3483",
-      "#5B2C6F",
-      "#4A235A"
+      "#ffedea",
+      "#ffcec5",
+      "#ffad9f",
+      "#ff8a75",
+      "#ff5533",
+      "#e2492d",
+      "#be3d26",
+      "#9a311f",
+      "#782618"
     ]);
 
   return (
