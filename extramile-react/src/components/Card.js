@@ -10,7 +10,6 @@ function CardResults(props) {
   const users = props.data
   const usersPerPage=12
   const pagesVisited = pageNumber*usersPerPage
-  console.log(users)
   const pageCount = Math.ceil(users.length /usersPerPage);
   const changePage = ({selected}) =>{
     setPageNumber(selected)
