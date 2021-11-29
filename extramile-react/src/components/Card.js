@@ -21,6 +21,7 @@ function CardResults(props) {
           <thead>
             <tr>
               <td>Accidents-ID</td>
+              <td>Date</td>
               <td>Street</td>
               <td>City</td>
               <td>State</td>
@@ -33,6 +34,7 @@ function CardResults(props) {
             {users.slice(pagesVisited,pagesVisited+usersPerPage).map((item)=>(
               <tr key={item.ID}>
                 <td>{item.ID}</td>
+                <td>{item.Start_Time.slice(0,10)}</td>
                 <td>{item.Street}</td>
                 <td>{item.City}</td>
                 <td>{item.State}</td>
