@@ -11,10 +11,10 @@ const Top = () => {
             <Nav>
               <LinkContainer to="search"><Nav.Link>Search</Nav.Link></LinkContainer>
               <NavDropdown menuVariant="dark" title='Charts'>
-                <NavDropdown.Item href='/analytics1'>Charts 1</NavDropdown.Item>
+                <NavDropdown.Item href='/analytics1'>Charts</NavDropdown.Item>
+                <NavDropdown.Item href='/calendar'>Calendar</NavDropdown.Item>
+                <NavDropdown.Item href='/swarmplot'>Swarm Plot</NavDropdown.Item>
               </NavDropdown>
-              <LinkContainer to="/calendar"><Nav.Link>Calendar</Nav.Link></LinkContainer>
-              <LinkContainer to="/swarmplot"><Nav.Link>Swarmplot</Nav.Link></LinkContainer>
             </Nav>
           </Navbar.Collapse>
         </Container>
