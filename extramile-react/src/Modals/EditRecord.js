@@ -4,16 +4,22 @@ import { EditRecordForm } from '../Forms';
 
 function EditRecord(props) {
   const [show, setShow] = useState(false);
-
+  const inputRef = useRef();
   const formRef = useRef();
   
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
   const handleEdit = () => {
-    if (formRef.current) {
+    /*if (formRef.current) {
       formRef.current.handleSubmit();
+    }*/
+    if(inputRef.current){
+      inputRef.current.handleFormSubmit();
     }
+    inputRef.current.handleFormSubmit();
+    console.log(inputRef.current);
+  
   }
 
   return (
@@ -27,7 +33,7 @@ function EditRecord(props) {
           <Modal.Title>Edit Record</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <EditRecordForm data={props.data} formRef={formRef} />
+          <EditRecordForm data={props.data} ref={inputRef}  />
         </Modal.Body>
         <Modal.Footer>
           <Button variant='info' onClick={handleEdit}>
