@@ -24,7 +24,7 @@ class EditRecord extends React.Component {
     }
 
     handleFormSubmit(e) {
-        e.preventDefault();
+       // e.preventDefault();
         // DELETE RECORD   
         fetch('http://localhost:3001/users/delete', {
             method: "POST", 
@@ -110,9 +110,9 @@ class EditRecord extends React.Component {
                         placeholder={this.state.newRecord.Severity}
                         handleChange={this.handleInput}
                     />
-                    <Button
+                    {/*<Button
                         title={'Submit'}
-                    />
+                    />*/}
                 </form>
             </div>
         );
