@@ -17,7 +17,6 @@ function EditRecord(props) {
     if(inputRef.current){
       inputRef.current.handleFormSubmit();
     }
-    inputRef.current.handleFormSubmit();
     console.log(inputRef.current);
   
   }
