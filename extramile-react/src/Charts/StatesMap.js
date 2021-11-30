@@ -28,7 +28,7 @@ function StatesMap() {
                     autocolorscale: true
                 }]}
                 layout= { {
-                    title: '2019 Car Accidents By State',
+                    title: '2016-2020 Car Accidents By State',
                     // width: window.innerWidth,
                     // height: window.innerHeight,
                     geo:{
