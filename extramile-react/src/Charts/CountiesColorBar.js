@@ -110,7 +110,7 @@ function CountiesColorBar() {
 
   return (
     <div className="ColorBarContainer">
-      <h1>2019 Accidents By County</h1>
+      <h1>2016-2020 Accidents By County</h1>
       <ColorBar data={data} />
     </div>
   );
