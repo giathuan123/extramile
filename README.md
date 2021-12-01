@@ -38,5 +38,15 @@ When deleteing from or adding to an index you must provide an object in this for
 ``` {<accident-id>: <data> } ```
 You only need to do
 ``` indexes.addData(data) or indexes.removeData(data) ``` and the index container will ensure consistency amongst all its indexes.
+##Unit Tests
+1) install jest (npm i jest)
+2) Add this to package.json
+ "scripts": {
+    "test": "jest",
+    "start": "node server.js"
+  },
+3) run npm test in test directory
+ 
+
 
 
