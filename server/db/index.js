@@ -128,7 +128,7 @@ class Index{
   }
   createIndex(fieldGetter){
     this.fieldGetter = fieldGetter;
-    var index = new Map();
+    var index = {};
     if(Object.keys(Index.data).length == 0){
       console.log("[ERROR] Can't create index data is not set");
       return -1;
