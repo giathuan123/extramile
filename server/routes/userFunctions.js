@@ -3,6 +3,7 @@ const fs = require("fs");
 var { data, indexes } = require("../db/dbloader.js");
 
 var maxIdNumber = 0;
+
 function deleteDB(deleteArray){
   deleteArray.forEach(key=>{
     if(data[key]){
@@ -35,10 +36,8 @@ function deleteDB(deleteArray){
 }
 function getMaxId(){
   console.log("[INFO] Getting max id");
-  max = Object.keys(data).reduce((currMax, currentKey)=>{
-    var curr = parseInt(currentKey.split('-')[1]);
-    return ((curr > currMax)? curr : currMax);
-  }, 0);
+  var keysArray = Object.keys(data);
+  max = parseInt(keysArray[keysArray.length-1].split('-')[1]);
   console.log("[INFO] Got max id");
   return max;
 }
