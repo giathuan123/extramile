@@ -83,7 +83,7 @@ function updateStateInfo([action, newData]){
         this.answer.splice(newPosition, 0, {name: name, accidents: accidents});
       }else{
         var newPosition = this.answer.findIndex(ans=>ans.accidents < 1);
-        this.answer.splice(newPosition, 0, {name: city, accidents: 1});
+        this.answer.splice(newPosition, 0, {name: state, accidents: 1});
       }
       break;
     case 'DELETE':
