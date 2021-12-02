@@ -47,7 +47,7 @@ You only need to do
   },
 3) run npm test in test directory
  
-##Update node
+#Update node
 
 1)command -v nvm (checks if you have nvm)
 2)source ~/.nvm/nvm.sh
