@@ -68,9 +68,9 @@ Since the data is too big we must repackage into smaller junks, get the fields w
    
    Run this command:
 
-   ``` node combine.js  > data.json ```\
+   ``` node combine.js  > data.json ```
 
-   ` data.json ` is the final data file.\
+   ` data.json ` is the final data file.
    
    Move the ` data.json ` file into the data folder which is located at (PATH:cs180project-021-extramile/server/db/data). The loader will load from this data file.
    
